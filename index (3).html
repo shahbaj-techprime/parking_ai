@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Litegraph.js demo — Number → Add → Output</title>
+    <!-- Litegraph JS (CDN) -->
+    <script src="https://unpkg.com/litegraph.js/build/litegraph.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      #container {
+        display: flex;
+        height: 100%;
+      }
+      #editor {
+        flex: 1;
+        position: relative;
+        background: #222;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #sidebar {
+        width: 320px;
+        background: #f5f5f5;
+        padding: 12px;
+        box-sizing: border-box;
+        border-left: 1px solid #ddd;
+        overflow: auto;
+      }
+      .btn {
+        display: inline-block;
+        margin: 6px 4px;
+        padding: 8px 10px;
+        background: #1976d2;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 6px;
+        text-decoration: none;
+      }
+      textarea {
+        width: 100%;
+        height: 180px;
+        box-sizing: border-box;
+        font-family: monospace;
+        margin-top: 8px;
+      }
+      label {
+        font-weight: 600;
+        font-size: 13px;
+        display: block;
+        margin-top: 8px;
+      }
+      #output {
+        margin-top: 8px;
+        padding: 8px;
+        background: #fff;
+        border: 1px solid #ddd;
+        min-height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="editor">
+        <canvas id="mycanvas"></canvas>
+      </div>
+
+      <!-- <div id="sidebar">
+        <div>
+          <a class="btn" id="btnAddNumber">Add Number node</a>
+          <a class="btn" id="btnAddAdd">Add Add node</a>
+          <a class="btn" id="btnAddOutput">Add Output node</a>
+        </div>
+
+        <label>Last output:</label>
+        <div id="output">(nothing yet)</div>
+
+        <label>Save / Load graph (JSON)</label>
+        <div>
+          <a class="btn" id="btnSave">Save JSON</a>
+          <a class="btn" id="btnLoad">Load JSON</a>
+        </div>
+        <textarea
+          id="jsonArea"
+          placeholder="Graph JSON appears here when you press Save"
+        ></textarea>
+        <div style="margin-top: 10px; font-size: 12px; color: #444">
+          Tip: double-click the canvas to add built-in nodes using the context
+          menu. You can also drag nodes, connect ports, edit node properties.
+        </div>
+      </div> -->
+    </div>
+
+    <script>
+      // --- Create the graph + canvas ---
+      const canvas = document.getElementById("mycanvas");
+      // set explicit pixel size for the canvas to match container
+      function resizeCanvas() {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        if (graphcanvas) graphcanvas.resize();
+      }
+
+      const graph = new LGraph();
+      const graphcanvas = new LGraphCanvas(canvas, graph);
+      graphcanvas.backgroundImage = null; // simpler look
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      // --- Custom node: Number (output a constant number) ---
+      function NumberNode() {
+        this.addOutput("value", "number");
+        // editable property shown in inspector
+        this.properties = { value: 1.0 };
+        this.size = [160, 60];
+      }
+      NumberNode.title = "Number";
+      function chandNode() {
+   this.addOutput("value", "number");
+   // editable property shown in inspector
+   this.properties = { value: 1.0 };
+   this.size = [10, 60];
+ }
+      chandNode.title = "chand";
+
+      
+      NumberNode.prototype.onExecute = function () {
+        // Always emit current property value
+        this.setOutputData(0, Number(this.properties.value));
+      };
+      NumberNode.prototype.onGetInputs = function () {
+        return [];
+      };
+      LiteGraph.registerNodeType("custom/number", NumberNode);
+
+      // --- Custom node: Add (two inputs -> sum) ---
+      function AddNode() {
+        this.addInput("A", "number");
+        this.addInput("B", "number");
+        this.addInput("D", "number");
+        this.addOutput("sum", "number");
+        this.properties = {};
+        this.size = [160, 80];
+      }
+      AddNode.title = "Add";
+      AddNode.prototype.onExecute = function () {
+        // getInputData returns undefined if nothing connected
+        var a = this.getInputData(0);
+        var b = this.getInputData(1);
+        // if either input is undefined, fall back to 0
+        if (typeof a === "undefined") a = 0;
+        if (typeof b === "undefined") b = 0;
+        var s = Number(a) + Number(b);
+        this.setOutputData(0, s);
+      };
+      LiteGraph.registerNodeType("custom/add", AddNode);
+
+      // --- Custom node: Output (shows value in DOM) ---
+      function OutputNode() {
+        this.addInput("in", "number");
+        this.size = [160, 60];
+        this.properties = { label: "Output" };
+      }
+      OutputNode.title = "Output";
+      OutputNode.prototype.onExecute = function () {
+        var v = this.getInputData(0);
+        // Display to a DOM element on the page
+        var out = document.getElementById("output");
+        if (typeof v !== "undefined") {
+          out.textContent = String(v);
+        }
+      };
+      LiteGraph.registerNodeType("custom/output", OutputNode);
+
+      // --- helpers to add nodes quickly ---
+      function addNumber(x, y, val) {
+        const n = LiteGraph.createNode("custom/number");
+        n.pos = [x, y];
+        n.properties.value = typeof val !== "undefined" ? val : 1;
+        graph.add(n);
+        return n;
+      }
+      function addAdd(x, y) {
+        const n = LiteGraph.createNode("custom/add");
+        n.pos = [x, y];
+        graph.add(n);
+        return n;
+      }
+      function addOutput(x, y) {
+        const n = LiteGraph.createNode("custom/output");
+        n.pos = [x, y];
+        graph.add(n);
+        return n;
+      }
+
+      // --- sample: add nodes and connect them programmatically ---
+      const num1 = addNumber(20, 20, 3);
+      const num2 = addNumber(20, 140, 5);
+      const addNode = addAdd(260, 60);
+      const outNode = addOutput(520, 80);
+
+      // connect: num1 -> add.A ; num2 -> add.B ; add -> output
+      graph.connect(num1.id, 0, addNode.id, 0);
+      graph.connect(num2.id, 0, addNode.id, 1);
+      graph.connect(addNode.id, 0, outNode.id, 0);
+
+      // run the graph (starts internal timer)
+      graph.start();
+
+      // --- UI buttons ---
+      document.getElementById("btnAddNumber").addEventListener("click", () => {
+        addNumber(50 + Math.random() * 200, 50 + Math.random() * 200, 1);
+      });
+      document.getElementById("btnAddAdd").addEventListener("click", () => {
+        addAdd(50 + Math.random() * 200, 50 + Math.random() * 200);
+      });
+      document.getElementById("btnAddOutput").addEventListener("click", () => {
+        addOutput(50 + Math.random() * 200, 50 + Math.random() * 200);
+      });
+
+      // Save / Load
+      const jsonArea = document.getElementById("jsonArea");
+      document.getElementById("btnSave").addEventListener("click", () => {
+        const data = graph.serialize();
+        const pretty = JSON.stringify(data, null, 2);
+        jsonArea.value = pretty;
+      });
+
+      document.getElementById("btnLoad").addEventListener("click", () => {
+        try {
+          const obj = JSON.parse(jsonArea.value);
+          graph.stop(); // stop current graph
+          graph.clear(); // remove nodes
+          graph.configure(obj); // load
+          graph.start();
+        } catch (e) {
+          alert("Invalid JSON: " + e.message);
+        }
+      });
+
+      // Optional: show core events in browser console
+      graph.onPlay = function () {
+        console.log("graph.play");
+      };
+      graph.onStop = function () {
+        console.log("graph.stop");
+      };
+
+      // expose some globals for debugging in console
+      window._lg = { graph, graphcanvas, LiteGraph };
+    </script>
+  </body>
+</html>

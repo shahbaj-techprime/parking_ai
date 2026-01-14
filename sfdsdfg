@@ -1,0 +1,800 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parking AI – Smart Parking Design Made Easy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Reveal animations */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease-out; }
+    .reveal-left.active { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.8s ease-out; }
+    .reveal-right.active { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.9); transition: all 0.8s ease-out; }
+    .reveal-scale.active { opacity: 1; transform: scale(1); }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #222;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      animation: slideDown 0.6s ease-out;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(0,255,136,0.05) 0%, transparent 70%);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 72px);
+      font-weight: 900;
+      margin-bottom: 24px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #ffffff, #a0a0a0, #ffffff);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient 4s ease infinite;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 3vw, 22px);
+      color: #cccccc;
+      margin: 0 auto 48px;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 16px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .btn-primary:hover {
+      background: #000000;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: #000000;
+      transform: translateY(-2px);
+    }
+
+    /* Main Sections */
+    main {
+      padding: 80px 0 120px;
+    }
+
+    .section {
+      background: #111111;
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin-bottom: 60px;
+      border: 1px solid #222222;
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .section:hover {
+      border-color: #444444;
+      box-shadow: 0 20px 60px rgba(255,255,255,0.08);
+      transform: translateY(-8px);
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 5vw, 42px);
+      margin-bottom: 32px;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h2::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00ff88, #00ccff);
+      transition: width 0.6s ease;
+      border-radius: 2px;
+    }
+
+    .section:hover h2::after {
+      width: 100px;
+    }
+
+    .feature-text {
+      font-size: 18px;
+      color: #dddddd;
+      margin-bottom: 32px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Feature Cards */
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: #0a0a0a;
+      border: 1px solid #222222;
+      border-radius: 16px;
+      padding: 32px 24px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00ff88, #00ccff, #00ff88);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: #cccccc;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .feature-card:hover {
+      border-color: #ffffff;
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(255,255,255,0.15);
+    }
+
+    .feature-card:hover p {
+      color: #ffffff;
+    }
+
+    /* Video */
+    .video-wrap {
+      margin: 32px auto 0;
+      max-width: 800px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #222222;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .video-player {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @supports (aspect-ratio: 16 / 9) {
+      .video-player { aspect-ratio: 16 / 9; object-fit: cover; }
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+      max-width: 700px;
+      margin: 32px auto 0;
+      text-align: left;
+    }
+
+    .feature-list li {
+      padding: 18px 0;
+      font-size: 17px;
+      color: #dddddd;
+      border-bottom: 1px solid #222222;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-list li:hover {
+      padding-left: 12px;
+      color: #ffffff;
+      transform: translateX(8px);
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      font-weight: bold;
+      color: #00ff88;
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Images */
+    .single-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 16px;
+      margin: 32px auto;
+      border: 1px solid #333333;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      display: block;
+    }
+
+    .single-image:hover {
+      transform: scale(1.02);
+      border-color: #666666;
+      box-shadow: 0 25px 80px rgba(255,255,255,0.12);
+    }
+
+    /* Comparison Table */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 20px;
+      border: 1px solid #333;
+      background: #0a0a0a;
+      margin: 40px auto 20px;
+      max-width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 850px;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 20px 24px;
+      text-align: left;
+      border-bottom: 1px solid #1f1f1f;
+    }
+
+    .comparison-table thead th {
+      background: #111;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sticky-header { position: sticky; top: 0; z-index: 10; }
+    .sticky-col { 
+      position: sticky; 
+      left: 0; 
+      z-index: 5; 
+      background: #111; 
+      border-right: 1px solid #1f1f1f; 
+      font-weight: 600;
+      min-width: 200px;
+    }
+    .sticky-col.sticky-header { z-index: 15; }
+
+    .highlight {
+      background: linear-gradient(90deg, #00ff88, #00ccff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .comparison-table tbody tr:hover td { background: #111; }
+    .comparison-table tbody tr:nth-child(even) td { background: #0c0c0c; }
+
+    .table-note {
+      color: #aaaaaa;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .benefit-card {
+      background: #0a0a0a;
+      padding: 36px 24px;
+      border-radius: 16px;
+      border: 1px solid #222222;
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .benefit-card:hover {
+      border-color: #ffffff;
+      transform: translateY(-12px);
+      box-shadow: 0 25px 80px rgba(255,255,255,0.15);
+    }
+
+    .benefit-card h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .benefit-card p {
+      color: #cccccc;
+      font-size: 16px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      background: #000000;
+      border-top: 1px solid #222222;
+      color: #888888;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+      font-weight: 600;
+    }
+
+    footer a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ff88, #00ccff);
+      transition: width 0.3s ease;
+    }
+
+    footer a:hover::after { width: 100%; }
+
+    /* Modal */
+    .image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .image-modal.active { display: flex; }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 16px;
+      box-shadow: 0 30px 100px rgba(255,255,255,0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 36px;
+      color: #ffffff;
+      cursor: pointer;
+      background: rgba(0,0,0,0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      transform: rotate(90deg) scale(1.1);
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      
+      .hero { padding: 80px 0 60px; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 320px; }
+      
+      .section { padding: 40px 24px; margin-bottom: 40px; }
+      
+      .feature-cards { grid-template-columns: 1fr; gap: 20px; }
+      
+      .table-container { margin: 24px -16px; border-radius: 0; border-left: none; border-right: none; }
+      
+      .modal-close { top: 20px; right: 20px; width: 44px; height: 44px; font-size: 28px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 42px; }
+      .section h2 { font-size: 28px; }
+      .feature-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">🚗</span>
+          <span>Parking AI</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero reveal" id="hero">
+    <div class="container">
+      <div class="reveal active">
+        <h1>AI-Powered Parking Design Revolution</h1>
+        <p>
+          Transform any DXF/DWG site plan into a perfectly optimized parking
+          layout in under 90 seconds. Maximum capacity. Perfect circulation.
+          Zero manual CAD rework.
+        </p>
+        <div class="hero-buttons">
+          <a href="https://pioneverse.com/phoenix/parkingai/beta" class="btn-primary" target="_blank">Try Parking AI Beta</a>
+          <a href="#features" class="btn-secondary">See Features</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Features -->
+    <section class="section reveal" id="features">
+      <div class="container">
+        <h2>Parking AI Features</h2>
+        <div class="feature-cards">
+          <div class="feature-card reveal-left">
+            <h3>📄 Universal File Support</h3>
+            <p>Works with <strong>any AutoCAD DXF & DWG</strong> file—no conversion needed. Supports all versions used by architects and engineers.</p>
+          </div>
+          <div class="feature-card reveal-right">
+            <h3>🔍 Auto Boundary Detection</h3>
+            <p>Automatically detects site boundaries, obstacles, columns, ramps & ramp directions with pixel-perfect accuracy.</p>
+          </div>
+          <div class="feature-card reveal-left">
+            <h3>🚗 Complete Parking Generation</h3>
+            <p>Builds aisles, 4W car bays, 2W bike parking, and physical handicapped spaces automatically in one click.</p>
+          </div>
+          <div class="feature-card reveal-right">
+            <h3>🏢 Coreless Operation</h3>
+            <p>Works without core drawings—AI auto-creates columns and lift areas as needed for maximum flexibility.</p>
+          </div>
+          <div class="feature-card reveal-left">
+            <h3>📏 Any Bay Dimensions</h3>
+            <p>Custom car bay sizes, 1-way/2-way driveway widths, and precise turn radius control for any requirement.</p>
+          </div>
+          <div class="feature-card reveal-right">
+            <h3>📊 Complete Statistics</h3>
+            <p>Layout coverage, advance area, circulation space, utilization percentages—all at a glance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section class="section reveal" id="video">
+      <div class="container">
+        <h2>Watch Parking AI in Action</h2>
+        <p class="feature-text">
+          See how a DXF/DWG upload turns into a complete parking layout with
+          bays, circulation, and layout statistics—ready to iterate in seconds.
+        </p>
+        <div class="video-wrap reveal-scale">
+          <video class="video-player" controls preload="metadata" playsinline poster="https://img.sanishtech.com/u/2de0c92b80da5303c8acb01b0c5fb669.png">
+            <source src="./video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section reveal" id="comparison">
+      <div class="container">
+        <h2>Parking AI vs Manual CAD</h2>
+        <p class="feature-text">AI-assisted design speeds up iterations and reduces manual rework by 95%.</p>
+        
+        <div class="table-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th class="sticky-col sticky-header">Feature</th>
+                <th class="sticky-header">Parking AI</th>
+                <th class="sticky-header">Manual CAD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="sticky-col">First Layout Time</td>
+                <td><span class="highlight">90 seconds</span></td>
+                <td>4-8 hours</td>
+              </tr>
+              <tr>
+                <td class="sticky-col">Iteration Speed</td>
+                <td><span class="highlight">Click regenerate</span></td>
+                <td>Redraw everything</td>
+              </tr>
+              <tr>
+                <td class="sticky-col">Stall Optimization</td>
+                <td><span class="highlight">AI finds max fit</span></td>
+                <td>Manual trial/error</td>
+              </tr>
+              <tr>
+                <td class="sticky-col">ADA Compliance</td>
+                <td><span class="highlight">Auto-placed</span></td>
+                <td>Manual counting</td>
+              </tr>
+              <tr>
+                <td class="sticky-col">Export Formats</td>
+                <td><span class="highlight">DXF/DWG</span></td>
+                <td>Limited native</td>
+              </tr>
+              <tr>
+                <td class="sticky-col">Cloud Storage</td>
+                <td><span class="highlight">Unlimited sessions</span></td>
+                <td>Local files only</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">💡 Mobile users: Swipe left/right to see all columns. Feature column stays visible.</p>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section reveal">
+      <div class="container">
+        <h2>Why Choose Parking AI?</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card reveal-scale">
+            <h3>⚡ Save Time</h3>
+            <p>What takes days manually can be done in minutes with AI precision.</p>
+          </div>
+          <div class="benefit-card reveal-scale">
+            <h3>📊 Better Results</h3>
+            <p>Optimize flow, safety, and accessibility with intelligent algorithms.</p>
+          </div>
+          <div class="benefit-card reveal-scale">
+            <h3>👥 Easy to Use</h3>
+            <p>Simple interface—no heavy CAD training or expertise required.</p>
+          </div>
+          <div class="benefit-card reveal-scale">
+            <h3>🎯 Smart Optimization</h3>
+            <p>Considers circulation, turning radius, and industry best practices.</p>
+          </div>
+          <div class="benefit-card reveal-scale">
+            <h3>💰 Cost Effective</h3>
+            <p>Reduce manual design time and avoid costly layout mistakes.</p>
+          </div>
+          <div class="benefit-card reveal-scale">
+            <h3>🔄 Fast Iterations</h3>
+            <p>Regenerate and compare dozens of optimized options instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Powered by Pioneverse</strong></p>
+      <p>
+        © 2026 Pioneverse | 
+        <a href="https://pioneverse.com/phoenix/parkingai/beta" target="_blank" rel="noopener noreferrer">
+          Try Parking AI Beta →
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal" aria-hidden="true">
+    <span class="modal-close" id="modalClose" aria-label="Close">&times;</span>
+    <img class="modal-content" id="modalImage" alt="Preview" />
+  </div>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    // Reveal animations
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -100px 0px" });
+
+    revealElements.forEach(el => io.observe(el));
+
+    // Image modal
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalClose = document.getElementById("modalClose");
+    const zoomableImages = document.querySelectorAll(".single-image");
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+    }
+
+    zoomableImages.forEach(img => {
+      img.addEventListener("click", function () {
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        modalImg.src = this.src;
+        modalImg.alt = this.alt;
+      });
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+  </script>
+</body>
+</html>

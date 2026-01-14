@@ -6,296 +6,231 @@
     <title>Parking AI – Smart Parking Design Made Easy</title>
     <link rel="stylesheet" href="index.css" />
   </head>
-
   <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span id="themeIcon">🌙</span>
+    </button>
+
     <header>
       <div class="header-content">
         <div class="logo">
           <span class="logo-icon">🚗</span>
           <span>Parking AI</span>
         </div>
+        <a
+          href="https://pioneverse.com/phoenix/parkingai/beta"
+          class="cta-button"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Try Beta</a
+        >
       </div>
     </header>
-
-    <section class="hero" id="hero">
+    <!-- HERO SECTION -->
+    <section class="hero">
       <div class="hero-content">
-        <!-- LEFT: Text & CTA -->
-        <div class="hero-text reveal-left">
-          <h1>AI-Powered Parking Design Revolution</h1>
+        <div class="hero-text">
+          <!-- <h1>AI-Driven Parking Planning System.</h1>
           <p>
-            Transform any DXF/DWG site plan into a perfectly optimized parking
-            layout in under 90 seconds. Maximum capacity. Perfect circulation.
-            Zero manual CAD rework.
+            Design smarter parking layouts in minutes — not days. Upload your
+            DXF/DWG and let AI deliver optimized, regulation-ready parking plans
+            automatically.
+          </p> -->
+          <h1>AI-Driven Parking Planning System</h1>
+          <p>
+            Design optimal parking layouts automatically using advanced AI.
+            Upload your DXF/DWG site plan and generate efficient,
+            regulation-ready parking layouts in minutes — with maximum capacity
+            and smooth circulation.
           </p>
-
-          <!-- <div class="hero-buttons">
+          <div class="hero-buttons">
             <a
               href="https://pioneverse.com/phoenix/parkingai/beta"
               class="btn-primary"
               target="_blank"
               rel="noopener noreferrer"
+              >Get Started Free</a
             >
-              Start Designing Free
-            </a>
-            <a href="#features" class="btn-secondary">Watch Demo</a>
-          </div> -->
-
-          <!-- Stats row -->
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-number">90s</span>
-              <span>From upload to layout</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">100%</span>
-              <span>ADA compliant</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">DXF/DWG</span>
-              <span>Native support</span>
-            </div>
+            <a href="#features" class="btn-secondary">Explore Features</a>
           </div>
-        </div>
-
-        <!-- RIGHT: Animated GIF/Video -->
-        <div class="hero-visual reveal-right">
-          <div class="visual-container">
-            <!-- Replace with your actual HD GIF or video -->
-            <img
-              src="https://image2url.com/r2/default/gifs/1768367702884-b4c30fe7-e8e7-4f55-b074-3bd3edf485de.gif"
-              alt="AI transforming site plan into optimized parking layout"
-              class="hero-gif zoomable"
-              loading="lazy"
-            />
-            <!-- Or use video for better performance:
-        <video autoplay loop muted playsinline class="hero-gif">
-          <source src="assets/parking-ai-demo.gif" type="video/webm">
-          <source src="assets/parking-ai-demo.mp4" type="video/mp4">
-        </video>
-        -->
-            <div class="visual-glow"></div>
-          </div>
-
-          <!-- <p class="visual-caption">
-            DXF upload → AI analysis → Perfect parking layout
-          </p> -->
         </div>
       </div>
     </section>
 
     <main>
-      <!-- FEATURES (NEW, requested points) -->
+      <!-- 1. WHAT IS PARKING AI (Overview First) -->
+      <section class="section reveal">
+        <h2>What Is Parking AI?</h2>
+
+        <!-- <img
+          src="https://img.sanishtech.com/u/2de0c92b80da5303c8acb01b0c5fb669.png"
+          alt="Parking AI Platform Overview"
+          class="single-image reveal-scale zoomable"
+          loading="lazy"
+        /> -->
+
+        <p class="feature-text">
+          Parking AI is a powerful, AI-driven parking planning platform designed
+          to eliminate manual layout work. By simply uploading your site or
+          property drawing, the system intelligently analyzes space, access
+          points, and design constraints to instantly produce highly efficient,
+          regulation-ready parking layouts.
+        </p>
+
+        <ul class="feature-list">
+          <li>Upload site plans or property drawings in supported formats</li>
+          <li>
+            AI intelligently evaluates dimensions, access routes, and
+            constraints
+          </li>
+          <li>Automatically generates optimized parking layouts in minutes</li>
+          <li>
+            Maximize parking capacity while maintaining smooth circulation
+          </li>
+          <li>
+            Iterate and refine layouts effortlessly with flexible controls
+          </li>
+          <li>
+            Ensure compliance with standard parking regulations and guidelines
+          </li>
+          <li>Export professional, ready-to-use designs in industry formats</li>
+        </ul>
+      </section>
+
+      <!-- 2. CORE FEATURES -->
       <section class="section reveal" id="features">
-        <h2>Parking AI Features</h2>
+        <h2>Parking AI – Core Features</h2>
 
         <div class="feature-cards">
-          <!-- 1a: File Support -->
-          <div class="feature-card reveal-left">
-            <h3>📄 Universal File Support</h3>
+          <div class="feature-card">
+            <h3>📄 Universal CAD File Support</h3>
             <p>
-              Works with <strong>any AutoCAD DXF & DWG</strong> file—no
-              conversion needed.
+              Seamlessly works with
+              <strong>all AutoCAD DXF & DWG files</strong>. No file conversion,
+              cleanup, or manual preparation required.
             </p>
           </div>
 
-          <!-- 1b: Industry Standard -->
-          <div class="feature-card reveal-right">
-            <h3>🏗️ Industry Standard</h3>
+          <div class="feature-card">
+            <h3>🏗️ Industry-Standard Compatibility</h3>
             <p>
-              Supports all versions of DXF/DWG formats used by architects and
-              engineers.
+              Fully compatible with every DXF/DWG version used by architects,
+              planners, and civil engineers worldwide.
             </p>
           </div>
 
-          <!-- 2a: Smart Detection -->
-          <div class="feature-card reveal-left">
-            <h3>🔍 Auto Boundary Detection</h3>
+          <div class="feature-card">
+            <h3>🔍 Intelligent Boundary Detection</h3>
             <p>
-              Automatically detects site boundaries, obstacles, columns, ramps &
-              ramp directions.
+              Automatically identifies site boundaries, columns, ramps,
+              obstacles, and ramp directions with AI-based analysis.
             </p>
           </div>
 
-          <!-- 2b: Smart Parking Creation -->
-          <div class="feature-card reveal-right">
-            <h3>🚗 Complete Parking Generation</h3>
+          <div class="feature-card">
+            <h3>🚗 End-to-End Parking Generation</h3>
             <p>
-              Builds aisles, 4W car bays, 2W bike parking, and physical
-              handicapped spaces automatically.
+              Automatically generates drive aisles, 4-wheeler car bays,
+              2-wheeler parking, and physically challenged (accessible) spaces.
             </p>
           </div>
 
-          <!-- 2c: Coreless Mode -->
-          <div class="feature-card reveal-left">
-            <h3>🏢 Coreless Operation</h3>
+          <div class="feature-card">
+            <h3>🏢 Coreless Design Capability</h3>
             <p>
-              Works without core drawings—AI auto-creates columns and lift areas
-              as needed.
+              No core drawings? No problem. Parking AI intelligently creates
+              columns, lift zones, and service areas when missing.
             </p>
           </div>
 
-          <!-- 3a: Custom Dimensions -->
-          <div class="feature-card reveal-right">
-            <h3>📏 Any Bay Dimensions</h3>
+          <div class="feature-card">
+            <h3>📏 Fully Customizable Dimensions</h3>
             <p>
-              Custom car bay sizes, 1-way/2-way driveway widths, and precise
-              turn radius control.
+              Define any car bay size, driveway width (one-way or two-way), and
+              turning radius to match local codes and project needs.
             </p>
           </div>
 
-          <!-- 3b: Layout Modes -->
-          <div class="feature-card reveal-left">
-            <h3>⚙️ Layout Optimization</h3>
+          <div class="feature-card">
+            <h3>⚙️ Smart Layout Optimization</h3>
             <p>
-              Choose maximum parking density or comfort parking layouts for any
-              site.
+              Choose between <strong>maximum parking density</strong> or
+              <strong>comfort-oriented layouts</strong> with optimized
+              circulation.
             </p>
           </div>
 
-          <!-- 4: Statistics Dashboard -->
-          <div class="feature-card reveal-right">
-            <h3>📊 Complete Statistics</h3>
+          <div class="feature-card">
+            <h3>📊 Advanced Layout Analytics</h3>
             <p>
-              Layout coverage, advance area, circulation space, utilization
-              percentages—all at a glance.
+              Instantly view parking counts, circulation area, layout coverage,
+              utilization ratios, and efficiency metrics.
             </p>
           </div>
         </div>
       </section>
-
-      <!-- VIDEO (NEW) -->
+      <!-- 3. VIDEO DEMO -->
       <section class="section reveal" id="video">
-        <h2>Watch Parking AI in Action</h2>
+        <h2>See How Parking AI Transforms Your Site Plan</h2>
         <p class="feature-text">
-          See how a DXF/DWG upload turns into a complete parking layout with
-          bays, circulation, and layout statistics—ready to iterate in seconds.
+          Experience how a simple DXF/DWG upload is transformed into a fully
+          optimized parking layout. Automatically generated bays, intelligent
+          circulation, and detailed layout statistics—ready to iterate and
+          refine in seconds.
         </p>
-
         <div class="video-wrap reveal-scale">
-          <!-- Replace src with your actual mp4 (recommended) -->
           <video class="video-player" controls preload="metadata" playsinline>
             <source src="./video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
-
-        <!-- <div class="video-actions">
-          <a
-            href="https://pioneverse.com/phoenix/parkingai/beta"
-            class="btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Try the Beta
-          </a>
-          <a href="#comparison" class="btn-secondary">Compare</a>
-        </div> -->
       </section>
 
-      <!-- KEEP: your existing sections (optional images) -->
+      <!-- 4. HOW IT WORKS - STEP 1: FILE UPLOAD -->
       <section class="section reveal">
-        <h2>What is Parking AI?</h2>
-        <img
-          src="https://img.sanishtech.com/u/2de0c92b80da5303c8acb01b0c5fb669.png"
-          alt="Parking AI Overview"
-          class="single-image reveal-scale zoomable"
-          loading="lazy"
-        />
+        <h2>Fast & Effortless File Upload</h2>
+
         <p class="feature-text">
-          Parking AI is an advanced, intelligent parking design solution that
-          automates the creation of highly optimized parking layouts. Simply
-          upload your property or site plan, and our AI-powered system carefully
-          analyzes the available space, access points, and design constraints to
-          generate the most efficient, compliant, and practical parking
-          arrangement.
+          Getting started with Parking AI takes seconds. Simply drag and drop
+          your site plan or browse your files to upload. Our system securely
+          processes industry-standard CAD drawings and prepares them instantly
+          for intelligent parking analysis.
         </p>
 
-        <ul class="feature-list">
-          <li>
-            Upload your site plan or property drawing in supported formats
-          </li>
-
-          <li>
-            AI analyzes space dimensions, driveways, and layout constraints
-          </li>
-          <li>Automatically generates optimized parking layouts in minutes</li>
-          <li>Save days of manual planning and reduce design effort</li>
-          <li>Modify layouts easily with flexible adjustment options</li>
-          <li>Ensure compliance with standard parking rules and guidelines</li>
-          <li>Export professional designs in industry-standard file formats</li>
-        </ul>
-      </section>
-
-      <section class="section reveal">
-        <h2>Manage All Your Projects</h2>
-        <img
-          src="https://image2url.com/r2/bucket1/images/1767960836587-0f0febda-a288-47bb-a05e-b1366f33d613.png"
-          alt="Session Manager"
-          class="single-image reveal-scale zoomable"
-          loading="lazy"
-        />
-        <p class="feature-text">
-          Every parking layout you create is securely saved as a dedicated
-          "session," similar to a project workspace. This allows you to return
-          anytime to review, edit, duplicate, or share your parking designs
-          without losing progress.
-        </p>
-
-        <ul class="feature-list">
-          <li>
-            All parking design projects are automatically saved to the cloud
-          </li>
-          <li>
-            Access previous sessions anytime to edit or create updated versions
-          </li>
-          <li>Duplicate existing projects to explore alternative layouts</li>
-          <li>Delete projects you no longer need with a single click</li>
-          <li>Manage everything from a clean, user-friendly dashboard</li>
-          <li>Quickly search and filter projects by name, date, or location</li>
-        </ul>
-      </section>
-
-      <section class="section reveal">
-        <h2>Simple File Upload</h2>
         <img
           src="https://image2url.com/r2/bucket3/images/1767960212541-984c3173-1e1c-4aa2-966a-f55b3b7095ed.png"
-          alt="Upload Site Plan"
+          alt="Upload Site Plan to Parking AI"
           class="single-image reveal-scale zoomable"
           loading="lazy"
         />
-        <p class="feature-text">
-          Getting started with Parking AI is quick and effortless. Simply drag
-          and drop your site plan into the upload area or click to browse your
-          files. The system securely processes industry-standard CAD drawings to
-          prepare them for intelligent parking analysis.
-        </p>
 
         <ul class="feature-list">
           <li>Supports industry-standard DXF and DWG file formats</li>
-          <li>Accepts large files up to 100 MB without performance issues</li>
-          <li>Easy drag-and-drop or one-click file browsing</li>
-          <li>Instant validation to ensure file compatibility and accuracy</li>
-          <li>
-            Clear confirmation message once the file is successfully uploaded
-          </li>
+          <li>Handles large files up to 100 MB without performance loss</li>
+          <li>Drag-and-drop or one-click upload for maximum convenience</li>
+          <li>Instant file validation to ensure accuracy and compatibility</li>
+          <li>Clear confirmation once your file is successfully uploaded</li>
           <li>Secure file handling to protect your design data</li>
         </ul>
       </section>
 
-      <div class="section reveal">
+      <section class="section reveal">
         <h2>AI Guides You Through Setup</h2>
-        <img
-          src="https://img.sanishtech.com/u/72a48e0e5bf16ba00cc44d24fd71d0de.png"
-          alt="AI Configuration"
-          class="single-image zoomable"
-          loading="lazy"
-        />
+
         <p class="feature-text">
           Answer a few guided questions about your project requirements, and let
           Parking AI intelligently handle the complex decisions for you. The
           system adapts to your inputs and automatically configures the most
           suitable parking layout for your site.
         </p>
+
+        <img
+          src="https://img.sanishtech.com/u/72a48e0e5bf16ba00cc44d24fd71d0de.png"
+          alt="AI Configuration"
+          class="single-image reveal-scale zoomable"
+          loading="lazy"
+        />
 
         <ul class="feature-list">
           <li>
@@ -316,131 +251,285 @@
             efficiency
           </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section reveal">
-        <h2>See Your Parking Layout Instantly</h2>
+      <!-- 6. HOW IT WORKS - STEP 3: INSTANT VISUALIZATION -->
+      <section class="section reveal">
+        <h2>Instant Parking Layout Visualization</h2>
+
+        <p class="feature-text">
+          As soon as Parking AI completes the analysis, your full parking layout
+          is displayed instantly in an interactive, easy-to-understand visual
+          format. Color-coded elements and real-time metrics help you review,
+          evaluate, and understand space usage at a glance.
+        </p>
         <img
           src="https://img.sanishtech.com/u/8f8019453b27d40cf1f629ce460c06d4.png"
-          alt="Parking Layout View"
-          class="single-image zoomable"
+          alt="AI-Generated Parking Layout View"
+          class="single-image reveal-scale zoomable"
           loading="lazy"
         />
+
+        <ul class="feature-list">
+          <li>
+            AI-generated parking layout displayed clearly in the workspace
+          </li>
+          <li>
+            Color-coded zones for quick understanding—parking bays, drive lanes,
+            and restricted areas
+          </li>
+          <li>Smooth zoom and pan controls for detailed inspection</li>
+          <li>Toggle layers to focus on specific design elements</li>
+          <li>Live parking count and space utilization statistics</li>
+        </ul>
+      </section>
+
+      <!-- 7. PROJECT MANAGEMENT -->
+      <section class="section reveal">
+        <h2>Manage All Your Parking Projects</h2>
+
         <p class="feature-text">
-          Once the AI generates your parking layout, the complete design is
-          displayed clearly on screen using an interactive, color-coded
-          visualization. This allows you to quickly understand the layout,
-          review details, and evaluate space usage at a glance.
+          Every parking layout you create is securely stored as a dedicated
+          project workspace. Parking AI lets you revisit, refine, duplicate, and
+          share your designs at any time—so you never lose progress and can
+          iterate with confidence.
+        </p>
+        <img
+          src="https://image2url.com/r2/bucket1/images/1767960836587-0f0febda-a288-47bb-a05e-b1366f33d613.png"
+          alt="Parking AI Project Manager"
+          class="single-image reveal-scale zoomable"
+          loading="lazy"
+        />
+
+        <ul class="feature-list">
+          <li>
+            All parking design projects are automatically saved to the cloud
+          </li>
+          <li>Reopen and edit previous layouts anytime</li>
+          <li>
+            Duplicate projects to quickly explore alternative design options
+          </li>
+          <li>Delete outdated or unused projects in a single click</li>
+          <li>Manage everything from a clean, intuitive dashboard</li>
+          <li>Search and filter projects by name, date, or site location</li>
+        </ul>
+      </section>
+
+      <!-- <section class="section reveal">
+        <h2>Manage All Your Parking Projects</h2>
+
+        <img
+          src="https://image2url.com/r2/bucket1/images/1767960836587-0f0febda-a288-47bb-a05e-b1366f33d613.png"
+          alt="Parking AI Project Manager"
+          class="single-image reveal-scale zoomable"
+          loading="lazy"
+        />
+
+        <p class="feature-text">
+          Every parking layout you create is securely stored as a dedicated
+          project workspace. Parking AI lets you revisit, refine, duplicate, and
+          share your designs at any time—so you never lose progress and can
+          iterate with confidence.
         </p>
 
         <ul class="feature-list">
           <li>
-            The generated parking layout is rendered clearly at the center of
-            the workspace
+            All parking design projects are automatically saved to the cloud
+          </li>
+          <li>Reopen and edit previous layouts anytime</li>
+          <li>
+            Duplicate projects to quickly explore alternative design options
+          </li>
+          <li>Delete outdated or unused projects in a single click</li>
+          <li>Manage everything from a clean, intuitive dashboard</li>
+          <li>Search and filter projects by name, date, or site location</li>
+        </ul>
+      </section> -->
+      <!-- 
+      <section class="section reveal">
+        <h2>Simple File Upload</h2>
+        <img
+          src="https://image2url.com/r2/bucket3/images/1767960212541-984c3173-1e1c-4aa2-966a-f55b3b7095ed.png"
+          alt="Upload Site Plan"
+          class="single-image reveal-scale zoomable"
+          loading="lazy"
+        />
+        <p class="feature-text">
+          Getting started with Parking AI is quick and effortless. Simply drag
+          and drop your site plan into the upload area or click to browse your
+          files. The system securely processes industry-standard CAD drawings to
+          prepare them for intelligent parking analysis.
+        </p>
+        <ul class="feature-list">
+          <li>Supports industry-standard DXF and DWG file formats</li>
+          <li>Accepts large files up to 100 MB without performance issues</li>
+          <li>Easy drag-and-drop or one-click file browsing</li>
+          <li>Instant validation to ensure file compatibility and accuracy</li>
+          <li>
+            Clear confirmation message once the file is successfully uploaded
+          </li>
+          <li>Secure file handling to protect your design data</li>
+        </ul>
+      </section> -->
+
+      <!-- 
+      <section class="section reveal">
+        <h2>Instant Parking Layout Visualization</h2>
+
+        <img
+          src="https://img.sanishtech.com/u/8f8019453b27d40cf1f629ce460c06d4.png"
+          alt="AI-Generated Parking Layout View"
+          class="single-image reveal-scale zoomable"
+          loading="lazy"
+        />
+
+        <p class="feature-text">
+          As soon as Parking AI completes the analysis, your full parking layout
+          is displayed instantly in an interactive, easy-to-understand visual
+          format. Color-coded elements and real-time metrics help you review,
+          evaluate, and understand space usage at a glance.
+        </p>
+
+        <ul class="feature-list">
+          <li>
+            AI-generated parking layout displayed clearly in the workspace
           </li>
           <li>
-            Color-coded zones highlight key areas: parking (blue), drive lanes
-            (gray), and restricted zones (red)
+            Color-coded zones for quick understanding—parking bays, drive lanes,
+            and restricted areas
           </li>
           <li>Smooth zoom and pan controls for detailed inspection</li>
-          <li>Toggle layers on or off to review specific design elements</li>
-          <li>Real-time parking count and space utilization statistics</li>
+          <li>Toggle layers to focus on specific design elements</li>
+          <li>Live parking count and space utilization statistics</li>
         </ul>
-      </div>
-
-      <!-- COMPARISON (keep your table, unchanged) -->
+      </section> -->
+      <!-- 8. COMPARISON TABLE -->
       <section class="section reveal" id="comparison">
         <h2>Parking AI vs Manual CAD</h2>
+
         <p class="feature-text">
-          AI-assisted design speeds up iterations and reduces manual rework.
+          Parking AI replaces time-consuming manual CAD work with intelligent,
+          automated design—helping teams move faster, iterate freely, and
+          deliver better parking layouts with less effort.
         </p>
 
         <div class="table-container">
           <table class="comparison-table">
             <thead>
               <tr>
-                <th class="sticky-col sticky-header">Feature</th>
-                <th class="sticky-header">Parking AI</th>
-                <th class="sticky-header">Manual CAD</th>
+                <th class="sticky-col sticky-header">What Happens</th>
+                <th class="sticky-header">With Parking AI</th>
+                <th class="sticky-header">With Manual CAD</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="sticky-col">First Layout Time</td>
-                <td><span class="highlight">90 seconds</span></td>
-                <td>4-8 hours</td>
+                <td class="sticky-col">First Parking Layout</td>
+                <td><span class="highlight">Generated in ~90 seconds</span></td>
+                <td>Requires 4–8 hours of drafting</td>
               </tr>
+
               <tr>
-                <td class="sticky-col">Iteration Speed</td>
-                <td><span class="highlight">Click regenerate</span></td>
-                <td>Redraw everything</td>
+                <td class="sticky-col">Design Iterations</td>
+                <td><span class="highlight">One click to regenerate</span></td>
+                <td>Entire layout must be redrawn</td>
               </tr>
+
               <tr>
-                <td class="sticky-col">Stall Optimization</td>
-                <td><span class="highlight">AI finds max fit</span></td>
-                <td>Manual trial/error</td>
+                <td class="sticky-col">Space Optimization</td>
+                <td>
+                  <span class="highlight"
+                    >AI maximizes stall count automatically</span
+                  >
+                </td>
+                <td>Manual trial-and-error placement</td>
               </tr>
+
               <tr>
-                <td class="sticky-col">ADA Compliance</td>
-                <td><span class="highlight">Auto-placed</span></td>
-                <td>Manual counting</td>
+                <td class="sticky-col">ADA / Code Compliance</td>
+                <td>
+                  <span class="highlight"
+                    >Automatically placed and counted</span
+                  >
+                </td>
+                <td>Manual checking and counting</td>
               </tr>
+
               <tr>
-                <td class="sticky-col">Export Formats</td>
-                <td><span class="highlight">DXF/DWG</span></td>
-                <td>Limited native</td>
+                <td class="sticky-col">Design Output</td>
+                <td>
+                  <span class="highlight">Export ready DXF/DWG files</span>
+                </td>
+                <td>Limited or inconsistent exports</td>
               </tr>
+
               <tr>
-                <td class="sticky-col">Cloud Storage</td>
-                <td><span class="highlight">Unlimited sessions</span></td>
-                <td>Local files only</td>
+                <td class="sticky-col">Project Storage</td>
+                <td>
+                  <span class="highlight">Unlimited cloud-saved sessions</span>
+                </td>
+                <td>Local files, manual backups</td>
               </tr>
+
               <tr>
                 <td class="sticky-col">Collaboration</td>
-                <td><span class="highlight">Share live links</span></td>
-                <td>Email file versions</td>
+                <td><span class="highlight">Share live project links</span></td>
+                <td>Email multiple file versions</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <p class="table-note">
-          Tip: Mobile users can scroll the table horizontally; the Feature
-          column stays visible.
-        </p>
       </section>
 
       <section class="section reveal">
         <h2>Why Choose Parking AI?</h2>
+
         <div class="benefits-grid">
           <div class="benefit-card reveal-scale">
-            <h3>⚡ Save Time</h3>
-            <p>What takes days manually can be done in minutes.</p>
+            <h3>⚡ Design Faster</h3>
+            <p>
+              Generate complete parking layouts in minutes instead of spending
+              days on manual drafting.
+            </p>
           </div>
 
           <div class="benefit-card reveal-scale">
-            <h3>📊 Better Results</h3>
-            <p>Optimize flow, safety, and accessibility with less rework.</p>
+            <h3>📊 Smarter Results</h3>
+            <p>
+              Achieve optimized circulation, safety, and accessibility with
+              AI-driven precision.
+            </p>
           </div>
 
           <div class="benefit-card reveal-scale">
-            <h3>👥 Easy to Use</h3>
-            <p>Simple interface—no heavy training required.</p>
+            <h3>👥 Effortless to Use</h3>
+            <p>
+              A clean, intuitive interface that works out of the box—no complex
+              training required.
+            </p>
           </div>
 
           <div class="benefit-card reveal-scale">
-            <h3>🎯 Smart Optimization</h3>
-            <p>Considers circulation, turning radius, and best practices.</p>
+            <h3>🎯 Intelligent Optimization</h3>
+            <p>
+              Automatically considers turning radius, circulation flow, and
+              industry best practices.
+            </p>
           </div>
 
           <div class="benefit-card reveal-scale">
-            <h3>💰 Cost Effective</h3>
-            <p>Reduce manual design time and avoid costly mistakes.</p>
+            <h3>💰 Reduce Costs</h3>
+            <p>
+              Minimize design hours, avoid costly revisions, and improve project
+              efficiency.
+            </p>
           </div>
 
           <div class="benefit-card reveal-scale">
-            <h3>🔄 Fast Iterations</h3>
-            <p>Regenerate and compare options quickly.</p>
+            <h3>🔄 Rapid Iteration</h3>
+            <p>
+              Instantly regenerate, compare, and refine multiple layout options.
+            </p>
           </div>
         </div>
       </section>
@@ -459,7 +548,7 @@
       </p>
     </footer>
 
-    <!-- IMAGE MODAL -->
+    <!-- Image Modal -->
     <div class="image-modal" id="imageModal" aria-hidden="true">
       <span class="modal-close" id="modalClose" aria-label="Close"
         >&times;</span
@@ -468,30 +557,50 @@
     </div>
 
     <script>
+      // Theme Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+      const html = document.documentElement;
+
+      // Load saved theme
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      html.setAttribute("data-theme", savedTheme);
+      themeIcon.textContent = savedTheme === "light" ? "🌙" : "☀️";
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = html.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        themeIcon.textContent = newTheme === "light" ? "🌙" : "☀️";
+      });
+
       // Smooth anchor scroll
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
-          if (target)
+          if (target) {
             target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         });
       });
 
-      // Reveal on scroll using IntersectionObserver (more efficient than scroll loops) [web:7]
+      // Reveal on scroll
       const revealElements = document.querySelectorAll(
-        ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+        ".reveal, .reveal-scale"
       );
-
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("active");
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
           });
         },
         { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
       );
-
       revealElements.forEach((el) => io.observe(el));
 
       // Image modal
@@ -515,12 +624,10 @@
       });
 
       modalClose.addEventListener("click", closeModal);
-
       modal.addEventListener("click", function (e) {
         if (e.target === modal) closeModal();
       });
 
-      // Close on Escape (common modal expectation) [web:6]
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") closeModal();
       });
