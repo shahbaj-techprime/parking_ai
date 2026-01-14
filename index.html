@@ -14,42 +14,189 @@
           <span class="logo-icon">🚗</span>
           <span>Parking AI</span>
         </div>
-
-        <!-- <a
-          href="https://pioneverse.com/phoenix/parkingai/beta"
-          class="cta-button"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Try Beta Now</a
-        > -->
       </div>
     </header>
 
-    <div class="hero">
-      <h1>Design Parking Lots in Minutes, Not Hours</h1>
-      <p>
-        Let AI handle the complex planning for you. Upload your site plan and
-        instantly receive a professionally optimized parking layout—no design
-        expertise required.
-      </p>
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <!-- LEFT: Text & CTA -->
+        <div class="hero-text reveal-left">
+          <h1>AI-Powered Parking Design Revolution</h1>
+          <p>
+            Transform any DXF/DWG site plan into a perfectly optimized parking
+            layout in under 90 seconds. Maximum capacity. Perfect circulation.
+            Zero manual CAD rework.
+          </p>
 
-      <!-- <div class="hero-buttons">
-        <a
-          href="https://pioneverse.com/phoenix/parkingai/beta"
-          class="btn-primary"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Get Started Free</a
-        >
-        <a href="#comparison" class="btn-secondary">Compare</a>
-      </div> -->
-    </div>
+          <!-- <div class="hero-buttons">
+            <a
+              href="https://pioneverse.com/phoenix/parkingai/beta"
+              class="btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Start Designing Free
+            </a>
+            <a href="#features" class="btn-secondary">Watch Demo</a>
+          </div> -->
+
+          <!-- Stats row -->
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">90s</span>
+              <span>From upload to layout</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span>ADA compliant</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">DXF/DWG</span>
+              <span>Native support</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Animated GIF/Video -->
+        <div class="hero-visual reveal-right">
+          <div class="visual-container">
+            <!-- Replace with your actual HD GIF or video -->
+            <img
+              src="https://image2url.com/r2/default/gifs/1768367702884-b4c30fe7-e8e7-4f55-b074-3bd3edf485de.gif"
+              alt="AI transforming site plan into optimized parking layout"
+              class="hero-gif zoomable"
+              loading="lazy"
+            />
+            <!-- Or use video for better performance:
+        <video autoplay loop muted playsinline class="hero-gif">
+          <source src="assets/parking-ai-demo.gif" type="video/webm">
+          <source src="assets/parking-ai-demo.mp4" type="video/mp4">
+        </video>
+        -->
+            <div class="visual-glow"></div>
+          </div>
+
+          <!-- <p class="visual-caption">
+            DXF upload → AI analysis → Perfect parking layout
+          </p> -->
+        </div>
+      </div>
+    </section>
 
     <main>
-      <div class="section reveal">
+      <!-- FEATURES (NEW, requested points) -->
+      <section class="section reveal" id="features">
+        <h2>Parking AI Features</h2>
+
+        <div class="feature-cards">
+          <!-- 1a: File Support -->
+          <div class="feature-card reveal-left">
+            <h3>📄 Universal File Support</h3>
+            <p>
+              Works with <strong>any AutoCAD DXF & DWG</strong> file—no
+              conversion needed.
+            </p>
+          </div>
+
+          <!-- 1b: Industry Standard -->
+          <div class="feature-card reveal-right">
+            <h3>🏗️ Industry Standard</h3>
+            <p>
+              Supports all versions of DXF/DWG formats used by architects and
+              engineers.
+            </p>
+          </div>
+
+          <!-- 2a: Smart Detection -->
+          <div class="feature-card reveal-left">
+            <h3>🔍 Auto Boundary Detection</h3>
+            <p>
+              Automatically detects site boundaries, obstacles, columns, ramps &
+              ramp directions.
+            </p>
+          </div>
+
+          <!-- 2b: Smart Parking Creation -->
+          <div class="feature-card reveal-right">
+            <h3>🚗 Complete Parking Generation</h3>
+            <p>
+              Builds aisles, 4W car bays, 2W bike parking, and physical
+              handicapped spaces automatically.
+            </p>
+          </div>
+
+          <!-- 2c: Coreless Mode -->
+          <div class="feature-card reveal-left">
+            <h3>🏢 Coreless Operation</h3>
+            <p>
+              Works without core drawings—AI auto-creates columns and lift areas
+              as needed.
+            </p>
+          </div>
+
+          <!-- 3a: Custom Dimensions -->
+          <div class="feature-card reveal-right">
+            <h3>📏 Any Bay Dimensions</h3>
+            <p>
+              Custom car bay sizes, 1-way/2-way driveway widths, and precise
+              turn radius control.
+            </p>
+          </div>
+
+          <!-- 3b: Layout Modes -->
+          <div class="feature-card reveal-left">
+            <h3>⚙️ Layout Optimization</h3>
+            <p>
+              Choose maximum parking density or comfort parking layouts for any
+              site.
+            </p>
+          </div>
+
+          <!-- 4: Statistics Dashboard -->
+          <div class="feature-card reveal-right">
+            <h3>📊 Complete Statistics</h3>
+            <p>
+              Layout coverage, advance area, circulation space, utilization
+              percentages—all at a glance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO (NEW) -->
+      <section class="section reveal" id="video">
+        <h2>Watch Parking AI in Action</h2>
+        <p class="feature-text">
+          See how a DXF/DWG upload turns into a complete parking layout with
+          bays, circulation, and layout statistics—ready to iterate in seconds.
+        </p>
+
+        <div class="video-wrap reveal-scale">
+          <!-- Replace src with your actual mp4 (recommended) -->
+          <video class="video-player" controls preload="metadata" playsinline>
+            <source src="./video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- <div class="video-actions">
+          <a
+            href="https://pioneverse.com/phoenix/parkingai/beta"
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Try the Beta
+          </a>
+          <a href="#comparison" class="btn-secondary">Compare</a>
+        </div> -->
+      </section>
+
+      <!-- KEEP: your existing sections (optional images) -->
+      <section class="section reveal">
         <h2>What is Parking AI?</h2>
         <img
-          src="https://image2url.com/r2/bucket3/images/1767959133512-58d92e6b-9447-4877-8cb5-8aae149fdfe6.png"
+          src="https://img.sanishtech.com/u/2de0c92b80da5303c8acb01b0c5fb669.png"
           alt="Parking AI Overview"
           class="single-image reveal-scale zoomable"
           loading="lazy"
@@ -77,9 +224,9 @@
           <li>Ensure compliance with standard parking rules and guidelines</li>
           <li>Export professional designs in industry-standard file formats</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section reveal">
+      <section class="section reveal">
         <h2>Manage All Your Projects</h2>
         <img
           src="https://image2url.com/r2/bucket1/images/1767960836587-0f0febda-a288-47bb-a05e-b1366f33d613.png"
@@ -106,9 +253,9 @@
           <li>Manage everything from a clean, user-friendly dashboard</li>
           <li>Quickly search and filter projects by name, date, or location</li>
         </ul>
-      </div>
+      </section>
 
-      <div class="section reveal">
+      <section class="section reveal">
         <h2>Simple File Upload</h2>
         <img
           src="https://image2url.com/r2/bucket3/images/1767960212541-984c3173-1e1c-4aa2-966a-f55b3b7095ed.png"
@@ -133,12 +280,12 @@
           </li>
           <li>Secure file handling to protect your design data</li>
         </ul>
-      </div>
+      </section>
 
       <div class="section reveal">
         <h2>AI Guides You Through Setup</h2>
         <img
-          src="https://image2url.com/r2/bucket1/images/1767960694884-399dc6c3-374b-4cce-8b98-c3a02a6e9876.png"
+          src="https://img.sanishtech.com/u/72a48e0e5bf16ba00cc44d24fd71d0de.png"
           alt="AI Configuration"
           class="single-image zoomable"
           loading="lazy"
@@ -174,7 +321,7 @@
       <div class="section reveal">
         <h2>See Your Parking Layout Instantly</h2>
         <img
-          src="https://image2url.com/r2/bucket1/images/1767960635129-13c5f431-c18f-441e-92f9-9564baf4086e.png"
+          src="https://img.sanishtech.com/u/8f8019453b27d40cf1f629ce460c06d4.png"
           alt="Parking Layout View"
           class="single-image zoomable"
           loading="lazy"
@@ -201,12 +348,11 @@
         </ul>
       </div>
 
-      <!-- NEW: Comparison Table Section -->
-      <div class="section reveal" id="comparison">
+      <!-- COMPARISON (keep your table, unchanged) -->
+      <section class="section reveal" id="comparison">
         <h2>Parking AI vs Manual CAD</h2>
         <p class="feature-text">
-          Quick comparison to show why AI-assisted design speeds up iterations
-          and reduces manual rework.
+          AI-assisted design speeds up iterations and reduces manual rework.
         </p>
 
         <div class="table-container">
@@ -262,83 +408,42 @@
           Tip: Mobile users can scroll the table horizontally; the Feature
           column stays visible.
         </p>
-      </div>
+      </section>
 
-      <div class="section reveal">
+      <section class="section reveal">
         <h2>Why Choose Parking AI?</h2>
         <div class="benefits-grid">
           <div class="benefit-card reveal-scale">
             <h3>⚡ Save Time</h3>
-            <p>
-              What traditionally takes days of manual planning is completed in
-              just minutes using AI-driven automation.
-            </p>
+            <p>What takes days manually can be done in minutes.</p>
           </div>
 
           <div class="benefit-card reveal-scale">
             <h3>📊 Better Results</h3>
-            <p>
-              Generate more efficient parking layouts while maintaining safety,
-              accessibility, and compliance standards.
-            </p>
+            <p>Optimize flow, safety, and accessibility with less rework.</p>
           </div>
 
           <div class="benefit-card reveal-scale">
             <h3>👥 Easy to Use</h3>
-            <p>
-              A clean, intuitive interface designed for everyone—no training or
-              technical expertise required.
-            </p>
+            <p>Simple interface—no heavy training required.</p>
           </div>
 
           <div class="benefit-card reveal-scale">
             <h3>🎯 Smart Optimization</h3>
-            <p>
-              Automatically considers traffic flow, turning radius, and parking
-              best practices for optimal design.
-            </p>
+            <p>Considers circulation, turning radius, and best practices.</p>
           </div>
 
           <div class="benefit-card reveal-scale">
             <h3>💰 Cost Effective</h3>
-            <p>
-              Reduce design costs, minimize rework, and avoid costly layout
-              mistakes from the start.
-            </p>
+            <p>Reduce manual design time and avoid costly mistakes.</p>
           </div>
 
           <div class="benefit-card reveal-scale">
-            <h3>🔄 Flexible Changes</h3>
-            <p>
-              Easily iterate and refine designs without starting from scratch.
-            </p>
-          </div>
-
-          <div class="benefit-card reveal-scale">
-            <h3>🌍 Works Anywhere</h3>
-            <p>
-              A cloud-based platform that works seamlessly across devices and
-              locations.
-            </p>
-          </div>
-
-          <div class="benefit-card reveal-scale">
-            <h3>🔒 Secure & Private</h3>
-            <p>
-              Your designs are encrypted and securely stored, ensuring full data
-              privacy and protection.
-            </p>
-          </div>
-
-          <div class="benefit-card reveal-scale">
-            <h3>📈 Scalable</h3>
-            <p>
-              Perfect for everything from small parking lots to large commercial
-              and residential complexes.
-            </p>
+            <h3>🔄 Fast Iterations</h3>
+            <p>Regenerate and compare options quickly.</p>
           </div>
         </div>
-      </div>
+      </section>
     </main>
 
     <footer>
@@ -354,6 +459,7 @@
       </p>
     </footer>
 
+    <!-- IMAGE MODAL -->
     <div class="image-modal" id="imageModal" aria-hidden="true">
       <span class="modal-close" id="modalClose" aria-label="Close"
         >&times;</span
@@ -362,23 +468,7 @@
     </div>
 
     <script>
-      const revealElements = document.querySelectorAll(
-        ".reveal, .reveal-left, .reveal-right, .reveal-scale"
-      );
-
-      const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        revealElements.forEach((element) => {
-          const elementTop = element.getBoundingClientRect().top;
-          const revealPoint = 100;
-          if (elementTop < windowHeight - revealPoint)
-            element.classList.add("active");
-        });
-      };
-
-      window.addEventListener("scroll", revealOnScroll);
-      revealOnScroll();
-
+      // Smooth anchor scroll
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -388,10 +478,33 @@
         });
       });
 
+      // Reveal on scroll using IntersectionObserver (more efficient than scroll loops) [web:7]
+      const revealElements = document.querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+      );
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("active");
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+      );
+
+      revealElements.forEach((el) => io.observe(el));
+
+      // Image modal
       const modal = document.getElementById("imageModal");
       const modalImg = document.getElementById("modalImage");
       const modalClose = document.getElementById("modalClose");
       const zoomableImages = document.querySelectorAll(".zoomable");
+
+      const closeModal = () => {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        modalImg.src = "";
+      };
 
       zoomableImages.forEach((img) => {
         img.addEventListener("click", function () {
@@ -401,23 +514,15 @@
         });
       });
 
-      modalClose.addEventListener("click", function () {
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-      });
+      modalClose.addEventListener("click", closeModal);
 
       modal.addEventListener("click", function (e) {
-        if (e.target === modal) {
-          modal.classList.remove("active");
-          modal.setAttribute("aria-hidden", "true");
-        }
+        if (e.target === modal) closeModal();
       });
 
+      // Close on Escape (common modal expectation) [web:6]
       document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          modal.classList.remove("active");
-          modal.setAttribute("aria-hidden", "true");
-        }
+        if (e.key === "Escape") closeModal();
       });
     </script>
   </body>
