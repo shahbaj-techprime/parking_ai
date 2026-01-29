@@ -1,5 +1,3 @@
-
-
 // import { useEffect, useState } from "react";
 // import { gsap } from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -277,12 +275,6 @@
 //   );
 // }
 
-
-
-
-
-
-
 // import { useEffect, useState } from "react";
 // import { gsap } from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -484,8 +476,8 @@
 //                   {/* Image placeholder */}
 //                   {/* {item.image.startsWith('http') ? (
 //                     <div style={{ marginTop: "1.5rem", borderRadius: "0.5rem", overflow: "hidden" }}>
-//                       <img 
-//                         src={item.image} 
+//                       <img
+//                         src={item.image}
 //                         alt={item.title}
 //                         style={{ width: "100%", height: "auto", display: "block" }}
 //                       />
@@ -515,9 +507,6 @@
 //   );
 // }
 
-
-
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -539,28 +528,28 @@ const advantages = [
   {
     title: "NBC Compliance is a Minefield",
     points: [
-      "National Building Code has 10+ strict parking rules (turning radius, aisle width, PH bays, ramp landings). One missed rule = municipal rejection.",
+      "National Building Code has 10+ strict parking rules (turning radius, aisle width, PH bays, ramp landings). One missed rule = municipal rejection. Most designs fail compliance after submission, forcing costly redesigns.",
     ],
     animation: "flip-right",
   },
   {
     title: "Lost Revenue From Suboptimal Layouts",
     points: [
-      "Manual layouts capture only 85–90% of maximum spaces. Result: ₹50–₹300 lakh lost on one project.",
+      "Manual layouts capture only 85–90% of maximum spaces. Dead zones, oversized circulation, poor angles. Result: 650 spaces instead of 750 = ₹50–₹300 lakh in lost revenue on a single project.",
     ],
     animation: "flip-up",
   },
   {
     title: "Structural Coordination Chaos",
     points: [
-      "Column placement, ramp position, lift cores—no what-if analysis. 2-week delays.",
+      "Column placement, ramp position, lift cores—none coordinate smoothly with parking. Back-and-forth emails. No what-if analysis. No single source of truth. Result: suboptimal parking OR suboptimal structure OR 2-week delay.",
     ],
     animation: "flip-down",
   },
   {
     title: "Compliance Errors With Legal Consequences",
     points: [
-      "Municipal rejections, redesigns, rescheduling, reputation damage.",
+      "PH bays placed in tandem positions. Ramp entries too close to aisles. Missing landing distances. Municipal inspector flags issues after submission. Redesign, reschedule, reputation damage.",
     ],
     animation: "zoom-in",
   },
@@ -613,8 +602,18 @@ export default function SolutionSection() {
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
         {/* INTRO */}
-        <div style={{ maxWidth: "48rem", marginBottom: isMobile ? "3rem" : "6rem" }}>
-          <h2 style={{ fontSize: isMobile ? "1.75rem" : "2.25rem", fontWeight: "bold" }}>
+        <div
+          style={{
+            maxWidth: "48rem",
+            marginBottom: isMobile ? "3rem" : "6rem",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: isMobile ? "1.75rem" : "2.25rem",
+              fontWeight: "bold",
+            }}
+          >
             The Parking Design Crisis
           </h2>
           <p style={{ color: "#d1d5db", marginTop: "1rem" }}>
@@ -641,12 +640,9 @@ export default function SolutionSection() {
                 border: "2px solid rgba(0,146,184,0.8)",
                 background:
                   "linear-gradient(to bottom right, rgba(0,146,184,0.1), rgba(0,146,184,0.05))",
-                gridColumn:
-                  !isMobile && index === 4 ? "1 / -1" : "auto",
-                maxWidth:
-                  !isMobile && index === 4 ? "600px" : "100%",
-                margin:
-                  !isMobile && index === 4 ? "0 auto" : "0",
+                gridColumn: !isMobile && index === 4 ? "1 / -1" : "auto",
+                maxWidth: !isMobile && index === 4 ? "600px" : "100%",
+                margin: !isMobile && index === 4 ? "0 auto" : "0",
               }}
             >
               <h3
