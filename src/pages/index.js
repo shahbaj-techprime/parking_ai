@@ -63,15 +63,13 @@ export default function Home() {
       <section id="pricing" className="scroll-mt-20">
         <PricingSection />
       </section>
-       <section id="contactus" className="scroll-mt-20">
-      <DemoBookingSection />
-          </section>
+      <section id="contactus" className="scroll-mt-20">
+        <DemoBookingSection />
+      </section>
       <section id="faq" className="scroll-mt-20">
         <FAQSectionMinimal />
       </section>
-     
-        <CTASectionBold />
-  
+      <CTASectionBold />
       <Footer />
     </div>
   );
