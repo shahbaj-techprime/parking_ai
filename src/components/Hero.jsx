@@ -85,8 +85,9 @@ export default function Hero() {
         </div>
 
         {/* HERO MEDIA PLACEHOLDER */}
-        <div className="hero-media h-[480px] rounded-2xl border border-dashed border-white/30 flex items-center justify-center text-gray-400 bg-white/5">
-          GIF / VIDEO / 3D DEMO PLACEHOLDER
+        {/* border border-dashed bg-white/5*/}
+        <div className="hero-media h-[480px] rounded-2xl  border-white/30 flex items-center justify-center text-gray-400 ">
+        <img style={{height:'450px'}} src="https://img.sanishtech.com/u/3af8a5401d7cea950e90df4143a2c80b.gif" alt="ezgif.com-animated-gif-maker.gif"/>
         </div>
       </div>
     </section>

@@ -122,7 +122,7 @@ const scrollToSection = (id) => {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16" data-aos="fade-down">
-          <h2 className="text-5xl md:text-6xl font-bold mb-4  bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-4 text-white">
             Simple, Transparent Pricing
           </h2>
           <p className="text-gray-400 text-lg md:text-xl">

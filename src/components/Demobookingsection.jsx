@@ -136,7 +136,7 @@ const DemoBookingSection = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-gray-300 to-[#0092b8] bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
             Ready to Transform Your Parking Design?
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
