@@ -94,9 +94,6 @@
 //   );
 // }
 
-
-
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -142,7 +139,6 @@ export default function Hero() {
       className="min-h-screen flex items-center pt-28 md:pt-32 bg-black"
     >
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
         {/* LEFT CONTENT */}
         <div className="hero-left text-center md:text-left">
           <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight text-white">

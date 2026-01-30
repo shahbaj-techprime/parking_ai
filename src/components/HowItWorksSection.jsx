@@ -317,7 +317,7 @@ const steps = [
     number: 1,
     title: "Upload Floor Plan",
     description: "Import any DXF or DWG file directly from your CAD system. No redrawing. No simplification. Just upload.",
-    icon: "https://img.sanishtech.com/u/1dcee97a4324c4b5d37d475d81fd2792.png",
+    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/uploadfile.png?raw=true",
     direction: "up", // animate from left
   },
   {
@@ -436,153 +436,190 @@ export default function HowItWorksSection() {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       style={{
-        backgroundColor: '#111317',
-        color: '#ffffff',
-        padding: isMobile ? '4rem 0' : '8rem 0',
-        position: 'relative',
-        overflow: 'hidden'
+        backgroundColor: "#111317",
+        color: "#ffffff",
+        padding: isMobile ? "4rem 0" : "8rem 0",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       {/* Background pattern */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)',
-        backgroundSize: isMobile ? '30px 30px' : '40px 40px',
-        pointerEvents: 'none'
-      }} />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)",
+          backgroundSize: isMobile ? "30px 30px" : "40px 40px",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div style={{ 
-        maxWidth: '1350px', 
-        margin: '0 auto', 
-        padding: isMobile ? '0 1rem' : '0 1.5rem', 
-        position: 'relative' 
-      }}>
+      <div
+        style={{
+          maxWidth: "1350px",
+          margin: "0 auto",
+          padding: isMobile ? "0 1rem" : "0 1.5rem",
+          position: "relative",
+        }}
+      >
         {/* Header */}
-        <div style={{ 
-          textAlign: 'center', 
-          marginBottom: isMobile ? '3rem' : '5rem' 
-        }}>
-          <h2 style={{ 
-            fontSize: isMobile ? '2rem' : '3rem', 
-            fontWeight: '700',
-            marginBottom: '1rem',
-            letterSpacing: '-0.02em'
-          }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: isMobile ? "3rem" : "5rem",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: isMobile ? "2rem" : "3rem",
+              fontWeight: "700",
+              marginBottom: "1rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
             The AI Solution: How It Works
           </h2>
-          <p style={{ 
-            fontSize: isMobile ? '1rem' : '1.25rem', 
-            color: '#888888',
-            maxWidth: '600px',
-            margin: '0 auto',
-            padding: isMobile ? '0 1rem' : '0'
-          }}>
+          <p
+            style={{
+              fontSize: isMobile ? "1rem" : "1.25rem",
+              color: "#888888",
+              maxWidth: "600px",
+              margin: "0 auto",
+              padding: isMobile ? "0 1rem" : "0",
+            }}
+          >
             Four simple steps to NBC-compliant, optimized parking layouts.
           </p>
         </div>
 
         {/* Steps Container */}
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: "relative" }}>
           {steps.map((step, index) => (
             <div key={index}>
               {/* Card */}
               <div
                 ref={(el) => (cardsRef.current[index] = el)}
                 style={{
-                  display: isMobile ? 'flex' : 'grid',
-                  flexDirection: isMobile ? 'column' : undefined,
-                  gridTemplateColumns: isMobile ? undefined : (index % 2 === 0 ? '1fr 1fr' : '1fr 1fr'),
-                  gap: isMobile ? '1.5rem' : '4rem',
-                  alignItems: 'center',
-                  marginBottom: isMobile ? '3rem' : '6rem',
-                  direction: isMobile ? 'ltr' : (index % 2 === 0 ? 'ltr' : 'rtl')
+                  display: isMobile ? "flex" : "grid",
+                  flexDirection: isMobile ? "column" : undefined,
+                  gridTemplateColumns: isMobile
+                    ? undefined
+                    : index % 2 === 0
+                      ? "1fr 1fr"
+                      : "1fr 1fr",
+                  gap: isMobile ? "1.5rem" : "4rem",
+                  alignItems: "center",
+                  marginBottom: isMobile ? "3rem" : "6rem",
+                  direction: isMobile ? "ltr" : index % 2 === 0 ? "ltr" : "rtl",
                 }}
               >
                 {/* Content Side */}
-                <div style={{ 
-                  direction: 'ltr',
-                  textAlign: isMobile ? 'left' : (index % 2 === 0 ? 'right' : 'left'),
-                  padding: isMobile ? '1rem' : '2rem',
-                  order: isMobile ? 2 : undefined
-                }}>
-                  <div style={{
-                    display: 'inline-flex',
-                    width: isMobile ? '2.5rem' : '3.5rem',
-                    height: isMobile ? '2.5rem' : '3.5rem',
-                    borderRadius: '50%',
-                    border: activeStep === index ? '2px solid #0092b8' : '2px solid #444444',
-                    backgroundColor: activeStep === index ? '#0092b8' : 'transparent',
-                    color: activeStep === index ? '#000000' : '#ffffff',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: isMobile ? '1.25rem' : '1.5rem',
-                    fontWeight: 'bold',
-                    marginBottom: '1.5rem',
-                    transition: 'all 0.5s ease'
-                  }}>
+                <div
+                  style={{
+                    direction: "ltr",
+                    textAlign: isMobile
+                      ? "left"
+                      : index % 2 === 0
+                        ? "right"
+                        : "left",
+                    padding: isMobile ? "1rem" : "2rem",
+                    order: isMobile ? 2 : undefined,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      width: isMobile ? "2.5rem" : "3.5rem",
+                      height: isMobile ? "2.5rem" : "3.5rem",
+                      borderRadius: "50%",
+                      border:
+                        activeStep === index
+                          ? "2px solid #0092b8"
+                          : "2px solid #444444",
+                      backgroundColor:
+                        activeStep === index ? "#0092b8" : "transparent",
+                      color: activeStep === index ? "#000000" : "#ffffff",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: isMobile ? "1.25rem" : "1.5rem",
+                      fontWeight: "bold",
+                      marginBottom: "1.5rem",
+                      transition: "all 0.5s ease",
+                    }}
+                  >
                     {step.number}
                   </div>
-                  
-                  <h3 style={{
-                    fontSize: isMobile ? '1.5rem' : '2rem',
-                    fontWeight: '600',
-                    marginBottom: '1rem',
-                    color: activeStep === index ? '#ffffff' : '#888888',
-                    transition: 'color 0.5s ease'
-                  }}>
-                   {step.title}
+
+                  <h3
+                    style={{
+                      fontSize: isMobile ? "1.5rem" : "2rem",
+                      fontWeight: "600",
+                      marginBottom: "1rem",
+                      color: activeStep === index ? "#ffffff" : "#888888",
+                      transition: "color 0.5s ease",
+                    }}
+                  >
+                    {step.title}
                   </h3>
-                  
-                  <p style={{
-                    fontSize: isMobile ? '0.95rem' : '1.125rem',
-                    color: '#999999',
-                    lineHeight: '1.7'
-                  }}>
+
+                  <p
+                    style={{
+                      fontSize: isMobile ? "0.95rem" : "1.125rem",
+                      color: "#999999",
+                      lineHeight: "1.7",
+                    }}
+                  >
                     {step.description}
                   </p>
                 </div>
 
                 {/* Icon/Visual Side */}
-                <div style={{ 
-                  direction: 'ltr',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  order: isMobile ? 1 : undefined
-                }}>
+                <div
+                  style={{
+                    direction: "ltr",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    order: isMobile ? 1 : undefined,
+                  }}
+                >
                   <div
-                  //  style={{
-                  //   width: isMobile ? '100%' : '560px',
-                  //   height: isMobile ? '250px' : '400px',
-                  //   maxWidth: isMobile ? '100%' : undefined,
-                  //   border: activeStep === index ? '2px solid #0092b8' : '2px solid #333333',
-                  //   borderRadius: '1rem',
-                  //   display: 'flex',
-                  //   alignItems: 'center',
-                  //   justifyContent: 'center',
-                  //   fontSize: '6rem',
-                  //   background: activeStep === index 
-                  //     ? 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))'
-                  //     : 'transparent',
-                  //   transition: 'all 0.5s ease',
-                  //   boxShadow: activeStep === index 
-                  //     ? '0 20px 60px rgba(255,255,255,0.1)' 
-                  //     : 'none',
-                  //   overflow: 'hidden'
-                  // }}
-                  
+                    style={{
+                      width: isMobile ? "100%" : "560px",
+                      height: isMobile ? "250px" : "400px",
+                      maxWidth: isMobile ? "100%" : undefined,
+                      border:
+                        activeStep === index
+                          ? "2px solid #0092b8"
+                          : "2px solid #333333",
+                      borderRadius: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "6rem",
+                      background:
+                        activeStep === index
+                          ? "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))"
+                          : "transparent",
+                      transition: "all 0.5s ease",
+                      boxShadow:
+                        activeStep === index
+                          ? "0 20px 60px rgba(255,255,255,0.1)"
+                          : "none",
+                      overflow: "hidden",
+                    }}
                   >
-                    <img 
-                      src={step.icon} 
+                    <img
+                      src={step.icon}
                       alt={step.title}
                       style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
                       }}
                     />
                   </div>
@@ -594,27 +631,30 @@ export default function HowItWorksSection() {
                 <div
                   ref={(el) => (linesRef.current[index] = el)}
                   style={{
-                    width: '2px',
-                    height: isMobile ? '60px' : '80px',
-                    backgroundColor: '#333333',
-                    margin: '0 auto',
-                    marginBottom: isMobile ? '2rem' : '3rem',
-                    transformOrigin: 'top',
-                    position: 'relative'
+                    width: "2px",
+                    height: isMobile ? "60px" : "80px",
+                    backgroundColor: "#333333",
+                    margin: "0 auto",
+                    marginBottom: isMobile ? "2rem" : "3rem",
+                    transformOrigin: "top",
+                    position: "relative",
                   }}
                 >
                   {/* Animated dot */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '-6px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: isMobile ? '8px' : '10px',
-                    height: isMobile ? '8px' : '10px',
-                    backgroundColor: '#ffffff',
-                    borderRadius: '50%',
-                    animation: activeStep >= index ? 'pulse 2s infinite' : 'none'
-                  }} />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "-6px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: isMobile ? "8px" : "10px",
+                      height: isMobile ? "8px" : "10px",
+                      backgroundColor: "#ffffff",
+                      borderRadius: "50%",
+                      animation:
+                        activeStep >= index ? "pulse 2s infinite" : "none",
+                    }}
+                  />
                 </div>
               )}
             </div>
@@ -625,7 +665,8 @@ export default function HowItWorksSection() {
       {/* CSS Animation */}
       <style jsx>{`
         @keyframes pulse {
-          0%, 100% {
+          0%,
+          100% {
             opacity: 1;
             transform: translateX(-50%) scale(1);
           }
