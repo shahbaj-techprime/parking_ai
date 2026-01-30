@@ -324,21 +324,21 @@ const steps = [
     number: 2,
     title: "Set Parameters",
     description: "Define bay dimensions, aisle widths, PH requirements, parking target. AI auto-calculates compliance needs per NBC 2016.",
-    icon: "https://img.sanishtech.com/u/f48893c87bfc12cb0ab7caa41444e36d.png",
+    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/pioneverse.com_phoenix_parkingai_beta_(Nest%20Hub)%20(3).png?raw=true",
     direction: "up", // animate from right
   },
   {
     number: 3,
     title: "AI Generates",
     description: "In seconds, the engine tests thousands of configurations. Detects columns, obstacles, ramps. Optimizes layout. Checks all 8 NBC rules.",
-    icon: "https://img.sanishtech.com/u/35801d56985614bf2ca7702ba9958982.png",
+    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/pioneverse.com_phoenix_parkingai_beta_(Nest%20Hub)%20(4).png?raw=true",
     direction: "up", // animate from bottom
   },
   {
     number: 4,
     title: "Review & Export",
     description: "Review layout. Make manual tweaks if needed. Export contractor-ready CAD with layers, annotations, color-coding.",
-    icon: "https://img.sanishtech.com/u/8ea0fccbd4dac8d65eb9aaec21afd09c.png",
+    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/pioneverse.com_phoenix_parkingai_beta_(Nest%20Hub%20Max).png?raw=true",
     direction: "up", // animate from top
   },
 ];
@@ -554,25 +554,28 @@ export default function HowItWorksSection() {
                   alignItems: 'center',
                   order: isMobile ? 1 : undefined
                 }}>
-                  <div style={{
-                    width: isMobile ? '100%' : '560px',
-                    height: isMobile ? '250px' : '400px',
-                    maxWidth: isMobile ? '100%' : undefined,
-                    border: activeStep === index ? '2px solid #0092b8' : '2px solid #333333',
-                    borderRadius: '1rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '6rem',
-                    background: activeStep === index 
-                      ? 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))'
-                      : 'transparent',
-                    transition: 'all 0.5s ease',
-                    boxShadow: activeStep === index 
-                      ? '0 20px 60px rgba(255,255,255,0.1)' 
-                      : 'none',
-                    overflow: 'hidden'
-                  }}>
+                  <div
+                  //  style={{
+                  //   width: isMobile ? '100%' : '560px',
+                  //   height: isMobile ? '250px' : '400px',
+                  //   maxWidth: isMobile ? '100%' : undefined,
+                  //   border: activeStep === index ? '2px solid #0092b8' : '2px solid #333333',
+                  //   borderRadius: '1rem',
+                  //   display: 'flex',
+                  //   alignItems: 'center',
+                  //   justifyContent: 'center',
+                  //   fontSize: '6rem',
+                  //   background: activeStep === index 
+                  //     ? 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))'
+                  //     : 'transparent',
+                  //   transition: 'all 0.5s ease',
+                  //   boxShadow: activeStep === index 
+                  //     ? '0 20px 60px rgba(255,255,255,0.1)' 
+                  //     : 'none',
+                  //   overflow: 'hidden'
+                  // }}
+                  
+                  >
                     <img 
                       src={step.icon} 
                       alt={step.title}

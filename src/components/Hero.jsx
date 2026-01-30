@@ -184,7 +184,7 @@ export default function Hero() {
         <div className="hero-right flex justify-center">
           <img
             className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
-            src="https://img.sanishtech.com/u/3af8a5401d7cea950e90df4143a2c80b.gif"
+            src="https://github.com/shahbaj-techprime/parking_ai/blob/main/image/ezgif.com-animated-gif-maker.gif?raw=true"
             alt="Parking AI Demo"
           />
         </div>
