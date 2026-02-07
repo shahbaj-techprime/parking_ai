@@ -589,9 +589,7 @@ export default function HowItWorksSection() {
                 >
                   <div
                     style={{
-                      width: isMobile ? "100%" : "560px",
-                      height: isMobile ? "250px" : "400px",
-                      maxWidth: isMobile ? "100%" : undefined,
+                     
                       border:
                         activeStep === index
                           ? "2px solid #0092b8"

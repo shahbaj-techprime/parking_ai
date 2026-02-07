@@ -177,11 +177,22 @@ export default function Hero() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="hero-right flex justify-center">
+        {/* <div className="hero-right flex justify-center">
           <img
             className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
             src="https://github.com/shahbaj-techprime/parking_ai/blob/main/image/ezgif.com-animated-gif-maker.gif?raw=true"
             alt="Parking AI Demo"
+          />
+        </div> */}
+        <div className="hero-right flex justify-center">
+          <video
+            className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl border border-red"
+            src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+    
           />
         </div>
       </div>
