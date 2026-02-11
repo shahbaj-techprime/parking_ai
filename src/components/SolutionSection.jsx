@@ -519,30 +519,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const advantages = [
   {
-    title: "Design Iterations = Project Delays",
+    title: "Design Iterations = Project Delay",
     points: [
-      "Every parking layout starts manually. Shifts a column? Redraw 20+ bays. Authority rejection? Redesign everything. Average project: 3–5 revision cycles, 4–6 weeks lost, ₹37.5K–₹75K in design costs.",
+      "All parking designs are done manually. Move a column? Redesign 20+ bays. Rejected by the authority? Entire design needs to be done again. Average project: 3-5 cycles of design revisions, 4-6 weeks of lost time, ₹37.5K-₹75K in design costs",
     ],
     animation: "flip-left",
   },
   {
     title: "NBC Compliance is a Minefield",
     points: [
-      "National Building Code has 10+ strict parking rules (turning radius, aisle width, PH bays, ramp landings). One missed rule = municipal rejection. Most designs fail compliance after submission, forcing costly redesigns.",
+      "National Building Code has 10+ stringent parking standards (turning radius, aisle width, PH bays, ramp landings). Violate one, and the project gets rejected by the civic body. Most designs get rejected after submission, requiring costly redesigns.",
     ],
     animation: "flip-right",
   },
   {
-    title: "Lost Revenue From Suboptimal Layouts",
+    title: "Lost Revenue Due to Inefficient Designs",
     points: [
-      "Manual layouts capture only 85–90% of maximum spaces. Dead zones, oversized circulation, poor angles. Result: 650 spaces instead of 750 = ₹50–₹300 lakh in lost revenue on a single project.",
+      "Manual designs can only capture 85-90% of the maximum parking capacity. Dead space, inefficient circulation paths, and inefficient angles. This translates to 650 parking spots instead of 750, resulting in lost revenue of ₹50-₹300 lakh on a single project.",
     ],
     animation: "flip-up",
   },
   {
     title: "Structural Coordination Chaos",
     points: [
-      "Column placement, ramp position, lift cores—none coordinate smoothly with parking. Back-and-forth emails. No what-if analysis. No single source of truth. Result: suboptimal parking OR suboptimal structure OR 2-week delay.",
+      "Column locations, ramp locations, and lift cores do not coordinate well with parking designs. Emails back and forth. No what-if analysis. No single point of truth. This leads to either inefficient parking designs or inefficient structural designs or a 2-week delay.",
     ],
     animation: "flip-down",
   },
@@ -593,12 +593,24 @@ export default function SolutionSection() {
   return (
     <section
       id="solution"
+      // style={{
+      //   padding: isMobile ? "4rem 0" : "8rem 0",
+      //   backgroundColor: "#000",
+      //   // backgroundImage:
+      //    backgroundImage: url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%232a2f2e' stroke-width='0.5' fill='none' opacity='1'%3E%3Ccircle cx='20' cy='20' r='8' /%3E%3Ccircle cx='90' cy='30' r='6' /%3E%3Cpath d='M10 90 Q20 80 30 90 T50 90' /%3E%3Cpath d='M70 70 l15 -10 l5 20 z' /%3E%3Cpath d='M40 40 l10 -10 l10 10 l-10 10 z' /%3E%3Cpath d='M80 95 l10 10' /%3E%3Cpath d='M95 60 a8 8 0 0 1 -16 0 a8 8 0 0 1 16 0' /%3E%3C/g%3E%3C/svg%3E"),
+      //   color: "#fff",
+      //   overflowX: "hidden",
+      // }}
       style={{
-        padding: isMobile ? "4rem 0" : "8rem 0",
-        backgroundColor: "#000",
-        color: "#fff",
-        overflowX: "hidden",
-      }}
+  padding: isMobile ? "4rem 0" : "8rem 0",
+  backgroundColor: "#000",
+  backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%232a2f2e' stroke-width='0.5' fill='none' opacity='1'%3E%3Ccircle cx='20' cy='20' r='8' /%3E%3Ccircle cx='90' cy='30' r='6' /%3E%3Cpath d='M10 90 Q20 80 30 90 T50 90' /%3E%3Cpath d='M70 70 l15 -10 l5 20 z' /%3E%3Cpath d='M40 40 l10 -10 l10 10 l-10 10 z' /%3E%3Cpath d='M80 95 l10 10' /%3E%3Cpath d='M95 60 a8 8 0 0 1 -16 0 a8 8 0 0 1 16 0' /%3E%3C/g%3E%3C/svg%3E")`,
+  backgroundRepeat: "repeat",
+  backgroundSize: "120px 120px",
+  color: "#fff",
+  overflowX: "hidden",
+}}
+
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1rem" }}>
         {/* INTRO */}

@@ -15,7 +15,9 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import ImpactSection from "@/components/Impactsection";
 import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/PricingSection";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SolutionSection from "@/components/SolutionSection";
+import TopBanner from "@/components/TopBanner";
 import WhyChoose from "@/components/Whychoose";
 
 import { gsap } from "gsap";
@@ -48,7 +50,10 @@ export default function Home() {
   return (
     <div>
       {/* NAVBAR */}
+      <TopBanner />
+    
       <Navbar />
+ 
       <Hero />
       <WhyChoose />
       <SolutionSection />
@@ -71,6 +76,7 @@ export default function Home() {
       </section>
       <CTASectionBold />
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 }

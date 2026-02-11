@@ -94,6 +94,121 @@
 //   );
 // }
 
+// "use client";
+
+// import { useEffect, useRef } from "react";
+// import gsap from "gsap";
+
+// export default function Hero() {
+//   const heroRef = useRef(null);
+
+//   useEffect(() => {
+//     const ctx = gsap.context(() => {
+//       gsap.from(".hero-left > *", {
+//         x: -60,
+//         opacity: 0,
+//         duration: 1,
+//         stagger: 0.15,
+//         ease: "power3.out",
+//       });
+
+//       gsap.from(".hero-right", {
+//         x: 80,
+//         opacity: 0,
+//         duration: 1.2,
+//         ease: "power3.out",
+//       });
+//     }, heroRef);
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   const scrollToSection = (id) => {
+//     const el = document.getElementById(id);
+//     if (!el) return;
+
+//     const yOffset = -80;
+//     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+//     window.scrollTo({ top: y, behavior: "smooth" });
+//   };
+
+//   return (
+//     <section
+//       ref={heroRef}
+//       className="min-h-screen flex items-center pt-28 md:pt-32 bg-black"
+//     >
+//          {/* 🎥 BACKGROUND VIDEO */}
+//       <video
+//         className="absolute inset-0 w-full h-full object-cover"
+//         src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
+//         autoPlay
+//         loop
+//         muted
+//         playsInline
+//       />
+//       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+//         {/* LEFT CONTENT */}
+//         <div className="hero-left text-center md:text-left">
+//           <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight text-white">
+//             Design Parking Layouts 10x Faster. Guarantee NBC Compliance.
+//             Maximize Revenue Per Square Meter.
+//           </h1>
+
+//           <p className="text-base md:text-lg text-gray-300 mt-5 leading-relaxed">
+//             The AI-powered parking design engine built for India's commercial
+//             real estate. Generate optimal parking layouts in 10 minutes—not
+//             days. Unlock 5–15% more parking spaces from the same footprint.
+//             Eliminate compliance rejections.
+//           </p>
+
+//           {/* BUTTONS */}
+//           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+//             <button
+//               onClick={() => scrollToSection("contactus")}
+//               className="cursor-pointer bg-cyan-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-cyan-600 transition"
+//             >
+//               Book a Demo Now
+//             </button>
+
+//             <button
+//               onClick={() => alert("coming soon")}
+//               className="cursor-pointer border-2 border-cyan-500 text-cyan-500 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-cyan-500/10 transition"
+//             >
+//               Start Free Trial
+//             </button>
+//           </div>
+
+//           <p className="text-xs md:text-sm text-gray-400 mt-6">
+//             ✓ Used by leading commercial real estate developers and architecture
+//             firms across Hyderabad, Bangalore, and Mumbai
+//           </p>
+//         </div>
+
+//         {/* RIGHT IMAGE */}
+//         {/* <div className="hero-right flex justify-center">
+//           <img
+//             className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
+//             src="https://github.com/shahbaj-techprime/parking_ai/blob/main/image/ezgif.com-animated-gif-maker.gif?raw=true"
+//             alt="Parking AI Demo"
+//           />
+//         </div> */}
+//         <div className="hero-right flex justify-center">
+//           <video
+//             className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
+//             src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
+//             autoPlay
+//             loop
+//             muted
+//             playsInline
+
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -136,64 +251,70 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen flex items-center pt-28 md:pt-32 bg-black"
+      className=" bg-black relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      {/* <div className=""> */}
+        {/* 🎥 BACKGROUND VIDEO */}
+        {/* <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        /> */}
+      {/* </div> */}
+      {/* 🌑 Overlay */}
+      {/* <div className="absolute inset-0 bg-black/70"></div> */}
+
+      {/* CONTENT */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center text-white">
         {/* LEFT CONTENT */}
         <div className="hero-left text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight text-white">
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight">
             Design Parking Layouts 10x Faster. Guarantee NBC Compliance.
             Maximize Revenue Per Square Meter.
           </h1>
 
           <p className="text-base md:text-lg text-gray-300 mt-5 leading-relaxed">
-            The AI-powered parking design engine built for India's commercial
-            real estate. Generate optimal parking layouts in 10 minutes—not
-            days. Unlock 5–15% more parking spaces from the same footprint.
-            Eliminate compliance rejections.
+            The AI-driven parking design engine developed for the commercial
+            real estate sector in India. Optimize parking designs in 10 minutes,
+            not days. Unleash 5-15% additional parking capacity from the same
+            land area. Avoid rejection of designs due to compliance issues
           </p>
 
-          {/* BUTTONS */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <button
               onClick={() => scrollToSection("contactus")}
-              className="bg-cyan-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-cyan-600 transition"
+              className="bg-cyan-500 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-cyan-600 transition"
             >
               Book a Demo Now
             </button>
 
-            <button
-              onClick={() => alert("coming soon")}
-              className="border-2 border-cyan-500 text-cyan-500 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold text-base md:text-lg hover:bg-cyan-500/10 transition"
-            >
+            <button className="border-2 border-cyan-500 text-cyan-500 px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-cyan-500/10 transition">
               Start Free Trial
             </button>
           </div>
-
-          <p className="text-xs md:text-sm text-gray-400 mt-6">
-            ✓ Used by leading commercial real estate developers and architecture
-            firms across Hyderabad, Bangalore, and Mumbai
-          </p>
+          <p className="text-xs md:text-sm text-gray-400 mt-6 mb-8">
+            {/* ✓ */}
+             Used by leading commercial real estate developers and architecture
+             firms across Hyderabad, Bangalore, and Mumbai
+           </p>
         </div>
 
-        {/* RIGHT IMAGE */}
-        {/* <div className="hero-right flex justify-center">
-          <img
-            className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
-            src="https://github.com/shahbaj-techprime/parking_ai/blob/main/image/ezgif.com-animated-gif-maker.gif?raw=true"
-            alt="Parking AI Demo"
-          />
-        </div> */}
+        {/* RIGHT SIDE VIDEO CARD */}
         <div className="hero-right flex justify-center">
-          <video
-            className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
-            src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-    
-          />
+          <div className="bg-black p-0 rounded-2xl overflow-hidden">
+            <video
+              className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
+              src="https://image2url.com/r2/default/videos/1770828237888-97a165b2-1e2b-486b-b4d8-05f6999bf627.mp4"
+              // https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
         </div>
       </div>
     </section>
