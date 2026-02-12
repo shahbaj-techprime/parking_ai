@@ -1011,14 +1011,14 @@ export default function FeaturesSection() {
               style={{
                 position: "relative",
                 padding: "2.5rem",
-                background:
-                  activeIndex === index
-                    ? "linear-gradient(135deg, rgba(0,146,184,0.15) 0%, rgba(0,146,184,0.05) 100%)"
-                    : "rgba(255,255,255,0.02)",
+                // background:
+                //   activeIndex === index
+                //     ? "linear-gradient(135deg, rgba(0,146,184,0.15) 0%, rgba(0,146,184,0.05) 100%)"
+                //     : "rgba(255,255,255,0.02)",
                 border: `2px solid ${
                   activeIndex === index
-                    ? "rgba(0,146,184,0.8)"
-                    : "rgba(0,146,184,0.3)"
+                    && 
+                     "rgba(0,146,184,0.3)"
                 }`,
                 borderRadius: "1.5rem",
                 transition: "all 0.5s cubic-bezier(0.4,0,0.2,1)",
@@ -1026,18 +1026,18 @@ export default function FeaturesSection() {
                 cursor: "pointer",
                 overflow: "hidden",
               }}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
+              // onMouseEnter={() => setActiveIndex(index)}
+              // onMouseLeave={() => setActiveIndex(null)}
             >
               {/* Glow effect */}
               <div
                 style={{
                   position: "absolute",
                   inset: -2,
-                  background:
-                    "linear-gradient(135deg, transparent, rgba(0,146,184,0.3), transparent)",
+                  // background:
+                  //   "linear-gradient(135deg, transparent, rgba(0,146,184,0.3), transparent)",
                   borderRadius: "1.5rem",
-                  opacity: activeIndex === index ? 1 : 0,
+                  // opacity: activeIndex === index ? 1 : 0,
                   transition: "opacity 0.5s",
                   filter: "blur(10px)",
                   zIndex: -1,

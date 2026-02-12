@@ -850,7 +850,7 @@ export default function HowItWorksSection() {
                         <div className="flex items-center gap-4 mb-8">
                           <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold transition-all duration-500 ${
                             activeStep === index
-                              ? "bg-white text-black shadow-2xl shadow-white/20"
+                              ? "bg-[#0092b8] text-black shadow-2xl shadow-white/20"
                               : "bg-gray-800 text-gray-500"
                           }`}>
                             {step.number}
@@ -864,7 +864,7 @@ export default function HowItWorksSection() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
+                        <h3 className="text-4xl lg:text-3xl font-bold mb-6 text-white">
                           {step.title}
                         </h3>
 
@@ -878,7 +878,7 @@ export default function HowItWorksSection() {
                           {steps.map((_, i) => (
                             <div key={i} className={`transition-all duration-300 ${
                               i === activeStep
-                                ? "w-12 h-2 bg-white rounded-full"
+                                ? "w-12 h-2 bg-[#0092b8] rounded-full"
                                 : i < activeStep
                                 ? "w-8 h-2 bg-gray-600 rounded-full"
                                 : "w-2 h-2 bg-gray-800 rounded-full"
@@ -901,7 +901,7 @@ export default function HowItWorksSection() {
                     >
                       <div className={`relative w-full max-w-[600px] aspect-[16/10] rounded-2xl overflow-hidden transition-all duration-500 ${
                         activeStep === index
-                          ? "ring-4 ring-white shadow-2xl shadow-white/10"
+                          ? "ring-1 ring-[#0092b8] shadow-1xl shadow-white/10"
                           : "ring-1 ring-gray-800"
                       }`}>
                         <img
