@@ -572,7 +572,7 @@ export default function WhyChoose() {
       className="py-20 bg-[#111317] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold text-center text-white mb-16">
           Why Teams Choose Parking AI
         </h2>
 

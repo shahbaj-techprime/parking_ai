@@ -31,7 +31,7 @@ export default function TopBanner() {
   }, [visible]);
 
   return (
-    <div className="top-banner fixed top-0 left-0 w-full z-50 bg-lime-400 text-black text-center py-2 text-sm font-medium">
+    <div className="top-banner fixed top-0 left-0 w-full z-50 bg-[#0092b8] text-white text-center py-2 text-md font-medium">
       Don’t miss the limited-time deals! &nbsp;
       {/* <span className="font-semibold">02D 16H 11M 31S</span>
       &nbsp;

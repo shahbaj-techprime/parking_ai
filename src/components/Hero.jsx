@@ -253,17 +253,18 @@ export default function Hero() {
       ref={heroRef}
       className=" bg-black relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden"
     >
-      {/* <div className=""> */}
         {/* 🎥 BACKGROUND VIDEO */}
-        {/* <video
-          className="absolute inset-0 w-full h-full object-cover"
+      {/* <div style={{border:"1px  solid yellow"}}>
+        <video
+          className="absolute inset-0  w-full h-full object-cover"
           src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
           autoPlay
           loop
           muted
           playsInline
-        /> */}
-      {/* </div> */}
+          style={{border:'1px solid red'}}
+        />
+      </div> */}
       {/* 🌑 Overlay */}
       {/* <div className="absolute inset-0 bg-black/70"></div> */}
 
@@ -271,12 +272,12 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center text-white">
         {/* LEFT CONTENT */}
         <div className="hero-left text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight">
+          <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight " >
             Design Parking Layouts 10x Faster. Guarantee NBC Compliance.
             Maximize Revenue Per Square Meter.
           </h1>
 
-          <p className="text-base md:text-lg text-gray-300 mt-5 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300 mt-5 leading-relaxed"style={{opacity:0.8}}>
             The AI-driven parking design engine developed for the commercial
             real estate sector in India. Optimize parking designs in 10 minutes,
             not days. Unleash 5-15% additional parking capacity from the same
@@ -303,10 +304,10 @@ export default function Hero() {
         </div>
 
         {/* RIGHT SIDE VIDEO CARD */}
-        <div className="hero-right flex justify-center">
-          <div className="bg-black p-0 rounded-2xl overflow-hidden">
+        <div className="hero-right flex justify-center mb-8">
+          <div className="">
             <video
-              className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl"
+              className="h-[280px] sm:h-[350px] md:h-[450px] rounded-xl bg-black "
               src="https://image2url.com/r2/default/videos/1770828237888-97a165b2-1e2b-486b-b4d8-05f6999bf627.mp4"
               // https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4
               autoPlay

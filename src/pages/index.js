@@ -51,9 +51,7 @@ export default function Home() {
     <div>
       {/* NAVBAR */}
       <TopBanner />
-    
       <Navbar />
- 
       <Hero />
       <WhyChoose />
       <SolutionSection />

@@ -820,7 +820,7 @@ export default function HowItWorksSection() {
 
       {/* Header */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 text-center">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-white">
+        <h2 className="text-3xl lg:text-5xl font-bold mb-4 text-white">
           How It Works
         </h2>
         <p className="text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto">
