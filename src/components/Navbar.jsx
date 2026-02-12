@@ -58,7 +58,7 @@
 //   return (
 //     <nav className="fixed top-0 left-0 w-full z-50 bg-black border-b border-white/20">
 //       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        
+
 //         {/* LOGO */}
 //         <div className="flex items-center gap-3 cursor-pointer">
 //           <div className="w-10 h-10 bg-[#0092b8] rounded-lg flex items-center justify-center">
@@ -108,7 +108,6 @@
 //     </nav>
 //   );
 // }
-
 
 // "use client";
 
@@ -259,8 +258,6 @@
 //     </>
 //   );
 // }
-
-
 
 // "use client";
 
@@ -424,10 +421,6 @@
 //     </>
 //   );
 // }
-
-
-
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -447,29 +440,24 @@ export default function Navbar() {
     { label: "FAQ", id: "faq" },
   ];
 
-  // ✅ Smooth Scroll
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const yOffset = -80;
-    const y =
-      el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    const yOffset = -100;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
     window.scrollTo({ top: y, behavior: "smooth" });
     setOpen(false);
   };
 
-  // ✅ Scroll Effects
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
       const scrollPos = currentScroll + 120;
 
-      // Move navbar to top
       setScrolled(currentScroll > 80);
 
-      // Hide on scroll down, show on scroll up
       if (currentScroll > lastScroll && currentScroll > 200) {
         setVisible(false);
       } else {
@@ -478,7 +466,6 @@ export default function Navbar() {
 
       setLastScroll(currentScroll);
 
-      // Scroll spy
       let current = "";
 
       navLinks.forEach((item) => {
@@ -504,20 +491,17 @@ export default function Navbar() {
 
   return (
     <>
-      {/* NAVBAR */}
       <nav
-        className={`fixed left-0 w-full z-50 border-b border-white/10
+        className={`fixed left-0 w-full z-40 border-b border-white/10
         transition-all duration-500 ease-in-out
         ${visible ? "translate-y-0" : "-translate-y-full"}
         ${
           scrolled
             ? "top-0 bg-black/80 backdrop-blur-xl shadow-lg"
-            : "top-10 bg-transparent"
+            : "top-[60px] bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-
-          {/* LOGO */}
           <div className="flex items-center gap-3 cursor-pointer">
             <div className="w-10 h-10 bg-[#0092b8] rounded-lg flex items-center justify-center">
               <span className="text-black text-xl font-bold">P</span>
@@ -527,7 +511,6 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* DESKTOP LINKS */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((item) => (
               <button
@@ -548,9 +531,15 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
+
+            <button
+              onClick={() => scrollToSection("pricing")}
+              className="ml-4 px-5 py-2 rounded-lg bg-[#0092b8] text-black font-semibold hover:bg-[#007a9b] transition-all duration-300"
+            >
+              Contact Us
+            </button>
           </div>
 
-          {/* MOBILE BUTTON */}
           <button
             className="md:hidden text-white"
             onClick={() => setOpen(true)}
@@ -560,24 +549,20 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* BACKDROP */}
       {open && (
         <div
           onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/60 z-40"
+          className="fixed inset-0 bg-black/60 z-30"
         />
       )}
 
-      {/* MOBILE MENU */}
       <div
         className={`fixed top-0 right-0 h-full w-64 bg-black z-50
         transform transition-transform duration-300
         ${open ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="p-6 flex items-center justify-between border-b border-white/20">
-          <span className="text-white text-lg font-semibold">
-            Menu
-          </span>
+          <span className="text-white text-lg font-semibold">Menu</span>
           <button onClick={() => setOpen(false)}>
             <X size={24} className="text-white" />
           </button>
@@ -598,6 +583,13 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
+
+          <button
+            onClick={() => scrollToSection("pricing")}
+            className="px-5 py-2 rounded-lg bg-[#0092b8] text-black font-semibold hover:bg-[#007a9b] transition-all duration-300"
+          >
+            Contact Us
+          </button>
         </div>
       </div>
     </>

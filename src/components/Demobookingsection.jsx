@@ -811,10 +811,50 @@ const DemoBookingSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+const [loading, setLoading] = useState(false);
+const [message, setMessage] = useState("");
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setLoading(true);
+  setMessage("");
+
+  try {
+    const response = await fetch(
+      "https://pioneverse.com/parkingai/contactus/leads.php",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      setMessage("✅ Thank you! Our team will contact you shortly.");
+      setFormData({
+        fullName: "",
+        email: "",
+        companyName: "",
+        role: "",
+        timeline: "",
+        projectDetails: "",
+      });
+    } else {
+      setMessage("❌ Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    setMessage("❌ Server error. Please try later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const roleOptions = [
     "Select your role",
@@ -1022,8 +1062,13 @@ const DemoBookingSection = () => {
                   type="submit"
                   className="submit-button w-full bg-[#0092b8] py-4 rounded-lg font-semibold hover:bg-[#007a9a] transition-all shadow-lg hover:shadow-[0_0_25px_rgba(0,146,184,0.5)]"
                 >
-                  Book Demo (Free)
+                   {loading ? "Submitting..." : "Book Demo"}
                 </button>
+                {message && (
+                  <p className="text-center text-sm mt-4">
+                    {message}
+                  </p>
+                )}
                 <p className="text-center text-sm text-gray-400 mt-4">
                   We’ll follow up within 2 hours
                 </p>

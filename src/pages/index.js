@@ -16,12 +16,12 @@ import ImpactSection from "@/components/Impactsection";
 import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/PricingSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import SeamlessGallery from "@/components/SeamlessGallery";
 import SolutionSection from "@/components/SolutionSection";
 import TopBanner from "@/components/TopBanner";
 import WhyChoose from "@/components/Whychoose";
 
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -50,11 +50,15 @@ export default function Home() {
   return (
     <div>
       {/* NAVBAR */}
+      {/* <SeamlessGallery/> */}
+      {/* <SolutionSection /> */}
+
       <TopBanner />
       <Navbar />
       <Hero />
       <WhyChoose />
-      <SolutionSection />
+      {/* <SolutionSection /> */}
+      <SeamlessGallery />
       <HowItWorksSection />
       <section id="features" className="scroll-mt-20">
         <FeaturesSection />

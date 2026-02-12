@@ -1,3 +1,111 @@
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import gsap from "gsap";
+
+// export default function TopBanner() {
+//   const [visible, setVisible] = useState(true);
+//   const [hours, setHours] = useState("00");
+//   const [minutes, setMinutes] = useState("00");
+//   const [seconds, setSeconds] = useState("00");
+
+//   const scrollToSection = (id) => {
+//     const el = document.getElementById(id);
+//     if (!el) return;
+
+//     const yOffset = -80;
+//     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+//     window.scrollTo({ top: y, behavior: "smooth" });
+//   };
+
+//   // 🔥 Scroll Hide / Show
+//   useEffect(() => {
+//     let lastScroll = 0;
+
+//     const handleScroll = () => {
+//       if (window.scrollY > 100 && window.scrollY > lastScroll) {
+//         setVisible(false);
+//       } else {
+//         setVisible(true);
+//       }
+//       lastScroll = window.scrollY;
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   // 🔥 GSAP Animation
+//   useEffect(() => {
+//     gsap.to(".top-banner", {
+//       y: visible ? 0 : -60,
+//       duration: 0.3,
+//       ease: "power2.out",
+//     });
+//   }, [visible]);
+
+//   // 🔥 Daily 12PM Countdown
+//   useEffect(() => {
+//     const updateTimer = () => {
+//       const now = new Date();
+
+//       const target = new Date();
+//       target.setHours(12, 0, 0, 0);
+
+//       if (now >= target) {
+//         target.setDate(target.getDate() + 1);
+//       }
+
+//       const diff = target - now;
+
+//       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+//       const m = Math.floor((diff / (1000 * 60)) % 60);
+//       const s = Math.floor((diff / 1000) % 60);
+
+//       setHours(String(h).padStart(2, "0"));
+//       setMinutes(String(m).padStart(2, "0"));
+//       setSeconds(String(s).padStart(2, "0"));
+//     };
+
+//     updateTimer();
+//     const interval = setInterval(updateTimer, 1000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <div className="top-banner fixed top-0 left-0 w-full z-50 bg-lime-400 text-black">
+//       <div className="max-w-7xl  mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-center lg:gap-6  text-sm font-medium">
+
+//         {/* Text */}
+//         <span>
+//           Don’t miss the limited-time deals!
+//         </span>
+
+//         {/* Timer */}
+//         <div className="flex items-center gap-3 font-semibold">
+//           <span>{hours}H</span>
+//           <span>{minutes}M</span>
+//           <span>{seconds}S</span>
+//         </div>
+
+//         {/* Button */}
+//         <button
+//           onClick={() => scrollToSection("pricing")}
+//           className="underline font-semibold hover:opacity-80 transition"
+//         >
+//           Explore
+//         </button>
+
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -5,15 +113,29 @@ import gsap from "gsap";
 
 export default function TopBanner() {
   const [visible, setVisible] = useState(true);
+  const [hours, setHours] = useState("00");
+  const [minutes, setMinutes] = useState("00");
+  const [seconds, setSeconds] = useState("00");
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const yOffset = -80;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  // Hide / Show on scroll
   useEffect(() => {
     let lastScroll = 0;
 
     const handleScroll = () => {
       if (window.scrollY > 100 && window.scrollY > lastScroll) {
-        setVisible(false); // scrolling down → hide
+        setVisible(false);
       } else {
-        setVisible(true); // scrolling up → show
+        setVisible(true);
       }
       lastScroll = window.scrollY;
     };
@@ -22,6 +144,7 @@ export default function TopBanner() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // GSAP animation
   useEffect(() => {
     gsap.to(".top-banner", {
       y: visible ? 0 : -60,
@@ -30,17 +153,57 @@ export default function TopBanner() {
     });
   }, [visible]);
 
+  // Daily 12PM Countdown
+  useEffect(() => {
+    const updateTimer = () => {
+      const now = new Date();
+
+      const target = new Date();
+      target.setHours(12, 0, 0, 0);
+
+      if (now >= target) {
+        target.setDate(target.getDate() + 1);
+      }
+
+      const diff = target - now;
+
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      setHours(String(h).padStart(2, "0"));
+      setMinutes(String(m).padStart(2, "0"));
+      setSeconds(String(s).padStart(2, "0"));
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="top-banner fixed top-0 left-0 w-full z-50 bg-[#0092b8] text-white text-center py-2 text-md font-medium">
-      Don’t miss the limited-time deals! &nbsp;
-      {/* <span className="font-semibold">02D 16H 11M 31S</span>
-      &nbsp;
-      <a href="#" className="underline font-semibold">
-        Explore
-      </a> */}
+    <div className="top-banner fixed top-0 left-0 w-full h-[60px] z-50 bg-lime-400 text-black">
+      <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-center gap-6 text-sm font-medium">
+        <span>Don’t miss the limited-time deals!</span>
+
+        <div className="flex items-center gap-2 font-semibold">
+          <span>{hours}H</span>
+          <span>{minutes}M</span>
+          <span>{seconds}S</span>
+        </div>
+
+        <button
+          onClick={() => scrollToSection("pricing")}
+          className="underline font-semibold hover:opacity-80 transition"
+        >
+          Explore
+        </button>
+      </div>
     </div>
   );
 }
+
 
 // "use client";
 
@@ -85,7 +248,7 @@ export default function TopBanner() {
 //     const timer = setInterval(() => {
 //       setTimeLeft((prev) => {
 //         let { days, hours, minutes, seconds } = prev;
-        
+
 //         if (seconds > 0) {
 //           seconds--;
 //         } else if (minutes > 0) {
@@ -101,7 +264,7 @@ export default function TopBanner() {
 //           minutes = 59;
 //           seconds = 59;
 //         }
-        
+
 //         return { days, hours, minutes, seconds };
 //       });
 //     }, 1000);

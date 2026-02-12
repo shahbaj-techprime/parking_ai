@@ -254,7 +254,7 @@ export default function Hero() {
       className=" bg-black relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden"
     >
         {/* 🎥 BACKGROUND VIDEO */}
-      {/* <div style={{border:"1px  solid yellow"}}>
+      {/* <div>
         <video
           className="absolute inset-0  w-full h-full object-cover"
           src="https://image2url.com/r2/default/videos/1770355562464-c81769bb-5849-493c-a8de-f9383fe868e0.mp4"
@@ -269,7 +269,7 @@ export default function Hero() {
       {/* <div className="absolute inset-0 bg-black/70"></div> */}
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center text-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center text-white ">
         {/* LEFT CONTENT */}
         <div className="hero-left text-center md:text-left">
           <h1 className="text-3xl md:text-4xl font-extrabold leading-snug md:leading-tight " >
