@@ -1185,7 +1185,7 @@
 //     return (
 //       <section
 //         className="relative w-full bg-black py-12 px-4"
-    
+
 //       >
 //         <div className="max-w-lg mx-auto">
 //           <h2 className="text-3xl font-bold text-white text-center mb-8">
@@ -1300,7 +1300,7 @@
 //     <section
 //       ref={sectionRef}
 //       className="relative w-full "
-     
+
 //     >
 //       <div
 //        style={{
@@ -1325,7 +1325,7 @@
 
 //                 {/* Main card */}
 //                 <div
-//                   className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl p-8 w-[450px] min-h-[50px] flex flex-col border border-gray-800 
+//                   className="relative bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl p-8 w-[450px] min-h-[50px] flex flex-col border border-gray-800
 //                   lg:w-[500px] xl:w-[550px]"
 //                 >
 //                   {/* Header with number badge */}
@@ -1404,8 +1404,6 @@
 //   );
 // }
 
-
-
 "use client";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -1417,30 +1415,41 @@ const advantages = [
     points: [
       "All parking designs are done manually. Move a column? Redesign 20+ bays. Rejected by the authority? Entire design needs to be done again. Average project: 3-5 cycles of design revisions, 4-6 weeks of lost time, ₹37.5K-₹75K in design costs",
     ],
+    imageUrl:
+      "https://img.sanishtech.com/u/0b07c0b9e24e7948d47d01d604fd2a67.png",
   },
+  // https://miro.medium.com/v2/resize:fit:1400/0*WW5SWzwoE71tMlrQ.jpg
   {
     title: "NBC Compliance is a Minefield",
     points: [
       "National Building Code has 10+ stringent parking standards (turning radius, aisle width, PH bays, ramp landings). Violate one, and the project gets rejected by the civic body. Most designs get rejected after submission, requiring costly redesigns.",
     ],
+    imageUrl:
+      "https://img.sanishtech.com/u/4d805ac2d72397dc9f006b6ed870b9c8.png",
   },
   {
     title: "Lost Revenue Due to Inefficient Designs",
     points: [
       "Manual designs can only capture 85-90% of the maximum parking capacity. Dead space, inefficient circulation paths, and inefficient angles. This translates to 650 parking spots instead of 750, resulting in lost revenue of ₹50-₹300 lakh on a single project.",
     ],
+    imageUrl:
+      "https://img.sanishtech.com/u/df5b41ef4b9ea6dc5395914c80fc8b61.png",
   },
   {
     title: "Structural Coordination Chaos",
     points: [
       "Column locations, ramp locations, and lift cores do not coordinate well with parking designs. Emails back and forth. No what-if analysis. No single point of truth. This leads to either inefficient parking designs or inefficient structural designs or a 2-week delay.",
     ],
+    imageUrl:
+      "https://img.sanishtech.com/u/c33db8e58cdb93cbe5cbc4ed8b6c9fc7.png",
   },
   {
     title: "Compliance Errors With Legal Consequences",
     points: [
       "PH bays placed in tandem positions. Ramp entries too close to aisles. Missing landing distances. Municipal inspector flags issues after submission. Redesign, reschedule, reputation damage.",
     ],
+    imageUrl:
+      "https://img.sanishtech.com/u/087d132851e64f8115e85dbe21b02d2c.png",
   },
 ];
 
@@ -1486,7 +1495,7 @@ export default function SeamlessGallery() {
         const progress = self.progress;
         const newIndex = Math.min(
           Math.floor(progress * advantages.length),
-          advantages.length - 1
+          advantages.length - 1,
         );
 
         if (newIndex !== activeIndex) {
@@ -1581,11 +1590,14 @@ export default function SeamlessGallery() {
   if (isMobile) {
     return (
       <section className="relative w-full bg-black py-12 px-4">
-        <div className="max-w-lg mx-auto" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%232a2f2e' stroke-width='0.5' fill='none' opacity='1'%3E%3Ccircle cx='20' cy='20' r='8' /%3E%3Ccircle cx='90' cy='30' r='6' /%3E%3Cpath d='M10 90 Q20 80 30 90 T50 90' /%3E%3Cpath d='M70 70 l15 -10 l5 20 z' /%3E%3Cpath d='M40 40 l10 -10 l10 10 l-10 10 z' /%3E%3Cpath d='M80 95 l10 10' /%3E%3Cpath d='M95 60 a8 8 0 0 1 -16 0 a8 8 0 0 1 16 0' /%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundRepeat: "repeat",
-          backgroundSize: "120px 120px",
-        }}>
+        <div
+          className="max-w-lg mx-auto"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%232a2f2e' stroke-width='0.5' fill='none' opacity='1'%3E%3Ccircle cx='20' cy='20' r='8' /%3E%3Ccircle cx='90' cy='30' r='6' /%3E%3Cpath d='M10 90 Q20 80 30 90 T50 90' /%3E%3Cpath d='M70 70 l15 -10 l5 20 z' /%3E%3Cpath d='M40 40 l10 -10 l10 10 l-10 10 z' /%3E%3Cpath d='M80 95 l10 10' /%3E%3Cpath d='M95 60 a8 8 0 0 1 -16 0 a8 8 0 0 1 16 0' /%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "120px 120px",
+          }}
+        >
           {/* Header */}
           <div className="text-center mb-5">
             <h2 className=" text-3xl md:text-4xl font-bold text-white  mb-3">
@@ -1608,7 +1620,7 @@ export default function SeamlessGallery() {
               {advantages.map((advantage, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-2">
                   <div className="relative group">
-                        {/* bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 */}
+                    {/* bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 */}
                     <div className="absolute inset-0 rounded-2xl  opacity-75 blur-sm"></div>
 
                     <div className="relative  rounded-2xl p-6 min-h-[450px] flex flex-col border border-gray-800">
@@ -1656,6 +1668,61 @@ export default function SeamlessGallery() {
                     </div>
                   </div>
                 </div>
+//              <div key={index} className="w-full flex-shrink-0 px-2">
+//   {/* <div className="relative rounded-2xl overflow-hidden border border-gray-800 h-[350px]"> */}
+// <div className="relative h-[350px] rounded-2xl overflow-hidden border border-gray-800">
+//     {/* Background Image */}
+//  <img
+//     src={advantage.imageUrl}
+//     alt="background"
+//     className="absolute inset-0 w-full h-full object-cover z-0"
+//   />
+
+//     {/* Dark overlay for readability */}
+// <div className="absolute inset-0 bg-black/60 z-10"></div>
+
+//     {/* Content */}
+//     <div className="relative z-10 p-6 flex flex-col h-full text-white">
+
+//       <div className="mb-4">
+//         <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-500/30">
+//           <span className="text-xs font-bold text-blue-400">
+//             Problem #{index + 1}
+//           </span>
+//         </div>
+
+//         <h3 className="text-xl font-bold leading-tight">
+//           {advantage.title}
+//         </h3>
+//       </div>
+
+//       <div className="flex-1 mb-4 overflow-hidden">
+//         {advantage.points.map((point, pointIndex) => (
+//           <p
+//             key={pointIndex}
+//             className="text-gray-200 leading-relaxed text-sm"
+//           >
+//             {point}
+//           </p>
+//         ))}
+//       </div>
+
+//       <div className="pt-4 border-t border-white/20">
+//         <div className="flex items-center gap-2">
+//           <div className="relative">
+//             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+//             <div className="absolute inset-0 w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+//           </div>
+//           <span className="text-xs text-red-400 font-semibold uppercase tracking-wider">
+//             Critical Issue
+//           </span>
+//         </div>
+//       </div>
+
+//     </div>
+//   </div>
+// </div>
+
               ))}
             </div>
           </div>
@@ -1718,16 +1785,87 @@ export default function SeamlessGallery() {
         {/* Cards Container */}
         <div className="cards-container relative w-full h-full flex items-center justify-center mt-32 md:mt-40">
           {advantages.map((advantage, index) => (
+            // <div
+            //   key={index}
+            //   className="problem-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            //   style={{ transformOrigin: "center center" }}
+            // >
+            //   <div className="relative group">
+            //     {/* bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 */}
+            //     <div className="absolute inset-0 rounded-3xl  opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            //     <div className="relative rounded-3xl p-8 w-[450px] min-h-[50px] flex flex-col border border-[#0092b8] lg:w-[500px] xl:w-[550px]">
+
+            //       <div className="flex items-start justify-between mb-6">
+            //         <div className="flex-1">
+            //           <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
+            //             <span className="text-sm font-bold text-blue-400">
+            //               Problem #{index + 1}
+            //             </span>
+            //           </div>
+            //           <h3 className="text-2xl font-bold text-white leading-tight">
+            //             {advantage.title}
+            //           </h3>
+            //         </div>
+            //       </div>
+
+            //       <div className="flex-1 mb-6">
+            //         {advantage.points.map((point, pointIndex) => (
+            //           <p
+            //             key={pointIndex}
+            //             className="text-gray-300 leading-relaxed text-base"
+            //           >
+            //             {point}
+            //           </p>
+            //         ))}
+            //       </div>
+
+            //       <div className="pt-6 border-t border-gray-800">
+            //         <div className="flex items-center justify-between">
+            //           <div className="flex items-center gap-2">
+            //             <div className="relative">
+            //               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            //               <div className="absolute inset-0 w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+            //             </div>
+            //             <span className="text-xs text-red-400 font-semibold uppercase tracking-wider">
+            //               Critical Issue
+            //             </span>
+            //           </div>
+            //           <div className="flex gap-1">
+            //             {[...Array(5)].map((_, i) => (
+            //               <div
+            //                 key={i}
+            //                 className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+            //                   i === currentIndex
+            //                     ? "bg-blue-500 scale-125"
+            //                     : "bg-gray-700"
+            //                 }`}
+            //               ></div>
+            //             ))}
+            //           </div>
+            //         </div>
+            //       </div>
+            //     </div>
+            //   </div>
+            // </div>
+
             <div
               key={index}
               className="problem-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{ transformOrigin: "center center" }}
             >
-              <div className="relative group">
-                {/* bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 */}
-                <div className="absolute inset-0 rounded-3xl  opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative group w-[450px] lg:w-[500px] xl:w-[550px] min-h-[50px] rounded-2xl overflow-hidden border border-[#0092b8]">
+                {/* 1️⃣ Background Image (Inside Card Only) */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center  scale-105"
+                  style={{ backgroundImage: `url(${advantage.imageUrl})` }}
+                ></div>
 
-                <div className="relative rounded-3xl p-8 w-[450px] min-h-[50px] flex flex-col border border-[#0092b8] lg:w-[500px] xl:w-[550px]">
+                {/* 2️⃣ Dark Overlay */}
+                <div className="absolute inset-0 bg-black/60"></div>
+
+                {/* 3️⃣ Content */}
+                <div className="relative z-10 p-6 flex flex-col h-full">
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex-1">
                       <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30">
@@ -1735,6 +1873,7 @@ export default function SeamlessGallery() {
                           Problem #{index + 1}
                         </span>
                       </div>
+
                       <h3 className="text-2xl font-bold text-white leading-tight">
                         {advantage.title}
                       </h3>
@@ -1745,14 +1884,14 @@ export default function SeamlessGallery() {
                     {advantage.points.map((point, pointIndex) => (
                       <p
                         key={pointIndex}
-                        className="text-gray-300 leading-relaxed text-base"
+                        className="text-gray-200 leading-relaxed text-base"
                       >
                         {point}
                       </p>
                     ))}
                   </div>
 
-                  <div className="pt-6 border-t border-gray-800">
+                  <div className="pt-6 border-t border-white/20">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="relative">
@@ -1763,14 +1902,15 @@ export default function SeamlessGallery() {
                           Critical Issue
                         </span>
                       </div>
+
                       <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
+                        {[...Array(advantages.length)].map((_, i) => (
                           <div
                             key={i}
                             className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                               i === currentIndex
-                                ? "bg-blue-500 scale-125"
-                                : "bg-gray-700"
+                                ? "bg-blue-400 scale-125"
+                                : "bg-gray-600"
                             }`}
                           ></div>
                         ))}

@@ -1358,7 +1358,27 @@ gsap.registerPlugin(ScrollTrigger);
 const personas = [
   {
     title: "For Developers",
-    icon: "🏗️",
+    icon: (
+   <svg
+  width="40"
+  height="40"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="url(#grad1)"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+>
+  <defs>
+    <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stopColor="#3b82f6" />
+      <stop offset="100%" stopColor="#9333ea" />
+    </linearGradient>
+  </defs>
+  <polyline points="16 18 22 12 16 6" />
+  <polyline points="8 6 2 12 8 18" />
+</svg>
+    ),
     before: {
       label: "Before:",
       text: "25 hours design + 4–6 weeks approvals + ₹37.5K–₹75K cost + 650 spaces = lost revenue",
@@ -1724,27 +1744,27 @@ export default function ImpactSection() {
 
                 {/* Arrow */}
                 {isMobile ? (
-            <div
-  data-arrow
-  style={{
-    width: isMobile ? "2.5rem" : "3rem",
-    height: isMobile ? "2.5rem" : "3rem",
-    borderRadius: "50%",
-    border: "2px solid #ffffff",
-    backgroundColor: "rgba(255,255,255,0.1)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: isMobile ? "1.25rem" : "1.5rem",
-    fontWeight: "700",
-    color: "#ffffff",
-    boxShadow: "0 4px 12px rgba(255,255,255,0.1)",
-    zIndex: 10,
-    alignSelf: isMobile ? "center" : undefined,
-  }}
->
-  ↓
-</div>
+                  <div
+                    data-arrow
+                    style={{
+                      width: isMobile ? "2.5rem" : "3rem",
+                      height: isMobile ? "2.5rem" : "3rem",
+                      borderRadius: "50%",
+                      border: "2px solid #ffffff",
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: isMobile ? "1.25rem" : "1.5rem",
+                      fontWeight: "700",
+                      color: "#ffffff",
+                      boxShadow: "0 4px 12px rgba(255,255,255,0.1)",
+                      zIndex: 10,
+                      alignSelf: isMobile ? "center" : undefined,
+                    }}
+                  >
+                    ↓
+                  </div>
                 ) : (
                   <div
                     data-arrow

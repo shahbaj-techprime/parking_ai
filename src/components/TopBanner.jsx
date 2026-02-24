@@ -103,8 +103,103 @@
 //   );
 // }
 
+// "use client";
 
+// import { useEffect, useState } from "react";
+// import gsap from "gsap";
 
+// export default function TopBanner() {
+//   const [visible, setVisible] = useState(true);
+//   const [hours, setHours] = useState("00");
+//   const [minutes, setMinutes] = useState("00");
+//   const [seconds, setSeconds] = useState("00");
+
+//   const scrollToSection = (id) => {
+//     const el = document.getElementById(id);
+//     if (!el) return;
+
+//     const yOffset = -80;
+//     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+//     window.scrollTo({ top: y, behavior: "smooth" });
+//   };
+
+//   // Hide / Show on scroll
+//   useEffect(() => {
+//     let lastScroll = 0;
+
+//     const handleScroll = () => {
+//       if (window.scrollY > 100 && window.scrollY > lastScroll) {
+//         setVisible(false);
+//       } else {
+//         setVisible(true);
+//       }
+//       lastScroll = window.scrollY;
+//     };
+
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   // GSAP animation
+//   useEffect(() => {
+//     gsap.to(".top-banner", {
+//       y: visible ? 0 : -60,
+//       duration: 0.3,
+//       ease: "power2.out",
+//     });
+//   }, [visible]);
+
+//   // Daily 12PM Countdown
+//   useEffect(() => {
+//     const updateTimer = () => {
+//       const now = new Date();
+
+//       const target = new Date();
+//       target.setHours(12, 0, 0, 0);
+
+//       if (now >= target) {
+//         target.setDate(target.getDate() + 1);
+//       }
+
+//       const diff = target - now;
+
+//       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+//       const m = Math.floor((diff / (1000 * 60)) % 60);
+//       const s = Math.floor((diff / 1000) % 60);
+
+//       setHours(String(h).padStart(2, "0"));
+//       setMinutes(String(m).padStart(2, "0"));
+//       setSeconds(String(s).padStart(2, "0"));
+//     };
+
+//     updateTimer();
+//     const interval = setInterval(updateTimer, 1000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <div className="top-banner fixed top-0 left-0 w-full h-[60px] z-50 bg-lime-400 text-black">
+//       <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-center gap-6 text-sm font-medium">
+//         <span>Don’t miss the limited-time deals!</span>
+
+//         <div className="flex items-center gap-2 font-semibold">
+//           <span>{hours}H</span>
+//           <span>{minutes}M</span>
+//           <span>{seconds}S</span>
+//         </div>
+
+//         <button
+//           onClick={() => scrollToSection("pricing")}
+//           className="underline font-semibold hover:opacity-80 transition"
+//         >
+//           Explore
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
 
 "use client";
 
@@ -127,20 +222,19 @@ export default function TopBanner() {
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
-  // Hide / Show on scroll
+  // ✅ Show only when at very top
   useEffect(() => {
-    let lastScroll = 0;
-
     const handleScroll = () => {
-      if (window.scrollY > 100 && window.scrollY > lastScroll) {
-        setVisible(false);
-      } else {
+      if (window.scrollY === 0) {
         setVisible(true);
+      } else {
+        setVisible(false);
       }
-      lastScroll = window.scrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -157,8 +251,8 @@ export default function TopBanner() {
   useEffect(() => {
     const updateTimer = () => {
       const now = new Date();
-
       const target = new Date();
+
       target.setHours(12, 0, 0, 0);
 
       if (now >= target) {
@@ -183,7 +277,14 @@ export default function TopBanner() {
   }, []);
 
   return (
-    <div className="top-banner fixed top-0 left-0 w-full h-[60px] z-50 bg-lime-400 text-black">
+    <div
+      className="top-banner fixed top-0 left-0 w-full 
+h-[50px] 
+sm:h-[55px] 
+md:h-[60px] 
+lg:h-[40px] 
+z-50 bg-lime-400 text-black"
+    >
       <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-center gap-6 text-sm font-medium">
         <span>Don’t miss the limited-time deals!</span>
 
@@ -194,8 +295,8 @@ export default function TopBanner() {
         </div>
 
         <button
-          onClick={() => scrollToSection("pricing")}
-          className="underline font-semibold hover:opacity-80 transition"
+          onClick={() => scrollToSection("contactus")}
+          className="underline font-semibold hover:opacity-80 transition cursor-pointer"
         >
           Explore
         </button>
@@ -203,7 +304,6 @@ export default function TopBanner() {
     </div>
   );
 }
-
 
 // "use client";
 

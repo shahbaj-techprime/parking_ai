@@ -421,6 +421,7 @@
 //     </>
 //   );
 // }
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -498,7 +499,7 @@ export default function Navbar() {
         ${
           scrolled
             ? "top-0 bg-black/80 backdrop-blur-xl shadow-lg"
-            : "top-[60px] bg-transparent"
+            : "top-[45px] bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -506,9 +507,7 @@ export default function Navbar() {
             <div className="w-10 h-10 bg-[#0092b8] rounded-lg flex items-center justify-center">
               <span className="text-black text-xl font-bold">P</span>
             </div>
-            <span className="text-xl font-semibold text-white">
-              Parking AI
-            </span>
+            <span className="text-xl font-semibold text-white">Parking AI</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
@@ -533,8 +532,14 @@ export default function Navbar() {
             ))}
 
             <button
-              onClick={() => scrollToSection("pricing")}
-              className="ml-4 px-5 py-2 rounded-lg bg-[#0092b8] text-black font-semibold hover:bg-[#007a9b] transition-all duration-300"
+              onClick={() => scrollToSection("contactus")}
+              className="ml-4 px-6 py-2 rounded-lg 
+  relative overflow-hidden
+  text-black font-semibold
+  bg-gradient-to-r from-[#0092b8] via-[#00c6ff] to-[#0092b8]
+  bg-[length:200%_100%]
+  animate-waterflow
+  transition-all duration-300"
             >
               Contact Us
             </button>
@@ -585,8 +590,14 @@ export default function Navbar() {
           ))}
 
           <button
-            onClick={() => scrollToSection("pricing")}
-            className="px-5 py-2 rounded-lg bg-[#0092b8] text-black font-semibold hover:bg-[#007a9b] transition-all duration-300"
+            onClick={() => scrollToSection("contactus")}
+            className="ml-4 px-6 py-2 rounded-lg 
+  relative overflow-hidden
+  text-black font-semibold
+  bg-gradient-to-r from-[#0092b8] via-[#00c6ff] to-[#0092b8]
+  bg-[length:200%_100%]
+  animate-waterflow
+  transition-all duration-300"
           >
             Contact Us
           </button>
