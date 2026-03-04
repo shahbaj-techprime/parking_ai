@@ -19,6 +19,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SeamlessGallery from "@/components/SeamlessGallery";
 import SolutionSection from "@/components/SolutionSection";
 import TopBanner from "@/components/TopBanner";
+import Videofiles from "@/components/Videofiles";
 import WhyChoose from "@/components/Whychoose";
 
 import { gsap } from "gsap";
@@ -56,6 +57,7 @@ export default function Home() {
       <TopBanner />
       <Navbar />
       <Hero />
+      <Videofiles/>
       <WhyChoose />
       {/* <SolutionSection /> */}
       <SeamlessGallery />

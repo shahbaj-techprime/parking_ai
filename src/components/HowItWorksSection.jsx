@@ -1,7 +1,3 @@
-
-
-
-
 // "use client";
 
 // import { useEffect, useRef, useState } from "react";
@@ -54,7 +50,7 @@
 
 //       const direction = steps[index].direction;
 //       let fromVars = { opacity: 0 };
-      
+
 //       switch(direction) {
 //         case 'left':
 //           fromVars = { opacity: 0, x: -100 };
@@ -119,7 +115,7 @@
 //   }, []);
 
 //   return (
-//     <section 
+//     <section
 //       ref={sectionRef}
 //       style={{
 //         backgroundColor: '#111317',
@@ -141,16 +137,16 @@
 //       <div style={{ maxWidth: '1350px', margin: '0 auto', padding: '0 1.5rem', position: 'relative' }}>
 //         {/* Header */}
 //         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-//           <h2 style={{ 
-//             fontSize: '3rem', 
+//           <h2 style={{
+//             fontSize: '3rem',
 //             fontWeight: '700',
 //             marginBottom: '1rem',
 //             letterSpacing: '-0.02em'
 //           }}>
 //             The AI Solution: How It Works
 //           </h2>
-//           <p style={{ 
-//             fontSize: '1.25rem', 
+//           <p style={{
+//             fontSize: '1.25rem',
 //             color: '#888888',
 //             maxWidth: '600px',
 //             margin: '0 auto'
@@ -176,7 +172,7 @@
 //                 }}
 //               >
 //                 {/* Content Side */}
-//                 <div style={{ 
+//                 <div style={{
 //                   direction: 'ltr',
 //                   textAlign: index % 2 === 0 ? 'right' : 'left',
 //                   padding: '2rem'
@@ -199,7 +195,7 @@
 //                   }}>
 //                     {step.number}
 //                   </div>
-                  
+
 //                   <h3 style={{
 //                     fontSize: '2rem',
 //                     fontWeight: '600',
@@ -209,7 +205,7 @@
 //                   }}>
 //                    {step.title}
 //                   </h3>
-                  
+
 //                   <p style={{
 //                     fontSize: '1.125rem',
 //                     color: '#999999',
@@ -220,7 +216,7 @@
 //                 </div>
 
 //                 {/* Icon/Visual Side */}
-//                 <div style={{ 
+//                 <div style={{
 //                   direction: 'ltr',
 //                   display: 'flex',
 //                   justifyContent: 'center',
@@ -235,12 +231,12 @@
 //                     alignItems: 'center',
 //                     justifyContent: 'center',
 //                     fontSize: '6rem',
-//                     background: activeStep === index 
+//                     background: activeStep === index
 //                       ? 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))'
 //                       : 'transparent',
 //                     transition: 'all 0.5s ease',
-//                     boxShadow: activeStep === index 
-//                       ? '0 20px 60px rgba(255,255,255,0.1)' 
+//                     boxShadow: activeStep === index
+//                       ? '0 20px 60px rgba(255,255,255,0.1)'
 //                       : 'none'
 //                   }}>
 //                     {/* {step.icon} */}
@@ -299,10 +295,6 @@
 //   );
 // }
 
-
-
-
-
 // // // jdfaks
 // "use client";
 
@@ -355,7 +347,7 @@
 //     const checkMobile = () => {
 //       setIsMobile(window.innerWidth < 768);
 //     };
-    
+
 //     checkMobile();
 //     window.addEventListener("resize", checkMobile);
 
@@ -369,7 +361,7 @@
 
 //         const direction = steps[index].direction;
 //         let fromVars = { opacity: 0 };
-        
+
 //         switch(direction) {
 //           case 'left':
 //             fromVars = { opacity: 0, x: -100 };
@@ -589,7 +581,7 @@
 //                 >
 //                   <div
 //                     style={{
-                     
+
 //                       border:
 //                         activeStep === index
 //                           ? "2px solid #0092b8"
@@ -679,7 +671,6 @@
 // }
 // odl
 
-
 // new
 "use client";
 
@@ -693,26 +684,30 @@ const steps = [
   {
     number: 1,
     title: "Upload Floor Plan",
-    description: "Import any DXF or DWG file directly from your CAD system. No redrawing. No simplification. Just upload.",
-    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/uploadfile.png?raw=true",
+    description:
+      "Import any DXF or DWG file directly from your CAD system. No redrawing. No simplification. Just upload.",
+    icon: "image/fileupload.png",
   },
   {
     number: 2,
     title: "Set Parameters",
-    description: "Define bay dimensions, aisle widths, PH requirements, parking target. AI auto-calculates compliance needs per NBC 2016.",
-    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/pioneverse.com_phoenix_parkingai_beta_(Nest%20Hub)%20(3).png?raw=true",
+    description:
+      "Define bay dimensions, aisle widths, PH requirements, parking target. AI auto-calculates compliance needs per NBC 2016.",
+    icon: "image/aiconfiguration.png",
   },
   {
     number: 3,
     title: "AI Generates",
-    description: "In seconds, the engine tests thousands of configurations. Detects columns, obstacles, ramps. Optimizes layout. Checks all 8 NBC rules.",
-    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/pioneverse.com_phoenix_parkingai_beta_(Nest%20Hub)%20(4).png?raw=true",
+    description:
+      "In seconds, the engine tests thousands of configurations. Detects columns, obstacles, ramps. Optimizes layout. Checks all 8 NBC rules.",
+    icon: "image/reviewfilescreate.png",
   },
   {
     number: 4,
     title: "Review & Export",
-    description: "Review layout. Make manual tweaks if needed. Export contractor-ready CAD with layers, annotations, color-coding.",
-    icon: "https://github.com/shahbaj-techprime/parking_ai/blob/main/image/pioneverse.com_phoenix_parkingai_beta_(Nest%20Hub%20Max).png?raw=true",
+    description:
+      "Review layout. Make manual tweaks if needed. Export contractor-ready CAD with layers, annotations, color-coding.",
+    icon: "image/finaloutput.png ",
   },
 ];
 
@@ -728,7 +723,7 @@ export default function HowItWorksSection() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
@@ -759,7 +754,7 @@ export default function HowItWorksSection() {
 
     return () => {
       window.removeEventListener("resize", checkMobile);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -769,7 +764,7 @@ export default function HowItWorksSection() {
     // Animate text items
     textRefs.current.forEach((text, i) => {
       if (!text) return;
-      
+
       if (i === index) {
         gsap.to(text, {
           opacity: 1,
@@ -790,7 +785,7 @@ export default function HowItWorksSection() {
     // Animate images
     imageRefs.current.forEach((img, i) => {
       if (!img) return;
-      
+
       if (i === index) {
         gsap.to(img, {
           opacity: 1,
@@ -813,7 +808,9 @@ export default function HowItWorksSection() {
     <section
       ref={sectionRef}
       className="relative bg-black"
-      style={{ minHeight: !isMobile ? `${(steps.length + 1) * 100}vh` : 'auto' }}
+      style={{
+        minHeight: !isMobile ? `${(steps.length + 1) * 100}vh` : "auto",
+      }}
     >
       {/* Subtle grid background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
@@ -835,30 +832,35 @@ export default function HowItWorksSection() {
           <div className="mt-[-100] flex items-center py-20">
             <div className="max-w-7xl mx-auto px-6 w-full">
               <div className="grid grid-cols-2 gap-20 items-center">
-                
                 {/* Left Side - Text */}
-                <div className="relative" style={{ minHeight: '600px' }}>
+                <div className="relative" style={{ minHeight: "600px" }}>
                   {steps.map((step, index) => (
                     <div
                       key={index}
                       ref={(el) => (textRefs.current[index] = el)}
                       className="absolute inset-0 flex items-center"
-                      style={{ pointerEvents: activeStep === index ? 'auto' : 'none' }}
+                      style={{
+                        pointerEvents: activeStep === index ? "auto" : "none",
+                      }}
                     >
                       <div className="w-full">
                         {/* Step Number */}
                         <div className="flex items-center gap-4 mb-8">
-                          <div className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold transition-all duration-500 ${
-                            activeStep === index
-                              ? "bg-[#0092b8] text-black shadow-2xl shadow-white/20"
-                              : "bg-gray-800 text-gray-500"
-                          }`}>
+                          <div
+                            className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold transition-all duration-500 ${
+                              activeStep === index
+                                ? "bg-[#0092b8] text-black shadow-2xl shadow-white/20"
+                                : "bg-gray-800 text-gray-500"
+                            }`}
+                          >
                             {step.number}
                           </div>
                           <div className="flex-1 h-0.5 bg-gray-800">
-                            <div 
+                            <div
                               className="h-full bg-white transition-all duration-500"
-                              style={{ width: activeStep === index ? '100%' : '0%' }}
+                              style={{
+                                width: activeStep === index ? "100%" : "0%",
+                              }}
                             />
                           </div>
                         </div>
@@ -876,13 +878,16 @@ export default function HowItWorksSection() {
                         {/* Step Indicators */}
                         <div className="flex items-center gap-3">
                           {steps.map((_, i) => (
-                            <div key={i} className={`transition-all duration-300 ${
-                              i === activeStep
-                                ? "w-12 h-2 bg-[#0092b8] rounded-full"
-                                : i < activeStep
-                                ? "w-8 h-2 bg-gray-600 rounded-full"
-                                : "w-2 h-2 bg-gray-800 rounded-full"
-                            }`} />
+                            <div
+                              key={i}
+                              className={`transition-all duration-300 ${
+                                i === activeStep
+                                  ? "w-12 h-2 bg-[#0092b8] rounded-full"
+                                  : i < activeStep
+                                    ? "w-8 h-2 bg-gray-600 rounded-full"
+                                    : "w-2 h-2 bg-gray-800 rounded-full"
+                              }`}
+                            />
                           ))}
                         </div>
                       </div>
@@ -891,7 +896,10 @@ export default function HowItWorksSection() {
                 </div>
 
                 {/* Right Side - Image */}
-                <div className="relative flex items-center justify-center" style={{ minHeight: '600px' }}>
+                <div
+                  className="relative flex items-center justify-center"
+                  style={{ minHeight: "600px" }}
+                >
                   {steps.map((step, index) => (
                     <div
                       key={index}
@@ -899,21 +907,16 @@ export default function HowItWorksSection() {
                       className="absolute inset-0 flex items-center justify-center p-4"
                       style={{ zIndex: activeStep === index ? 10 : 0 }}
                     >
-                      <div className={`relative w-full max-w-[600px] aspect-[16/10] rounded-2xl overflow-hidden transition-all duration-500 ${
-                        activeStep === index
-                          ? "ring-1 ring-[#0092b8] shadow-1xl shadow-white/10"
-                          : "ring-1 ring-gray-800"
-                      }`}>
+                      <div className="relative w-full max-w-[600px] aspect-[16/10] rounded-2xl overflow-hidden">
                         <img
                           src={step.icon}
                           alt={step.title}
-                          className="w-full h-full object-contain bg-gray-900"
+                          className="w-full h-full object-contain"
                         />
                       </div>
                     </div>
                   ))}
                 </div>
-
               </div>
             </div>
           </div>
@@ -957,8 +960,6 @@ export default function HowItWorksSection() {
   );
 }
 // new
-
-
 
 // import { useEffect, useState } from "react";
 // import { gsap } from "gsap";
