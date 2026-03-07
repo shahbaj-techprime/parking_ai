@@ -268,12 +268,12 @@ const FAQSectionMinimal = () => {
                 className="w-full py-5 flex items-center justify-between text-left focus:outline-none group"
                 aria-expanded={openIndex === index}
               >
-                <span className="text-base md:text-lg font-medium text-white group-hover:text-[#0092b8] transition-colors duration-200 pr-4">
+                <span className="text-base md:text-lg font-medium text-white group-hover:text-[#05df72] transition-colors duration-200 pr-4">
                   {faq.question}
                 </span>
                 <div className="flex-shrink-0">
                   <svg
-                    className={`w-5 h-5 text-[#0092b8] transition-transform duration-300 ${
+                    className={`w-5 h-5 text-[#05df72] transition-transform duration-300 ${
                       openIndex === index ? 'rotate-180' : ''
                     }`}
                     fill="none"

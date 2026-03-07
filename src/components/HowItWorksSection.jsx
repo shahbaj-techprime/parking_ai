@@ -849,7 +849,7 @@ export default function HowItWorksSection() {
                           <div
                             className={`w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold transition-all duration-500 ${
                               activeStep === index
-                                ? "bg-[#0092b8] text-black shadow-2xl shadow-white/20"
+                                ? "bg-[#05df72] text-black shadow-2xl shadow-white/20"
                                 : "bg-gray-800 text-gray-500"
                             }`}
                           >
@@ -857,7 +857,7 @@ export default function HowItWorksSection() {
                           </div>
                           <div className="flex-1 h-0.5 bg-gray-800">
                             <div
-                              className="h-full bg-white transition-all duration-500"
+                              className="h-full bg-[#05df72] transition-all duration-500"
                               style={{
                                 width: activeStep === index ? "100%" : "0%",
                               }}
@@ -882,7 +882,7 @@ export default function HowItWorksSection() {
                               key={i}
                               className={`transition-all duration-300 ${
                                 i === activeStep
-                                  ? "w-12 h-2 bg-[#0092b8] rounded-full"
+                                  ? "w-12 h-2 bg-[#05df72] rounded-full"
                                   : i < activeStep
                                     ? "w-8 h-2 bg-gray-600 rounded-full"
                                     : "w-2 h-2 bg-gray-800 rounded-full"

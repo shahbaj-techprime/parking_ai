@@ -374,7 +374,7 @@ const CTASectionBold = () => {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "linear-gradient(#0092b8 1px, transparent 1px), linear-gradient(90deg, #0092b8 1px, transparent 1px)",
+              "linear-gradient(#0092b8 1px, transparent 1px), linear-gradient(90deg, #05df72 1px, transparent 1px)",
             backgroundSize: "50px 50px",
           }}
         />
@@ -387,7 +387,7 @@ const CTASectionBold = () => {
             <span className="block text-white mb-2 sm:mb-3">
               Stop Wasting Time on Parking.
             </span>
-            <span className="block text-[#0092b8]">
+            <span className="block text-[#05df72]">
               Start Winning Projects.
             </span>
           </h1>
@@ -403,12 +403,12 @@ const CTASectionBold = () => {
             Join developers and architects who've reclaimed{" "}
             <span className="text-white font-semibold relative">
               25+ hours
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#0092b8]" />
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#05df72]" />
             </span>{" "}
             per project and recovered{" "}
             <span className="text-white font-semibold relative">
               ₹50L+
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#0092b8]" />
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#05df72]" />
             </span>{" "}
             in parking revenue.
           </p>
@@ -420,11 +420,11 @@ const CTASectionBold = () => {
           // data-aos="zoom-in"
           // data-aos-delay="400"
         >
-          <div className="pulse-ring absolute inset-0 rounded-lg bg-[#0092b8] -z-10"></div>
+          <div className="pulse-ring absolute inset-0 rounded-lg bg-[#05df72] -z-10"></div>
 
           <button
             onClick={() => scrollToSection("contactus")}
-            className="relative bg-[#0092b8] text-white px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 lg:px-12 lg:py-6 rounded-lg font-bold text-sm sm:text-base md:text-lg lg:text-xl hover:bg-[#007a9a] transition-all duration-300 inline-flex items-center gap-2 sm:gap-3"
+            className="relative bg-[#05df72] text-black px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 lg:px-12 lg:py-6 rounded-lg font-bold text-sm sm:text-base md:text-lg lg:text-xl hover:bg-[#05df72] transition-all duration-300 inline-flex items-center gap-2 sm:gap-3"
           >
             <span>Book a 5-Minute Demo</span>
 

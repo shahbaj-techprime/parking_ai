@@ -1660,7 +1660,7 @@ export default function ImpactSection() {
                     width: isMobile ? "2.5rem" : "3.5rem",
                     height: isMobile ? "2.5rem" : "3.5rem",
                     borderRadius: "0.75rem",
-                    border: "2px solid #0092B8",
+                    border: "2px solid #05df72",
                     backgroundColor: "rgba(255,255,255,0.05)",
                     display: "flex",
                     alignItems: "center",
@@ -1795,7 +1795,7 @@ export default function ImpactSection() {
                   data-after
                   style={{
                     padding: isMobile ? "1.25rem" : "2rem",
-                    border: "2px solid #0092B8",
+                    border: "2px solid #05df72",
                     borderRadius: "1rem",
                     backgroundColor: "rgba(255,255,255,0.05)",
                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -1841,7 +1841,7 @@ export default function ImpactSection() {
                     {persona.after.text}
                     <span
                       style={{
-                        color: "#0092B8",
+                        color: "#05df72",
                         fontWeight: "700",
                         padding: isMobile
                           ? "0.15rem 0.35rem"

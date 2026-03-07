@@ -130,9 +130,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-b from-[#0a0b0e] to-[#111317] text-white pt-20 pb-6">
+    <footer className=" bg-gradient-to-b from-[#0a0b0e] to-[#111317] text-white pt-20 pb-6 h-full relative overflow-hidden">
       {/* Decorative gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0092b8]/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0092b8]/5 via-transparent to-transparent pointer-events-none  height-[200vh]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* MAIN GRID */}
@@ -140,14 +140,14 @@ const Footer = () => {
           {/* LEFT LOGO SECTION */}
           <div className="lg:col-span-2 flex flex-col items-start">
             <img
-              src="https://image2url.com/r2/default/images/1770828850620-79f23d68-e1af-453d-94af-3e74903f95b6.webp"
+              src="/image/NEXO_LVR.png"
               alt="Parking AI Logo"
-              className="w-48 mb-6 brightness-110"
+              className="w-180  ml-[-20] mb-6 brightness-110"
             />
-            <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-sm">
+            {/* <p className="text-gray-400 text-base leading-relaxed mb-6 max-w-sm">
               AI-powered parking design engine built for India's commercial real
               estate.
-            </p>
+            </p> */}
 
             {/* Trust Badges */}
             {/* <div className="flex flex-wrap gap-3 mb-6">
@@ -171,7 +171,7 @@ const Footer = () => {
                 <a
                   key={social.name}
                   href={social.href}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:bg-[#0092b8] hover:text-white hover:border-[#0092b8] transition-all duration-300 hover:scale-110"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:bg-[#05df72] hover:text-white hover:border-[#05df72] transition-all duration-300 hover:scale-110"
                   aria-label={social.name}
                   target="_black"
                 >
@@ -186,7 +186,7 @@ const Footer = () => {
             {/* Product */}
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#0092b8] rounded-full" />
+                <span className="w-1 h-4 bg-[#05df72] rounded-full" />
                 Product
               </h3>
               <ul className="space-y-3">
@@ -194,9 +194,9 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-gray-400 hover:text-[#0092b8] transition-colors duration-200 text-sm inline-flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-[#05df72] transition-colors duration-200 text-sm inline-flex items-center gap-2 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-[2px] bg-[#0092b8] transition-all duration-200" />
+                      <span className="w-0 group-hover:w-2 h-[2px] bg-[#05df72] transition-all duration-200" />
                       {item.label}
                     </a>
                   </li>
@@ -207,7 +207,7 @@ const Footer = () => {
             {/* Company */}
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#0092b8] rounded-full" />
+                <span className="w-1 h-4 bg-[#05df72] rounded-full" />
                 Company
               </h3>
               <ul className="space-y-3">
@@ -215,9 +215,9 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-gray-400 hover:text-[#0092b8] transition-colors duration-200 text-sm inline-flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-[#05df72] transition-colors duration-200 text-sm inline-flex items-center gap-2 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-[2px] bg-[#0092b8] transition-all duration-200" />
+                      <span className="w-0 group-hover:w-2 h-[2px] bg-[#05df72] transition-all duration-200" />
                       {item.label}
                     </a>
                   </li>
@@ -228,7 +228,7 @@ const Footer = () => {
             {/* Resources */}
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#0092b8] rounded-full" />
+                <span className="w-1 h-4 bg-[#05df72] rounded-full" />
                 Resources
               </h3>
               <ul className="space-y-3">
@@ -236,9 +236,9 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-gray-400 hover:text-[#0092b8] transition-colors duration-200 text-sm inline-flex items-center gap-2 group"
+                      className="text-gray-400 hover:text-[#05df72] transition-colors duration-200 text-sm inline-flex items-center gap-2 group"
                     >
-                      <span className="w-0 group-hover:w-2 h-[2px] bg-[#0092b8] transition-all duration-200" />
+                      <span className="w-0 group-hover:w-2 h-[2px] bg-[#05df72] transition-all duration-200" />
                       {item.label}
                     </a>
                   </li>
@@ -249,13 +249,13 @@ const Footer = () => {
             {/* Contact */}
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
-                <span className="w-1 h-4 bg-[#0092b8] rounded-full" />
+                <span className="w-1 h-4 bg-[#05df72] rounded-full" />
                 Contact
               </h3>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-[#0092b8] flex-shrink-0"
+                    className="w-4 h-4 mt-0.5 text-[#05df72] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -269,14 +269,14 @@ const Footer = () => {
                   </svg>
                   <a
                     href="mailto:hello@parkingai.in"
-                    className="hover:text-[#0092b8] transition-colors"
+                    className="hover:text-[#05df72] transition-colors"
                   >
                     hello@nexelvr.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-[#0092b8] flex-shrink-0"
+                    className="w-4 h-4 mt-0.5 text-[#05df72] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -288,11 +288,11 @@ const Footer = () => {
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  <span>+91 9885643254</span>
+                  <span  className="hover:text-[#05df72] transition-colors">+91 9885643254</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-[#0092b8] flex-shrink-0"
+                    className="w-4 h-4 mt-0.5 text-[#05df72] flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -310,7 +310,7 @@ const Footer = () => {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span>hyderabad, India</span>
+                  <span  className="hover:text-[#05df72] transition-colors">hyderabad, India</span>
                 </li>
               </ul>
             </div>
@@ -329,7 +329,7 @@ const Footer = () => {
                 href="https://nexelvr.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#0092b8] font-semibold hover:underline"
+                className="text-[#05df72] font-semibold hover:underline"
               >
                 Powered by Nexelvr
               </a>
@@ -366,4 +366,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer

@@ -1854,7 +1854,7 @@ export default function SeamlessGallery() {
               className="problem-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{ transformOrigin: "center center" }}
             >
-              <div className="relative group w-[450px] lg:w-[500px] xl:w-[550px] min-h-[50px] rounded-2xl overflow-hidden border border-[#0092b8]">
+              <div className="relative group w-[450px] lg:w-[500px] xl:w-[550px] min-h-[50px] rounded-2xl overflow-hidden border-2 border-[#05df72]">
                 {/* 1️⃣ Background Image (Inside Card Only) */}
                 <div
                   className="absolute inset-0 bg-cover bg-center  scale-105"

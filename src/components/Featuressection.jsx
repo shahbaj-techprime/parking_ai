@@ -1982,7 +1982,7 @@ export default function SeamlessGallery() {
                 <div className="relative group">
                   <div className="absolute inset-0 rounded-3xl opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                  <div className="relative rounded-3xl p-8 w-[450px] max-h-[600px] overflow-y-auto flex flex-col border border-[#0092b8] lg:w-[500px] xl:w-[550px] ">
+                  <div className="relative rounded-3xl p-8 w-[450px] max-h-[600px] overflow-y-auto flex flex-col border-2 border-[#05df72] lg:w-[500px] xl:w-[550px] ">
                     <div className="mb-6">
                       <h3 className="text-2xl font-bold text-white leading-tight">
                         {feature.title}

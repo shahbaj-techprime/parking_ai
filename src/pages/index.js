@@ -1,5 +1,6 @@
 "use client";
 
+import BackgroundCanvas from "@/components/BackgroundCanvas";
 import CallToActionSection from "@/components/CallToActionSection";
 import ComparisonSection from "@/components/Comparisonsection";
 import ComplianceAndOutputSection from "@/components/ComplianceAndOutputSection";
@@ -56,8 +57,9 @@ export default function Home() {
 
       <TopBanner />
       <Navbar />
+      {/* <BackgroundCanvas/> */}
       <Hero />
-      <Videofiles/>
+      {/* <Videofiles/> */}
       <WhyChoose />
       {/* <SolutionSection /> */}
       <SeamlessGallery />
