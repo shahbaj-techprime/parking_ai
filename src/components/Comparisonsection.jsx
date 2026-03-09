@@ -3,84 +3,87 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/app/translations/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const comparisons = [
-  {
-    title: "Parking AI vs. TestFit",
-    data: [
-      {
-        dimension: "Structured Parking",
-        parkingAI: "Purpose-built, optimized",
-        competitor:
-          '"Angled parking NOT YET compatible with structured parking"',
-        winner: "Parking AI",
-      },
-      {
-        dimension: "NBC Compliance",
-        parkingAI: "Built-in (India-native)",
-        competitor: "US zoning only",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "Space Optimization",
-        parkingAI: "50mm increment logic",
-        competitor: "Degree-angle adjustment",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "Design Conflict Detection",
-        parkingAI: "8 automated checks + auto-repair",
-        competitor: "Basic validation",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "AutoCAD Integration",
-        parkingAI: "Native (direct DXF/DWG)",
-        competitor: "Parcel data workflow",
-        winner: "Parking AI",
-      },
-    ],
-  },
-  {
-    title: "Parking AI vs. ParkCAD",
-    data: [
-      {
-        dimension: "Technology",
-        parkingAI: "AI-driven generative algorithms",
-        competitor: "CAD tool with automation",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "Speed",
-        parkingAI: "10 minutes (AI generates)",
-        competitor: "30–60 minutes (manual with tools)",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "NBC Compliance",
-        parkingAI: "Fully embedded",
-        competitor: "Not built for Indian standards",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "Compliance Flags",
-        parkingAI: "8 automated checks + auto-repair suggestions",
-        competitor: "Manual verification required",
-        winner: "Parking AI",
-      },
-      {
-        dimension: "User Interface",
-        parkingAI: "Modern, real-time, reactive",
-        competitor: "Dated CAD interface",
-        winner: "Parking AI",
-      },
-    ],
-  },
-];
+// const comparisons = [
+//   {
+//     title: "Parking AI vs. TestFit",
+//     data: [
+//       {
+//         dimension: "Structured Parking",
+//         parkingAI: "Purpose-built, optimized",
+//         competitor:
+//           '"Angled parking NOT YET compatible with structured parking"',
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "NBC Compliance",
+//         parkingAI: "Built-in (India-native)",
+//         competitor: "US zoning only",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "Space Optimization",
+//         parkingAI: "50mm increment logic",
+//         competitor: "Degree-angle adjustment",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "Design Conflict Detection",
+//         parkingAI: "8 automated checks + auto-repair",
+//         competitor: "Basic validation",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "AutoCAD Integration",
+//         parkingAI: "Native (direct DXF/DWG)",
+//         competitor: "Parcel data workflow",
+//         winner: "Parking AI",
+//       },
+//     ],
+//   },
+//   {
+//     title: "Parking AI vs. ParkCAD",
+//     data: [
+//       {
+//         dimension: "Technology",
+//         parkingAI: "AI-driven generative algorithms",
+//         competitor: "CAD tool with automation",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "Speed",
+//         parkingAI: "10 minutes (AI generates)",
+//         competitor: "30–60 minutes (manual with tools)",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "NBC Compliance",
+//         parkingAI: "Fully embedded",
+//         competitor: "Not built for Indian standards",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "Compliance Flags",
+//         parkingAI: "8 automated checks + auto-repair suggestions",
+//         competitor: "Manual verification required",
+//         winner: "Parking AI",
+//       },
+//       {
+//         dimension: "User Interface",
+//         parkingAI: "Modern, real-time, reactive",
+//         competitor: "Dated CAD interface",
+//         winner: "Parking AI",
+//       },
+//     ],
+//   },
+// ];
 
 export default function ComparisonSection() {
+     const { t } = useLanguage();
+      const comparisons = t.comparisons || [];
   const sectionRef = useRef(null);
   const tablesRef = useRef([]);
   const rowsRef = useRef([]);
@@ -162,10 +165,10 @@ export default function ComparisonSection() {
         {/* Header */}
         <div className="text-center mb-24">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 leading-tight">
-            Why Parking AI Wins
+           {t.comparisontitle}
           </h2>
           <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
-            Direct comparison with market alternatives.
+          {t.comparisondescription}
           </p>
         </div>
 

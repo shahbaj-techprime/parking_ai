@@ -1,14 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/app/translations/context/LanguageContext";
+import { Globe } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+  const { lang, changeLanguage, t } = useLanguage();
+
+  const [langOpen, setLangOpen] = useState(false);
+  const product = t.product || [];
+  const company = t.newarraycompany || [];
+  const resources = t.newarrayresources || [];
+  // const trustSecurity = t.trustSecurity || [];
+  const languages = [
+    { code: "en", label: "English" },
+    { code: "ar", label: "Arabic" },
+    { code: "ko", label: "Korean" },
+  ];
+  const currentLang = languages.find((l) => l.code === lang);
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (isMobile) return;
@@ -44,53 +59,50 @@ const Footer = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-
-  const footerData = {
-    product: [
-      { label: "Features", href: "#features" },
-      { label: "Why Parking AI", href: "#why" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "FAQ", href: "#faq" },
-    ],
-    company: [
-      { label: "Contact Sales", href: "#contact" },
-      { label: "Support", href: "#support" },
-      { label: "Blog", href: "#blog" },
-      { label: "Case Studies", href: "#case-studies" },
-    ],
-    resources: [
-      { label: "NBC 2016 Guide", href: "#nbc-guide" },
-      { label: "Video Tutorials", href: "#tutorials" },
-      { label: "Sample DWG Files", href: "#samples" },
-      { label: "Best Practices", href: "#practices" },
-    ],
-    trustSecurity: [
-      { label: "NBC 2016 Compliant" },
-      { label: "India-Based Servers" },
-      { label: "SOC 2 Type II" },
-      { label: "24-Hour Support" },
-    ],
-  };
+  // const product = [
+  //   { label: "Features", href: "#features" },
+  //   { label: "Why Parking AI", href: "#why" },
+  //   { label: "Pricing", href: "#pricing" },
+  //   { label: "FAQ", href: "#faq" },
+  // ];
+  // const company = [
+  //   { label: "Contact Sales", href: "#contact" },
+  //   { label: "Support", href: "#support" },
+  //   { label: "Blog", href: "#blog" },
+  //   { label: "Case Studies", href: "#case-studies" },
+  // ];
+  // const resources = [
+  //   { label: "NBC 2016 Guide", href: "#nbc-guide" },
+  //   { label: "Video Tutorials", href: "#tutorials" },
+  //   { label: "Sample DWG Files", href: "#samples" },
+  //   { label: "Best Practices", href: "#practices" },
+  // ];
+  // const trustSecurity = [
+  //   { label: "NBC 2016 Compliant" },
+  //   { label: "India-Based Servers" },
+  //   { label: "SOC 2 Type II" },
+  //   { label: "24-Hour Support" },
+  // ];
 
   const socialLinks = [
-    {
-      name: "Website",
-      href: "https://nexelvr.com/", // change to your real URL
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          viewBox="0 0 24 24"
-        >
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18" />
-          <path d="M12 3a15 15 0 010 18" />
-          <path d="M12 3a15 15 0 000 18" />
-        </svg>
-      ),
-    },
+    // {
+    //   name: "Website",
+    //   href: "https://nexelvr.com/", // change to your real URL
+    //   icon: (
+    //     <svg
+    //       className="w-5 h-5"
+    //       fill="none"
+    //       stroke="currentColor"
+    //       strokeWidth="1.8"
+    //       viewBox="0 0 24 24"
+    //     >
+    //       <circle cx="12" cy="12" r="9" />
+    //       <path d="M3 12h18" />
+    //       <path d="M12 3a15 15 0 010 18" />
+    //       <path d="M12 3a15 15 0 000 18" />
+    //     </svg>
+    //   ),
+    // },
     {
       name: "LinkedIn",
       href: "https://www.linkedin.com/company/nexel-vr/posts/?feedView=all",
@@ -165,7 +177,33 @@ const Footer = () => {
               </div>
             </div> */}
 
-            {/* Social Links */}
+            {/* <div className="relative">
+              <button
+                onClick={() => setLangOpen(!langOpen)}
+                className="flex items-center gap-2 text-gray-300 hover:text-white"
+              >
+                <Globe size={18} />
+                {currentLang?.label?.toUpperCase()}
+              </button>
+
+              {langOpen && (
+                <div className="absolute right-0 mt-3 w-36 bg-black border border-white/10 rounded-lg shadow-lg">
+                  {languages.map((l) => (
+                    <button
+                      key={l.code}
+                      onClick={() => {
+                        changeLanguage(l.code);
+                        setLangOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-2 text-gray-300 hover:bg-white/10 hover:text-white"
+                    >
+                      {l.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+           
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
@@ -178,6 +216,51 @@ const Footer = () => {
                   {social.icon}
                 </a>
               ))}
+            </div> */}
+
+            <div className="flex items-center gap-4">
+              {/* Language Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setLangOpen(!langOpen)}
+                  className="flex items-center gap-2 text-gray-300 hover:text-white"
+                >
+                  <Globe size={28} />
+                  {currentLang?.label?.toUpperCase()}
+                </button>
+
+                {langOpen && (
+                  <div className="absolute right-0 mt-3 w-36 bg-black border border-white/10 rounded-lg shadow-lg">
+                    {languages.map((l) => (
+                      <button
+                        key={l.code}
+                        onClick={() => {
+                          changeLanguage(l.code);
+                          setLangOpen(false);
+                        }}
+                        className="block w-full text-left px-4 py-2 text-gray-300 hover:bg-white/10 hover:text-white"
+                      >
+                        {l.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-gray-400 hover:bg-[#05df72] hover:text-white hover:border-[#05df72] transition-all duration-300 hover:scale-110"
+                    aria-label={social.name}
+                    target="_blank"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -187,10 +270,11 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-[#05df72] rounded-full" />
-                Product
+                {t?.products}
               </h3>
               <ul className="space-y-3">
-                {footerData.product.map((item, index) => (
+                {product.map((item, index) => (
+                  // console.log(item)
                   <li key={index}>
                     <a
                       href={item.href}
@@ -208,10 +292,10 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-[#05df72] rounded-full" />
-                Company
+                {t?.Companys}
               </h3>
               <ul className="space-y-3">
-                {footerData.company.map((item, index) => (
+                {company.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.href}
@@ -229,10 +313,10 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-[#05df72] rounded-full" />
-                Resources
+                {t?.res}
               </h3>
               <ul className="space-y-3">
-                {footerData.resources.map((item, index) => (
+                {resources.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.href}
@@ -250,7 +334,7 @@ const Footer = () => {
             <div className="footer-column">
               <h3 className="text-white text-sm font-bold mb-5 uppercase tracking-wider flex items-center gap-2">
                 <span className="w-1 h-4 bg-[#05df72] rounded-full" />
-                Contact
+                {t?.newcontact}
               </h3>
               <ul className="space-y-3 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
@@ -271,7 +355,7 @@ const Footer = () => {
                     href="mailto:hello@parkingai.in"
                     className="hover:text-[#05df72] transition-colors"
                   >
-                    hello@nexelvr.com
+                    {t?.newemail}
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
@@ -288,7 +372,9 @@ const Footer = () => {
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  <span  className="hover:text-[#05df72] transition-colors">+91 9885643254</span>
+                  <span className="hover:text-[#05df72] transition-colors">
+                    {t?.newnumber}
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg
@@ -310,7 +396,9 @@ const Footer = () => {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span  className="hover:text-[#05df72] transition-colors">hyderabad, India</span>
+                  <span className="hover:text-[#05df72] transition-colors">
+                    {t?.newcity}
+                  </span>
                 </li>
               </ul>
             </div>
@@ -324,17 +412,17 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
           <p className="text-gray-500 flex items-center gap-2">
             <span>
-              © 2026 Parking AI.{" "}
+              {t?.copyright}{" "}
               <a
                 href="https://nexelvr.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#05df72] font-semibold hover:underline"
               >
-                Powered by Nexelvr
+                {t?.powder}
               </a>
             </span>
-            <span className="hidden sm:inline">All rights reserved.</span>
+            <span className="hidden sm:inline">{t?.All}</span>
             {/* <span className="inline-flex items-center gap-1 text-xs bg-white/5 px-2 py-1 rounded-full">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
               Made in India
@@ -344,16 +432,16 @@ const Footer = () => {
           <div className="flex items-center gap-6">
             <a
               href="#privacy"
-              className="text-gray-500 hover:text-[#0092b8] transition-colors"
+              className="text-gray-500 hover:text-[#05df72] transition-colors"
             >
-              Privacy Policy
+              {t?.privacy}
             </a>
             <span className="text-gray-700">•</span>
             <a
               href="#terms"
-              className="text-gray-500 hover:text-[#0092b8] transition-colors"
+              className="text-gray-500 hover:text-[#05df72] transition-colors"
             >
-              Terms of Service
+              {t?.terms}
             </a>
             {/* <span className="text-gray-700">•</span>
             <a href="#cookies" className="text-gray-500 hover:text-[#0092b8] transition-colors">
@@ -366,4 +454,4 @@ const Footer = () => {
   );
 };
 
-export default Footer
+export default Footer;

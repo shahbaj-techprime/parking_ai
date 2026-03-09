@@ -205,8 +205,11 @@
 
 import { useEffect, useState } from "react";
 import gsap from "gsap";
+import { useLanguage } from "@/app/translations/context/LanguageContext";
 
 export default function TopBanner() {
+    const { t } = useLanguage();
+  
   const [visible, setVisible] = useState(true);
   const [hours, setHours] = useState("00");
   const [minutes, setMinutes] = useState("00");
@@ -286,19 +289,19 @@ lg:h-[40px]
 z-50 bg-lime-400 text-black"
     >
       <div className="max-w-7xl mx-auto h-full px-4 flex items-center justify-center gap-6 text-sm font-medium">
-        <span>Don’t miss the limited-time deals!</span>
+        <span>{t?.topbanner}</span>
 
         <div className="flex items-center gap-2 font-semibold">
-          <span>{hours}H</span>
-          <span>{minutes}M</span>
-          <span>{seconds}S</span>
+          <span>{hours}{t?.topbannerH}</span>
+          <span>{minutes}{t?.topbannerM}</span>
+          <span>{seconds}{t?.topbannerS}</span>
         </div>
 
         <button
           onClick={() => scrollToSection("contactus")}
           className="underline font-semibold hover:opacity-80 transition cursor-pointer"
         >
-          Explore
+      {t?.topbannerbutton}
         </button>
       </div>
     </div>

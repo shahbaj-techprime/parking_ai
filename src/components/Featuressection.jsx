@@ -1676,57 +1676,60 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-const features = [
-  {
-    icon: "🎯",
-    title: "Intelligent Space Optimization (50mm Increment Logic)",
-    description:
-      "Parking AI absorbs dead space when sweat, a 4,900 mm column span yields 3 spaces with waste. Placing AI yields 4 spaces. By distributing 900 mm intelligently across bays, On a 6-level basement that's, 15–45 extra spaces = ₹5–₹45 lakh revenue gain.",
-    highlight: "15–45 extra spaces",
-  },
-  {
-    icon: "✓",
-    title: "8 Automated Compliance Checks",
-    description: "Before you see the layout, Parking AI validates:",
-    checks: [
-      "Turning radius (8.00m outer radius per NBC)",
-      "Aisle widths (3.6m one-way, 6.0m two-way)",
-      "Bay minimum dimensions & width",
-      "Column obstruction/clearance (door fully rotated)",
-      "PH bays (3.6m × 5.0m with 2.4m+)",
-      "Fire exit path (door access)",
-      "Ramp pitch/landing (max. 20%)",
-      "Parking target (zone-specific norms)",
-    ],
-    footer: "One issue found? AI suggests auto-repair. One click to fix.",
-  },
-  {
-    icon: "📐",
-    title: "Native AutoCAD Integration",
-    description:
-      "Works directly with DXF and DWG files. No redrawing required. Exports contractor-ready CAD with proper layers, color-coding, annotations. Architects never leave their CAD workflow.",
-  },
-  {
-    icon: "🔧",
-    title: "Manual Override + Reactive AI",
-    description:
-      "You're in control. Move a column? AI updates surrounding bays instantly. Swap a bay to 4-wheeler? System re-validates in real time. Full version control (RI saved edit, RI backed undo etc.)",
-  },
-  {
-    icon: "📊",
-    title: "Capacity-Driven Reverse Engineering",
-    description:
-      "Design backward from parking target. Set your goal (750 spaces), and the engine calculates if it's feasible. If not, it tells you why and suggests solutions (add a level, expand the ramp, etc.)",
-  },
-  {
-    icon: "🚴",
-    title: "Bike Parking Auto-Integration",
-    description:
-      "Residual zones classified: If 'Can a 2km × 2km bike bay fit more efficient than forcing car parking', the engine auto-converts and flags it for your approval.",
-  },
-];
+import { useLanguage } from "@/app/translations/context/LanguageContext";
+// const features = [
+//   {
+//     icon: "🎯",
+//     title: "Intelligent Space Optimization (50mm Increment Logic)",
+//     description:
+//       "Parking AI absorbs dead space when sweat, a 4,900 mm column span yields 3 spaces with waste. Placing AI yields 4 spaces. By distributing 900 mm intelligently across bays, On a 6-level basement that's, 15–45 extra spaces = ₹5–₹45 lakh revenue gain.",
+//     highlight: "15–45 extra spaces",
+//   },
+//   {
+//     icon: "✓",
+//     title: "8 Automated Compliance Checks",
+//     description: "Before you see the layout, Parking AI validates:",
+//     checks: [
+//       "Turning radius (8.00m outer radius per NBC)",
+//       "Aisle widths (3.6m one-way, 6.0m two-way)",
+//       "Bay minimum dimensions & width",
+//       "Column obstruction/clearance (door fully rotated)",
+//       "PH bays (3.6m × 5.0m with 2.4m+)",
+//       "Fire exit path (door access)",
+//       "Ramp pitch/landing (max. 20%)",
+//       "Parking target (zone-specific norms)",
+//     ],
+//     footer: "One issue found? AI suggests auto-repair. One click to fix.",
+//   },
+//   {
+//     icon: "📐",
+//     title: "Native AutoCAD Integration",
+//     description:
+//       "Works directly with DXF and DWG files. No redrawing required. Exports contractor-ready CAD with proper layers, color-coding, annotations. Architects never leave their CAD workflow.",
+//   },
+//   {
+//     icon: "🔧",
+//     title: "Manual Override + Reactive AI",
+//     description:
+//       "You're in control. Move a column? AI updates surrounding bays instantly. Swap a bay to 4-wheeler? System re-validates in real time. Full version control (RI saved edit, RI backed undo etc.)",
+//   },
+//   {
+//     icon: "📊",
+//     title: "Capacity-Driven Reverse Engineering",
+//     description:
+//       "Design backward from parking target. Set your goal (750 spaces), and the engine calculates if it's feasible. If not, it tells you why and suggests solutions (add a level, expand the ramp, etc.)",
+//   },
+//   {
+//     icon: "🚴",
+//     title: "Bike Parking Auto-Integration",
+//     description:
+//       "Residual zones classified: If 'Can a 2km × 2km bike bay fit more efficient than forcing car parking', the engine auto-converts and flags it for your approval.",
+//   },
+// ];
 
 export default function SeamlessGallery() {
+     const { t } = useLanguage();
+    const features = t.newarrayfeatures || [];
   const sectionRef = useRef(null);
   const galleryRef = useRef(null);
   const featuresSectionRef = useRef(null);
@@ -1830,10 +1833,10 @@ export default function SeamlessGallery() {
           <div className="max-w-lg mx-auto">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                Features Built for Real Parking
+             {  t.featuresTitle || "Features Built for Real Parking"}
               </h2>
               <p className="text-gray-400 text-sm md:text-base">
-                Every feature designed to save time, maximize revenue, and guarantee compliance.
+              {t.featuresDesc || "Every feature designed to save time, maximize revenue, and guarantee compliance."}
               </p>
             </div>
 
@@ -1901,7 +1904,7 @@ export default function SeamlessGallery() {
                                 <div className="absolute inset-0 w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
                               </div>
                               <span className="text-xs text-green-400 font-semibold uppercase tracking-wider">
-                                AI-Powered
+                                {t?.AI}
                               </span>
                             </div>
                           </div>
@@ -1965,10 +1968,10 @@ export default function SeamlessGallery() {
         >
           <div className="absolute top-16 md:top-20 left-0 right-0 z-10 text-center px-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4">
-              Features Built for Real Parking
+             {t.featuresTitle }
             </h2>
             <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-3xl mx-auto">
-              Every feature designed to save time, maximize revenue, and guarantee compliance.
+              {t.featuresDesc}
             </p>
           </div>
 
@@ -2031,7 +2034,7 @@ export default function SeamlessGallery() {
                             <div className="absolute inset-0 w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
                           </div>
                           <span className="text-xs text-green-400 font-semibold uppercase tracking-wider">
-                            AI-Powered
+                             {t?.AI}
                           </span>
                         </div>
                         <div className="flex gap-1">

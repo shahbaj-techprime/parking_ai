@@ -65,7 +65,8 @@ export default function Home() {
       <SeamlessGallery />
       <HowItWorksSection />
       <section id="features" className="scroll-mt-20">
-        <FeaturesSection />
+        <FeaturesSection />  
+        {/* Problem */}
       </section>
       <section id="why" className="scroll-mt-20">
         <ComparisonSection />

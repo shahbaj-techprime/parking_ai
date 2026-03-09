@@ -677,41 +677,48 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/app/translations/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-  {
-    number: 1,
-    title: "Upload Floor Plan",
-    description:
-      "Import any DXF or DWG file directly from your CAD system. No redrawing. No simplification. Just upload.",
-    icon: "image/fileupload.png",
-  },
-  {
-    number: 2,
-    title: "Set Parameters",
-    description:
-      "Define bay dimensions, aisle widths, PH requirements, parking target. AI auto-calculates compliance needs per NBC 2016.",
-    icon: "image/aiconfiguration.png",
-  },
-  {
-    number: 3,
-    title: "AI Generates",
-    description:
-      "In seconds, the engine tests thousands of configurations. Detects columns, obstacles, ramps. Optimizes layout. Checks all 8 NBC rules.",
-    icon: "image/reviewfilescreate.png",
-  },
-  {
-    number: 4,
-    title: "Review & Export",
-    description:
-      "Review layout. Make manual tweaks if needed. Export contractor-ready CAD with layers, annotations, color-coding.",
-    icon: "image/finaloutput.png ",
-  },
-];
+// const steps = [
+//   {
+//     id: 1,
+//     number: 1,
+//     title: "Upload Floor Plan",
+//     description:
+//       "Import any DXF or DWG file directly from your CAD system. No redrawing. No simplification. Just upload.",
+//     icon: "image/fileupload.png",
+//   },
+//   {
+//     id: 2,
+//     number: 2,
+//     title: "Set Parameters",
+//     description:
+//       "Define bay dimensions, aisle widths, PH requirements, parking target. AI auto-calculates compliance needs per NBC 2016.",
+//     icon: "image/aiconfiguration.png",
+//   },
+//   {
+//     id: 3,
+//     number: 3,
+//     title: "AI Generates",
+//     description:
+//       "In seconds, the engine tests thousands of configurations. Detects columns, obstacles, ramps. Optimizes layout. Checks all 8 NBC rules.",
+//     icon: "image/reviewfilescreate.png",
+//   },
+//   {
+//     id: 4,
+//     number: 4,
+//     title: "Review & Export",
+//     description:
+//       "Review layout. Make manual tweaks if needed. Export contractor-ready CAD with layers, annotations, color-coding.",
+//     icon: "image/finaloutput.png ",
+//   },
+// ];
 
 export default function HowItWorksSection() {
+     const { t } = useLanguage();
+    const steps = t.steps || [];
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const textRefs = useRef([]);
@@ -818,10 +825,10 @@ export default function HowItWorksSection() {
       {/* Header */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 text-center">
         <h2 className="text-3xl lg:text-5xl font-bold mb-4 text-white">
-          How It Works
+         {t.howItWorksTitle}
         </h2>
         <p className="text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto">
-          Four simple steps to NBC-compliant, optimized parking layouts
+          {t.howItWorksDesc}
         </p>
       </div>
 

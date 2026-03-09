@@ -2,8 +2,10 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
+import { useLanguage } from "@/app/translations/context/LanguageContext";
 
 export default function ScrollToTopButton() {
+    const { t } = useLanguage();
   const [show, setShow] = useState(false);
   const buttonRef = useRef(null);
 
@@ -65,7 +67,7 @@ export default function ScrollToTopButton() {
           d="M4.5 15.75l7.5-7.5 7.5 7.5"
         />
       </svg>
-      <span className="text-[10px] font-bold mt-0.5">TOP</span>
+      <span className="text-[10px] font-bold mt-0.5">{t?.TOP}</span>
     </button>
   );
 }

@@ -5,10 +5,13 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/app/translations/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PricingSection = () => {
+  const { t } = useLanguage();
+  const pricingPlans = t.pricingPlans || [];
   // useEffect(() => {
   //   // Only initialize animations on desktop (min-width: 768px)
   //   if (window.innerWidth >= 768) {
@@ -104,56 +107,56 @@ const PricingSection = () => {
     });
   };
 
-  const pricingPlans = [
-    {
-      name: "Starter",
-      price: "₹50K",
-      period: "per project",
-      description: "Up to 5 projects/quarter",
-      features: [
-        "Unlimited layouts per project",
-        "Unlimited revisions",
-        "CAD outputs",
-        "Compliance validation",
-        "Email support",
-      ],
-      buttonText: "Get Started",
-      popular: false,
-      align: "left",
-    },
-    {
-      name: "Growth",
-      price: "₹1.25L",
-      period: "per quarter",
-      description: "Up to 10 projects/quarter",
-      features: [
-        "All Starter features",
-        "Unlimited projects",
-        "Team access (5 seats)",
-        "Priority support",
-        "Analytics reports",
-      ],
-      buttonText: "Most Popular",
-      popular: true,
-      align: "center",
-    },
-    {
-      name: "Enterprise",
-      price: "₹2.5L",
-      period: "per quarter",
-      description: "20+ projects/quarter",
-      features: [
-        "All Growth features",
-        "Unlimited team seats",
-        "API access",
-        "Dedicated support",
-        "Custom compliance rules",
-      ],
-      buttonText: "Contact Sales",
-      popular: false,
-      align: "right",
-    },
-  ];
+  // const pricingPlans = [
+  //   {
+  //     name: "Starter",
+  //     price: "₹50K",
+  //     period: "per project",
+  //     description: "Up to 5 projects/quarter",
+  //     features: [
+  //       "Unlimited layouts per project",
+  //       "Unlimited revisions",
+  //       "CAD outputs",
+  //       "Compliance validation",
+  //       "Email support",
+  //     ],
+  //     buttonText: "Get Started",
+  //     popular: false,
+  //     align: "left",
+  //   },
+  //   {
+  //     name: "Growth",
+  //     price: "₹1.25L",
+  //     period: "per quarter",
+  //     description: "Up to 10 projects/quarter",
+  //     features: [
+  //       "All Starter features",
+  //       "Unlimited projects",
+  //       "Team access (5 seats)",
+  //       "Priority support",
+  //       "Analytics reports",
+  //     ],
+  //     buttonText: "Most Popular",
+  //     popular: true,
+  //     align: "center",
+  //   },
+  //   {
+  //     name: "Enterprise",
+  //     price: "₹2.5L",
+  //     period: "per quarter",
+  //     description: "20+ projects/quarter",
+  //     features: [
+  //       "All Growth features",
+  //       "Unlimited team seats",
+  //       "API access",
+  //       "Dedicated support",
+  //       "Custom compliance rules",
+  //     ],
+  //     buttonText: "Contact Sales",
+  //     popular: false,
+  //     align: "right",
+  //   },
+  // ];
 
   return (
     <section className="min-h-screen bg-[#111317] text-white py-20 px-4 overflow-hidden">
@@ -161,11 +164,9 @@ const PricingSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-6xl font-bold mb-4 text-white">
-            Simple, Transparent Pricing
+            {t?.pricingtitle}
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl">
-            Choose the tier that matches your project volume.
-          </p>
+          <p className="text-gray-400 text-lg md:text-xl">{t?.pricingdescription}</p>
         </div>
 
         {/* Pricing Cards */}
@@ -263,27 +264,22 @@ const PricingSection = () => {
         {/* ROI Calculator Section */}
         <div className="border-2 border-[#05df72] rounded-2xl p-8 text-center hover:border-[#05df72] transition-all duration-500">
           <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-white to-[#05df72] bg-clip-text text-transparent">
-            ROI Calculator
+            {t?.ro}
           </h3>
 
           <div className="space-y-4 text-gray-300">
             <p className="text-lg">
-              Design time saved per project:{" "}
-              <span className="text-[#05df72] font-bold">20 hours</span> ×
-              ₹750/hour architect rate ={" "}
-              <span className="text-white font-bold">₹18,750</span>
+              {t?.project}{" "}
+              <span className="text-[#05df72] font-bold">{t?.ho}</span> ×
+              {t?.cost} <span className="text-white font-bold">{t?.eight}</span>
             </p>
             <p className="text-lg">
-              Parking count increase:{" "}
-              <span className="text-[#05df72] font-bold">
-                100 additional spaces
-              </span>{" "}
-              × ₹50,000/space ={" "}
-              <span className="text-white font-bold">₹50 lakh revenue</span>
+              {t?.parking}{" "}
+              <span className="text-[#05df72] font-bold">{t?.space}</span> ×{" "}
+              {t?.revenue}{" "}
+              <span className="text-white font-bold">{t?.revenueGain}</span>
             </p>
-            <p className="text-xl font-bold mt-6 text-[#05df72]">
-              Payback: 1-2 projects. Value captured: 10-100x tool investment.
-            </p>
+            <p className="text-xl font-bold mt-6 text-[#05df72]">{t?.pro}</p>
           </div>
         </div>
       </div>
