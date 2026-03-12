@@ -15,6 +15,7 @@ import Hero from "@/components/Hero";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ImpactSection from "@/components/Impactsection";
 import Navbar from "@/components/Navbar";
+import Outputanimation from "@/components/Outputanimation";
 import PricingSection from "@/components/PricingSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SeamlessGallery from "@/components/SeamlessGallery";
@@ -56,16 +57,19 @@ export default function Home() {
       {/* <SolutionSection /> */}
 
       <TopBanner />
+
       <Navbar />
       {/* <BackgroundCanvas/> */}
       <Hero />
+      {/* <Newoutputanimation/> */}
+      <Outputanimation/>
       {/* <Videofiles/> */}
       <WhyChoose />
       {/* <SolutionSection /> */}
       <SeamlessGallery />
       <HowItWorksSection />
-      <section id="features" className="scroll-mt-20">
-        <FeaturesSection />  
+      <section id="features" className="scroll-mt-20" >
+        <FeaturesSection />
         {/* Problem */}
       </section>
       <section id="why" className="scroll-mt-20">

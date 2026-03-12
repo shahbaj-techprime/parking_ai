@@ -306,7 +306,7 @@ export default function Navbar() {
                 after:absolute after:left-0 after:-bottom-1
                 after:h-[2px] after:bg-white
                 after:w-0 after:transition-all
-                hover:after:w-full`}
+                hover:after:w-full corsor-pointer`}
               >
                 {item.label}
               </button>
@@ -371,84 +371,83 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-  {/* Sidebar Overlay */}
-{open && (
-  <div
-    onClick={() => setOpen(false)}
-    className="fixed inset-0 bg-black/60 z-30"
-  />
-)}
+      {/* Sidebar Overlay */}
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 bg-black/60 z-30"
+        />
+      )}
 
-{/* Sidebar */}
-<div
-  className={`fixed top-0 right-0 h-full w-64 bg-black z-50
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-black z-50
     transform transition-transform duration-300
     ${open ? "translate-x-0" : "translate-x-full"}`}
->
-  {/* Header */}
-  <div className="p-6 flex items-center justify-between border-b border-white/20">
-    <span className="text-white text-lg font-semibold">Menu</span>
-    <button onClick={() => setOpen(false)}>
-      <X size={24} className="text-white" />
-    </button>
-  </div>
-
-  {/* Navigation Links */}
-  <div className="flex flex-col p-6 gap-6 relative">
-    {navLinks.map((item) => (
-      <button
-        key={item.id}
-        onClick={() => scrollToSection(item.id)}
-        className={`text-left text-lg transition-colors ${
-          activeSection === item.id
-            ? "text-white"
-            : "text-gray-300 hover:text-white"
-        }`}
       >
-        {item.label}
-      </button>
-    ))}
+        {/* Header */}
+        <div className="p-6 flex items-center justify-between border-b border-white/20">
+          <span className="text-white text-lg font-semibold">Menu</span>
+          <button onClick={() => setOpen(false)}>
+            <X size={24} className="text-white" />
+          </button>
+        </div>
 
-    <button
-      onClick={() => scrollToSection("contactus")}
-      className="ml-4 px-6 py-2 rounded-lg relative overflow-hidden
-                 text-black font-semibold bg-[#05df72]
-                 animate-waterflow transition-all duration-300"
-    >
-      Contact Us
-    </button>
-
-    {/* Language Dropdown */}
-    <div className="relative mt-4">
-      <button
-        onClick={() => setLangOpen(!langOpen)}
-        className="flex items-center justify-between w-full px-4 py-2 bg-gray-900 text-gray-300 rounded-lg"
-      >
-        {currentLang?.label?.toUpperCase()}
-        <ChevronDown size={16} />
-      </button>
-
-      {langOpen && (
-        <div className="absolute top-full mt-1 left-0 w-full bg-black border border-white/10 rounded-lg shadow-lg z-50">
-          {languages.map((l) => (
+        {/* Navigation Links */}
+        <div className="flex flex-col p-6 gap-6 relative">
+          {navLinks.map((item) => (
             <button
-              key={l.code}
-              onClick={() => {
-                changeLanguage(l.code);
-                setLangOpen(false);
-                setOpen(false);
-              }}
-              className="block w-full text-left px-4 py-2 text-gray-300 hover:bg-white/10 hover:text-white"
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`text-left text-lg transition-colors ${
+                activeSection === item.id
+                  ? "text-white"
+                  : "text-gray-300 hover:text-white"
+              }`}
             >
-              {l.label}
+              {item.label}
             </button>
           ))}
+
+          <button
+            onClick={() => scrollToSection("contactus")}
+            className="ml-4 px-6 py-2 rounded-lg relative overflow-hidden
+                 text-black font-semibold bg-[#05df72]
+                 animate-waterflow transition-all duration-300"
+          >
+            Contact Us
+          </button>
+
+          {/* Language Dropdown */}
+          <div className="relative mt-4">
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center justify-between w-full px-4 py-2 bg-gray-900 text-gray-300 rounded-lg"
+            >
+              {currentLang?.label?.toUpperCase()}
+              <ChevronDown size={16} />
+            </button>
+
+            {langOpen && (
+              <div className="absolute top-full mt-1 left-0 w-full bg-black border border-white/10 rounded-lg shadow-lg z-50">
+                {languages.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => {
+                      changeLanguage(l.code);
+                      setLangOpen(false);
+                      setOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 text-gray-300 hover:bg-white/10 hover:text-white"
+                  >
+                    {l.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      )}
-    </div>
-  </div>
-</div>
-     
+      </div>
     </>
   );
 }

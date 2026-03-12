@@ -192,7 +192,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-      dir={lang === "ar" ? "rtl" : "ltr"}
+    
       className="bg-black relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden"
     >
 

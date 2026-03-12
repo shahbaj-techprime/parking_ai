@@ -55,7 +55,6 @@ export default function WhyChoose() {
 
   return (
     <section
-     dir={lang === "ar" ? "rtl" : "ltr"}
       ref={sectionRef}
       id="why"
       className="py-20 bg-[#111317] overflow-hidden"

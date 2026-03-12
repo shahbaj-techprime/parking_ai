@@ -277,6 +277,102 @@
 //   );
 // }
 
+// "use client";
+
+// import { useEffect, useRef, useState } from "react";
+// import gsap from "gsap";
+// import { useLanguage } from "@/app/translations/context/LanguageContext";
+
+// export default function CustomCursor() {
+//   const { lang } = useLanguage();
+//   const cursorRef = useRef(null);
+//   const [hovered, setHovered] = useState(false);
+
+//   useEffect(() => {
+//     const cursor = cursorRef.current;
+//     if (!cursor) return;
+
+//     // Start offscreen and invisible
+//     gsap.set(cursor, { x: -100, y: -100, autoAlpha: 0 });
+
+//     // const handleMove = (e) => {
+//     //   const dir = document.documentElement.dir || "ltr";
+//     //   const x = dir === "rtl" ? window.innerWidth - e.clientX : e.clientX;
+//     //   const y = e.clientY;
+
+//     //   gsap.to(cursor, {
+//     //     x,
+//     //     y,
+//     //     duration: 0.2,
+//     //     ease: "power3.out",
+//     //     autoAlpha: 1,
+//     //   });
+//     // };
+
+//     const handleMove = (e) => {
+//       const x = e.clientX;
+//       const y = e.clientY;
+
+//       gsap.to(cursor, {
+//         x,
+//         y,
+//         duration: 0.2,
+//         ease: "power3.out",
+//         autoAlpha: 1,
+//       });
+//     };
+//     const handleLeave = () => gsap.to(cursor, { autoAlpha: 0, duration: 0.3 });
+//     const handleEnter = () => gsap.to(cursor, { autoAlpha: 1, duration: 0.3 });
+
+//     window.addEventListener("mousemove", handleMove);
+//     window.addEventListener("mouseleave", handleLeave);
+//     window.addEventListener("mouseenter", handleEnter);
+
+//     // Query all hoverable elements (re-run on language change)
+//     const hoverElements = document.querySelectorAll("button, a, .hover-cursor");
+//     const enterHover = () => setHovered(true);
+//     const leaveHover = () => setHovered(false);
+
+//     hoverElements.forEach((el) => {
+//       el.addEventListener("mouseenter", enterHover);
+//       el.addEventListener("mouseleave", leaveHover);
+//     });
+
+//     return () => {
+//       window.removeEventListener("mousemove", handleMove);
+//       window.removeEventListener("mouseleave", handleLeave);
+//       window.removeEventListener("mouseenter", handleEnter);
+
+//       hoverElements.forEach((el) => {
+//         el.removeEventListener("mouseenter", enterHover);
+//         el.removeEventListener("mouseleave", leaveHover);
+//       });
+//     };
+//   }, [lang]); // Re-run effect whenever language changes
+
+//   // Hover animation
+//   useEffect(() => {
+//     if (!cursorRef.current) return;
+//     gsap.to(cursorRef.current, {
+//       scale: hovered ? 2 : 1,
+//       backgroundColor: hovered ? "#ff0000" : "#05df72",
+//       duration: 0.2,
+//       ease: "power3.out",
+//     });
+//   }, [hovered]);
+
+//   return (
+//     <div
+//       ref={cursorRef}
+//       className="pointer-events-none fixed z-[9999] w-4 h-4 rounded-full"
+//       style={{
+//         transform: "translate(-50%, -50%)",
+//         backgroundColor: "#05df72",
+//       }}
+//     />
+//   );
+// }
+
 
 "use client";
 
@@ -293,12 +389,10 @@ export default function CustomCursor() {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
-    // Start offscreen and invisible
     gsap.set(cursor, { x: -100, y: -100, autoAlpha: 0 });
 
     const handleMove = (e) => {
-      const dir = document.documentElement.dir || "ltr";
-      const x = dir === "rtl" ? window.innerWidth - e.clientX : e.clientX;
+      const x = e.clientX;
       const y = e.clientY;
 
       gsap.to(cursor, {
@@ -310,15 +404,21 @@ export default function CustomCursor() {
       });
     };
 
-    const handleLeave = () => gsap.to(cursor, { autoAlpha: 0, duration: 0.3 });
-    const handleEnter = () => gsap.to(cursor, { autoAlpha: 1, duration: 0.3 });
+    const handleLeave = () => {
+      gsap.to(cursor, { autoAlpha: 0, duration: 0.3 });
+    };
+
+    const handleEnter = () => {
+      gsap.to(cursor, { autoAlpha: 1, duration: 0.3 });
+    };
 
     window.addEventListener("mousemove", handleMove);
     window.addEventListener("mouseleave", handleLeave);
     window.addEventListener("mouseenter", handleEnter);
 
-    // Query all hoverable elements (re-run on language change)
-    const hoverElements = document.querySelectorAll("button, a, .hover-cursor");
+    const hoverElements = document.querySelectorAll(
+      "button, a, .hover-cursor"
+    );
     const enterHover = () => setHovered(true);
     const leaveHover = () => setHovered(false);
 
@@ -337,9 +437,8 @@ export default function CustomCursor() {
         el.removeEventListener("mouseleave", leaveHover);
       });
     };
-  }, [lang]); // Re-run effect whenever language changes
+  }, [lang]);
 
-  // Hover animation
   useEffect(() => {
     if (!cursorRef.current) return;
     gsap.to(cursorRef.current, {
@@ -361,6 +460,8 @@ export default function CustomCursor() {
     />
   );
 }
+
+
 // components/CustomCursor.jsx
 // "use client";
 
