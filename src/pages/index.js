@@ -15,10 +15,16 @@ import Hero from "@/components/Hero";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ImpactSection from "@/components/Impactsection";
 import Navbar from "@/components/Navbar";
+import NewAnimation from "@/components/NewAnimation";
+import ParkingFeatures from "@/components/Node";
+import ProductAnimation from "@/components/Outputanimation";
 import Outputanimation from "@/components/Outputanimation";
 import PricingSection from "@/components/PricingSection";
+import ProblemSection from "@/components/ProblemSection";
+import ProductAnimations from "@/components/Productanimation";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SeamlessGallery from "@/components/SeamlessGallery";
+import SidebySideAnimation from "@/components/SidebySideAnimation";
 import SolutionSection from "@/components/SolutionSection";
 import TopBanner from "@/components/TopBanner";
 import Videofiles from "@/components/Videofiles";
@@ -61,8 +67,13 @@ export default function Home() {
       <Navbar />
       {/* <BackgroundCanvas/> */}
       <Hero />
+      {/* <ParkingFeatures />
+      <ProblemSection/> */}
       {/* <Newoutputanimation/> */}
-      <Outputanimation/>
+      {/* <Outputanimation/> */}
+      {/* <ProductAnimations/> */}
+      {/* <NewAnimation/> */}
+      <SidebySideAnimation/>
       {/* <Videofiles/> */}
       <WhyChoose />
       {/* <SolutionSection /> */}

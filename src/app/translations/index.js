@@ -3,12 +3,11 @@ import TopBanner from "@/components/TopBanner";
 export const translations = {
   en: {
     // TopBanner
-    topbanner:'Don’t miss the limited-time deals!',
-    topbannerH:'H',
-     topbannerM:'M',
-     topbannerS:'S',
-     topbannerbutton:'Explore',
-     
+    topbanner: "Don’t miss the limited-time deals!",
+    topbannerH: "H",
+    topbannerM: "M",
+    topbannerS: "S",
+    topbannerbutton: "Explore",
 
     // navbar
     features: "Features",
@@ -263,7 +262,8 @@ export const translations = {
 
     // ImpactSection
     ImpactSectiontitle: "Real-World Impact by Persona",
-    ImpactSectiondec: "See how Parking AI transforms workflows across different roles.",
+    ImpactSectiondec:
+      "See how Parking AI transforms workflows across different roles.",
 
     personas: [
       {
@@ -554,15 +554,31 @@ export const translations = {
     ],
     button3: " Save preferences",
     button4: "Cancle",
+    parkingtitle: "Smart Parking System",
+    parkingdesc: "AI-Powered Layout Generator",
+    uploadfiles: "Upload Site Plan",
+    sidemap: "site_map.dxf",
+    done: "done",
+    parkinaiprogess: "AI Processing",
+    layoutdone: "Layout generated!",
+    parsingvehicledata: "Parsing vehicle data",
+    optimizingslots: "Optimizing slots",
+    generatinggrid: "Generating grid",
+    ParkingLayout: "Parking Layout",
+    Available: "Available",
+    Occupied: "Occupied",
+    Total: "Total",
+    Occupied: "Occupied",
+    Free: "Free",
+    Fill: "Fill",
   },
 
   ar: {
-
-topbanner: "لا تفوت العروض محدودة الوقت!",
-topbannerH: "س", 
-topbannerM: "د",  
-topbannerS: "ث",  
-topbannerbutton: "استكشاف",
+    topbanner: "لا تفوت العروض محدودة الوقت!",
+    topbannerH: "س",
+    topbannerM: "د",
+    topbannerS: "ث",
+    topbannerbutton: "استكشاف",
 
     features: "الميزات",
     why: "لماذا مختلف",
@@ -815,7 +831,8 @@ topbannerbutton: "استكشاف",
 
     // ImpactSection
     ImpactSectiontitle: "التأثير الواقعي حسب الشخصية",
-    ImpactSectiondec: "اكتشف كيف يُحوّل باركينج AI سير العمل عبر الأدوار المختلفة.",
+    ImpactSectiondec:
+      "اكتشف كيف يُحوّل باركينج AI سير العمل عبر الأدوار المختلفة.",
     personas: [
       {
         title: "للمطورين",
@@ -1104,16 +1121,30 @@ topbannerbutton: "استكشاف",
     ],
     button3: "حفظ التفضيلات",
     button4: "إلغاء",
+    parkingtitle: "نظام مواقف السيارات الذكي",
+    parkingdesc: "مولد المخططات المدعوم بالذكاء الاصطناعي",
+    uploadfiles: "تحميل مخطط الموقع",
+    sidemap: "خريطة_الموقع.dxf",
+    done: "تم",
+    parkinaiprogess: "معالجة الذكاء الاصطناعي",
+    layoutdone: "تم إنشاء المخطط!",
+    parsingvehicledata: "جاري تحليل بيانات المركبات",
+    optimizingslots: "جاري تحسين أماكن الوقوف",
+    generatinggrid: "جاري إنشاء الشبكة",
+    ParkingLayout: "مخطط مواقف السيارات",
+    Available: "متاح",
+    Occupied: "مشغول",
+    Total: "الإجمالي",
+    Free: "فارغ",
+    Fill: "ملء",
   },
 
   ko: {
-topbanner: "한정 기간 프로모션을 놓치지 마세요!",
-topbannerH: "시",
-topbannerM: "분",
-topbannerS: "초",
-topbannerbutton: "자세히 보기",
-
-
+    topbanner: "한정 기간 프로모션을 놓치지 마세요!",
+    topbannerH: "시",
+    topbannerM: "분",
+    topbannerS: "초",
+    topbannerbutton: "자세히 보기",
 
     features: "기능",
     why: "왜 다른가",
@@ -1367,7 +1398,8 @@ topbannerbutton: "자세히 보기",
 
     // ImpactSection
     ImpactSectiontitle: "페르소나별 실제 영향",
-    ImpactSectiondec: "파킹 AI가 다양한 역할의 업무 흐름을 어떻게 변화시키는지 확인하세요.",
+    ImpactSectiondec:
+      "파킹 AI가 다양한 역할의 업무 흐름을 어떻게 변화시키는지 확인하세요.",
     personas: [
       {
         title: "개발자를 위한",
@@ -1498,7 +1530,8 @@ topbannerbutton: "자세히 보기",
 
     // contact us
     contacttitle: "주차 설계를 혁신할 준비가 되셨나요?",
-    contactdec: "파킹 AI가 실제로 어떻게 작동하는지 데모로 확인해보세요 (5분 소요).",
+    contactdec:
+      "파킹 AI가 실제로 어떻게 작동하는지 데모로 확인해보세요 (5분 소요).",
     roleOptions: [
       "역할 선택",
       "건축가",
@@ -1655,5 +1688,21 @@ topbannerbutton: "자세히 보기",
     ],
     button3: "환경설정 저장",
     button4: "취소",
+    parkingtitle: "스마트 주차 시스템",
+    parkingdesc: "AI 기반 레이아웃 생성기",
+    uploadfiles: "사이트 도면 업로드",
+    sidemap: "site_map.dxf",
+    done: "완료",
+    parkinaiprogess: "AI 처리 중",
+    layoutdone: "레이아웃 생성 완료!",
+    parsingvehicledata: "차량 데이터 분석 중",
+    optimizingslots: "주차 슬롯 최적화 중",
+    generatinggrid: "그리드 생성 중",
+    ParkingLayout: "주차 레이아웃",
+    Available: "사용 가능",
+    Occupied: "사용 중",
+    Total: "총합",
+    Free: "빈 공간",
+    Fill: "채우기",
   },
 };

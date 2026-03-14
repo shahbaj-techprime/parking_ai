@@ -4529,568 +4529,1077 @@
 //   );
 // }
 
-"use client";
-import { useEffect, useRef, useState } from "react";
+// "use client";
+// import { useEffect, useRef, useState } from "react";
 
-export default function HorizontalScrollPage() {
-  const containerRef = useRef(null);
-  const [scrollPct, setScrollPct] = useState(0);
+// export default function HorizontalScrollPage() {
+//   const containerRef = useRef(null);
+//   const [scrollPct, setScrollPct] = useState(0);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const container = containerRef.current;
-      if (!container) return;
-      const maxScroll = container.scrollHeight - window.innerHeight;
-      const pct = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-      setScrollPct(pct);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+//   useEffect(() => {
+//     const onScroll = () => {
+//       const container = containerRef.current;
+//       if (!container) return;
+//       const maxScroll = container.scrollHeight - window.innerHeight;
+//       const pct = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+//       setScrollPct(pct);
+//     };
+//     window.addEventListener("scroll", onScroll, { passive: true });
+//     return () => window.removeEventListener("scroll", onScroll);
+//   }, []);
 
-  const ease = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+//   const ease = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
-  // PHASES:
-  // 0.00–0.25 : All panels shown at equal 33.33vw (intro state)
-  // 0.25–0.55 : Panel 1 expands to full, panels 2 & 3 collapse
-  // 0.55–1.00 : Panel 1 shrinks, panels come back equally
+//   // PHASES:
+//   // 0.00–0.25 : All panels shown at equal 33.33vw (intro state)
+//   // 0.25–0.55 : Panel 1 expands to full, panels 2 & 3 collapse
+//   // 0.55–1.00 : Panel 1 shrinks, panels come back equally
 
-  // Simpler approach: panels always equal width (33.33vw each)
-  // Scroll animates CONTENT within each panel: fade, scale, translate
-  // Each panel activates at different scroll positions
+//   // Simpler approach: panels always equal width (33.33vw each)
+//   // Scroll animates CONTENT within each panel: fade, scale, translate
+//   // Each panel activates at different scroll positions
 
-  const THIRD = 100 / 3;
+//   const THIRD = 100 / 3;
 
-  // Panel reveal progress (0 → 1)
-  const p1Progress = ease(Math.min(Math.max(scrollPct / 0.28, 0), 1));
-  const p2Progress = ease(Math.min(Math.max((scrollPct - 0.3) / 0.28, 0), 1));
-  const p3Progress = ease(Math.min(Math.max((scrollPct - 0.6) / 0.28, 0), 1));
+//   // Panel reveal progress (0 → 1)
+//   const p1Progress = ease(Math.min(Math.max(scrollPct / 0.28, 0), 1));
+//   const p2Progress = ease(Math.min(Math.max((scrollPct - 0.3) / 0.28, 0), 1));
+//   const p3Progress = ease(Math.min(Math.max((scrollPct - 0.6) / 0.28, 0), 1));
 
-  // Active step matches which panel is currently being revealed
-  // Panel 1: 0–0.28, Panel 2: 0.30–0.58, Panel 3: 0.60–0.88
-  // Step stays on current panel until next panel starts coming in
-  const activeStep = scrollPct < 0.3 ? 0 : scrollPct < 0.6 ? 1 : 2;
+//   // Active step matches which panel is currently being revealed
+//   // Panel 1: 0–0.28, Panel 2: 0.30–0.58, Panel 3: 0.60–0.88
+//   // Step stays on current panel until next panel starts coming in
+//   const activeStep = scrollPct < 0.3 ? 0 : scrollPct < 0.6 ? 1 : 2;
 
-  return (
-    <>
-      <style>{`
+//   return (
+//     <>
+//       <style>{`
     
 
-        body {
-          background: #020509;
-        }
+//         body {
+//           background: #020509;
+//         }
 
-        /* ── AMBIENT BACKGROUND ── */
-        .grid-bg {
-          position: fixed; inset: 0; pointer-events: none; z-index: 0;
-          background-image:
-            linear-gradient(rgba(0,180,255,0.022) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,180,255,0.022) 1px, transparent 1px);
-          background-size: 64px 64px;
-        }
+//         /* ── AMBIENT BACKGROUND ── */
+//         .grid-bg {
+//           position: fixed; inset: 0; pointer-events: none; z-index: 0;
+//           background-image:
+//             linear-gradient(rgba(0,180,255,0.022) 1px, transparent 1px),
+//             linear-gradient(90deg, rgba(0,180,255,0.022) 1px, transparent 1px);
+//           background-size: 64px 64px;
+//         }
 
-        .orb {
-          position: fixed; border-radius: 50%;
-          filter: blur(120px); pointer-events: none; z-index: 0;
-        }
-        .orb1 { width: 700px; height: 700px; background: rgba(0,60,180,0.13); top: -200px; left: -200px; }
-        .orb2 { width: 500px; height: 500px; background: rgba(0,160,255,0.08); bottom: -100px; right: 5%; }
-        .orb3 { width: 400px; height: 400px; background: rgba(100,0,255,0.06); top: 30%; left: 40%; }
+//         .orb {
+//           position: fixed; border-radius: 50%;
+//           filter: blur(120px); pointer-events: none; z-index: 0;
+//         }
+//         .orb1 { width: 700px; height: 700px; background: rgba(0,60,180,0.13); top: -200px; left: -200px; }
+//         .orb2 { width: 500px; height: 500px; background: rgba(0,160,255,0.08); bottom: -100px; right: 5%; }
+//         .orb3 { width: 400px; height: 400px; background: rgba(100,0,255,0.06); top: 30%; left: 40%; }
 
-        /* ── SCROLL CONTAINER ── */
-        .scroll-outer {
-          height: 500vh;
-          position: relative;
-        }
+//         /* ── SCROLL CONTAINER ── */
+//         .scroll-outer {
+//           height: 500vh;
+//           position: relative;
+//         }
 
-        .sticky-wrap {
-          position: sticky;
-          top: 0;
-          height: 100vh;
-          overflow: hidden;
-          z-index: 1;
-          display: flex;
-          flex-direction: column;
-        }
+//         .sticky-wrap {
+//           position: sticky;
+//           top: 0;
+//           height: 100vh;
+//           overflow: hidden;
+//           z-index: 1;
+//           display: flex;
+//           flex-direction: column;
+//         }
 
-        /* ── TOP HEADER BAR ── */
-        .header-bar {
-          position: relative;
-          z-index: 10;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 18px 32px;
-          border-bottom: 1px solid rgba(0,180,255,0.07);
-          background: rgba(2,5,9,0.6);
-          backdrop-filter: blur(20px);
-          flex-shrink: 0;
-        }
+//         /* ── TOP HEADER BAR ── */
+//         .header-bar {
+//           position: relative;
+//           z-index: 10;
+//           display: flex;
+//           align-items: center;
+//           justify-content: space-between;
+//           padding: 18px 32px;
+//           border-bottom: 1px solid rgba(0,180,255,0.07);
+//           background: rgba(2,5,9,0.6);
+//           backdrop-filter: blur(20px);
+//           flex-shrink: 0;
+//         }
 
-        .logo-text {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 4px;
-          color: rgba(0,180,255,0.7);
-          text-transform: uppercase;
-        }
+//         .logo-text {
+//           font-family: 'JetBrains Mono', monospace;
+//           font-size: 11px;
+//           font-weight: 600;
+//           letter-spacing: 4px;
+//           color: rgba(0,180,255,0.7);
+//           text-transform: uppercase;
+//         }
 
-        .header-steps {
-          display: flex;
-          align-items: center;
-          gap: 0;
-        }
+//         .header-steps {
+//           display: flex;
+//           align-items: center;
+//           gap: 0;
+//         }
 
-        .h-step {
-          display: flex;
-          align-items: center;
-          gap: 9px;
-          padding: 6px 16px;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 10px;
-          font-weight: 500;
-          letter-spacing: 2px;
-          color: rgba(255,255,255,0.2);
-          text-transform: uppercase;
-          transition: color 0.5s ease;
-          position: relative;
-        }
+//         .h-step {
+//           display: flex;
+//           align-items: center;
+//           gap: 9px;
+//           padding: 6px 16px;
+//           font-family: 'JetBrains Mono', monospace;
+//           font-size: 10px;
+//           font-weight: 500;
+//           letter-spacing: 2px;
+//           color: rgba(255,255,255,0.2);
+//           text-transform: uppercase;
+//           transition: color 0.5s ease;
+//           position: relative;
+//         }
 
-        .h-step.active {
-          color: rgba(0,200,255,0.9);
-        }
+//         .h-step.active {
+//           color: rgba(0,200,255,0.9);
+//         }
 
-        .h-step-num {
-          width: 20px; height: 20px;
-          border-radius: 50%;
-          border: 1px solid rgba(255,255,255,0.1);
-          display: flex; align-items: center; justify-content: center;
-          font-size: 9px;
-          transition: all 0.5s ease;
-          flex-shrink: 0;
-        }
+//         .h-step-num {
+//           width: 20px; height: 20px;
+//           border-radius: 50%;
+//           border: 1px solid rgba(255,255,255,0.1);
+//           display: flex; align-items: center; justify-content: center;
+//           font-size: 9px;
+//           transition: all 0.5s ease;
+//           flex-shrink: 0;
+//         }
 
-        .h-step.active .h-step-num {
-          border-color: rgba(0,200,255,0.6);
-          background: rgba(0,200,255,0.1);
-          color: #00d4ff;
-          box-shadow: 0 0 12px rgba(0,200,255,0.25);
-        }
+//         .h-step.active .h-step-num {
+//           border-color: rgba(0,200,255,0.6);
+//           background: rgba(0,200,255,0.1);
+//           color: #00d4ff;
+//           box-shadow: 0 0 12px rgba(0,200,255,0.25);
+//         }
 
-        .h-sep {
-          width: 32px; height: 1px;
-          background: rgba(255,255,255,0.06);
-        }
+//         .h-sep {
+//           width: 32px; height: 1px;
+//           background: rgba(255,255,255,0.06);
+//         }
 
-        /* ── PANELS ROW ── */
-        .panels-row {
-          display: flex;
-          align-items: stretch;
-          flex: 1;
-          min-height: 0;
-        }
+//         /* ── PANELS ROW ── */
+//         .panels-row {
+//           display: flex;
+//           align-items: stretch;
+//           flex: 1;
+//           min-height: 0;
+//         }
           
 
-        /* ── INDIVIDUAL PANEL ── */
-        .panel {
-          width: 33.333vw;
-          flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          position: relative;
-          padding: 32px;
-        }
+//         /* ── INDIVIDUAL PANEL ── */
+//         .panel {
+//           width: 33.333vw;
+//           flex-shrink: 0;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           overflow: hidden;
+//           position: relative;
+//           padding: 32px;
+//         }
 
-        /* Vertical dividers between panels */
-        .panel:not(:last-child)::after {
-          content: '';
-          position: absolute;
-          right: 0; top: 10%; bottom: 10%;
-          width: 1px;
-          background: linear-gradient(
-            to bottom,
-            transparent,
-            rgba(0,180,255,0.1) 30%,
-            rgba(0,180,255,0.1) 70%,
-            transparent
-          );
-        }
+//         /* Vertical dividers between panels */
+//         .panel:not(:last-child)::after {
+//           content: '';
+//           position: absolute;
+//           right: 0; top: 10%; bottom: 10%;
+//           width: 1px;
+//           background: linear-gradient(
+//             to bottom,
+//             transparent,
+//             rgba(0,180,255,0.1) 30%,
+//             rgba(0,180,255,0.1) 70%,
+//             transparent
+//           );
+//         }
 
-        /* ── PANEL CONTENT WRAPPER ── */
-        .panel-inner {
-          width: 100%;
-          max-width: 340px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 0;
-        }
+//         /* ── PANEL CONTENT WRAPPER ── */
+//         .panel-inner {
+//           width: 100%;
+//           max-width: 340px;
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           text-align: center;
+//           gap: 0;
+//         }
 
-        /* ── SHARED TEXT STYLES ── */
-        .step-label {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 9px;
-          font-weight: 500;
-          letter-spacing: 4px;
-          color: rgba(0,180,255,0.5);
-          text-transform: uppercase;
-          margin-bottom: 10px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
+//         /* ── SHARED TEXT STYLES ── */
+//         .step-label {
+//           font-family: 'JetBrains Mono', monospace;
+//           font-size: 9px;
+//           font-weight: 500;
+//           letter-spacing: 4px;
+//           color: rgba(0,180,255,0.5);
+//           text-transform: uppercase;
+//           margin-bottom: 10px;
+//           display: flex;
+//           align-items: center;
+//           gap: 8px;
+//         }
 
-        .step-label::before, .step-label::after {
-          content: '';
-          width: 18px; height: 1px;
-          background: rgba(0,180,255,0.3);
-        }
+//         .step-label::before, .step-label::after {
+//           content: '';
+//           width: 18px; height: 1px;
+//           background: rgba(0,180,255,0.3);
+//         }
 
-        .panel-title {
-          font-size: clamp(22px, 2.2vw, 34px);
-          font-weight: 800;
-          letter-spacing: -0.5px;
-          color: #ffffff;
-          line-height: 1.1;
-          margin-bottom: 8px;
-        }
+//         .panel-title {
+//           font-size: clamp(22px, 2.2vw, 34px);
+//           font-weight: 800;
+//           letter-spacing: -0.5px;
+//           color: #ffffff;
+//           line-height: 1.1;
+//           margin-bottom: 8px;
+//         }
 
-        .panel-sub {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 11px;
-          color: rgba(255,255,255,0.3);
-          font-weight: 400;
-          margin-bottom: 28px;
-          letter-spacing: 0.3px;
-        }
+//         .panel-sub {
+//           font-family: 'JetBrains Mono', monospace;
+//           font-size: 11px;
+//           color: rgba(255,255,255,0.3);
+//           font-weight: 400;
+//           margin-bottom: 28px;
+//           letter-spacing: 0.3px;
+//         }
 
-        /* ── GIF / MEDIA FRAME ── */
-        .media-frame {
-          width: 100%;
-          aspect-ratio: 1;
-          max-width: 240px;
-          border-radius: 20px;
-          overflow: hidden;
-          position: relative;
-          margin-bottom: 24px;
-          border: 1px solid rgba(0,180,255,0.12);
-          box-shadow:
-            0 0 0 1px rgba(0,180,255,0.05),
-            0 20px 60px rgba(0,0,0,0.5),
-            inset 0 1px 0 rgba(255,255,255,0.04);
-          background: rgba(255,255,255,0.02);
-        }
+//         /* ── GIF / MEDIA FRAME ── */
+//         .media-frame {
+//           width: 100%;
+//           aspect-ratio: 1;
+//           max-width: 240px;
+//           border-radius: 20px;
+//           overflow: hidden;
+//           position: relative;
+//           margin-bottom: 24px;
+//           border: 1px solid rgba(0,180,255,0.12);
+//           box-shadow:
+//             0 0 0 1px rgba(0,180,255,0.05),
+//             0 20px 60px rgba(0,0,0,0.5),
+//             inset 0 1px 0 rgba(255,255,255,0.04);
+//           background: rgba(255,255,255,0.02);
+//         }
 
-        .media-frame img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
+//         .media-frame img {
+//           width: 100%;
+//           height: 100%;
+//           object-fit: cover;
+//           display: block;
+//         }
 
-        /* Corner accents on frame */
-        .media-frame::before,
-        .media-frame::after {
-          content: '';
-          position: absolute;
-          width: 14px; height: 14px;
-          z-index: 2;
-        }
-        .media-frame::before {
-          top: 8px; left: 8px;
-          border-top: 1.5px solid rgba(0,200,255,0.5);
-          border-left: 1.5px solid rgba(0,200,255,0.5);
-          border-radius: 3px 0 0 0;
-        }
-        .media-frame::after {
-          bottom: 8px; right: 8px;
-          border-bottom: 1.5px solid rgba(0,200,255,0.5);
-          border-right: 1.5px solid rgba(0,200,255,0.5);
-          border-radius: 0 0 3px 0;
-        }
+//         /* Corner accents on frame */
+//         .media-frame::before,
+//         .media-frame::after {
+//           content: '';
+//           position: absolute;
+//           width: 14px; height: 14px;
+//           z-index: 2;
+//         }
+//         .media-frame::before {
+//           top: 8px; left: 8px;
+//           border-top: 1.5px solid rgba(0,200,255,0.5);
+//           border-left: 1.5px solid rgba(0,200,255,0.5);
+//           border-radius: 3px 0 0 0;
+//         }
+//         .media-frame::after {
+//           bottom: 8px; right: 8px;
+//           border-bottom: 1.5px solid rgba(0,200,255,0.5);
+//           border-right: 1.5px solid rgba(0,200,255,0.5);
+//           border-radius: 0 0 3px 0;
+//         }
 
-        /* ── STATUS BADGE ── */
-        .status-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 7px;
-          padding: 7px 14px;
-          border-radius: 99px;
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 10px;
-          font-weight: 500;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          border: 1px solid rgba(0,180,255,0.2);
-          background: rgba(0,100,255,0.07);
-          color: rgba(0,200,255,0.7);
-        }
+//         /* ── STATUS BADGE ── */
+//         .status-badge {
+//           display: inline-flex;
+//           align-items: center;
+//           gap: 7px;
+//           padding: 7px 14px;
+//           border-radius: 99px;
+//           font-family: 'JetBrains Mono', monospace;
+//           font-size: 10px;
+//           font-weight: 500;
+//           letter-spacing: 1.5px;
+//           text-transform: uppercase;
+//           border: 1px solid rgba(0,180,255,0.2);
+//           background: rgba(0,100,255,0.07);
+//           color: rgba(0,200,255,0.7);
+//         }
 
-        .status-dot {
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: #00d4ff;
-          box-shadow: 0 0 8px #00d4ff;
-          animation: dotPulse 2s ease-in-out infinite;
-        }
+//         .status-dot {
+//           width: 6px; height: 6px;
+//           border-radius: 50%;
+//           background: #00d4ff;
+//           box-shadow: 0 0 8px #00d4ff;
+//           animation: dotPulse 2s ease-in-out infinite;
+//         }
 
-        @keyframes dotPulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(0.7); }
-        }
+//         @keyframes dotPulse {
+//           0%, 100% { opacity: 1; transform: scale(1); }
+//           50% { opacity: 0.4; transform: scale(0.7); }
+//         }
 
-        /* ── TAGS ── */
-        .tags-row {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          justify-content: center;
-          margin-top: 16px;
-        }
+//         /* ── TAGS ── */
+//         .tags-row {
+//           display: flex;
+//           flex-wrap: wrap;
+//           gap: 6px;
+//           justify-content: center;
+//           margin-top: 16px;
+//         }
 
-        .tag {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 9px;
-          padding: 4px 10px;
-          border-radius: 4px;
-          border: 1px solid rgba(0,180,255,0.15);
-          color: rgba(0,200,255,0.55);
-          background: rgba(0,100,255,0.05);
-          letter-spacing: 1.5px;
-          animation: tagFade 3s ease-in-out infinite;
-        }
-        .tag:nth-child(2) { animation-delay: 0.4s; }
-        .tag:nth-child(3) { animation-delay: 0.8s; }
-        .tag:nth-child(4) { animation-delay: 1.2s; }
+//         .tag {
+//           font-family: 'JetBrains Mono', monospace;
+//           font-size: 9px;
+//           padding: 4px 10px;
+//           border-radius: 4px;
+//           border: 1px solid rgba(0,180,255,0.15);
+//           color: rgba(0,200,255,0.55);
+//           background: rgba(0,100,255,0.05);
+//           letter-spacing: 1.5px;
+//           animation: tagFade 3s ease-in-out infinite;
+//         }
+//         .tag:nth-child(2) { animation-delay: 0.4s; }
+//         .tag:nth-child(3) { animation-delay: 0.8s; }
+//         .tag:nth-child(4) { animation-delay: 1.2s; }
 
-        @keyframes tagFade {
-          0%, 100% { opacity: 0.45; }
-          50% { opacity: 1; border-color: rgba(0,220,255,0.4); color: #00d4ff; }
-        }
+//         @keyframes tagFade {
+//           0%, 100% { opacity: 0.45; }
+//           50% { opacity: 1; border-color: rgba(0,220,255,0.4); color: #00d4ff; }
+//         }
 
-        /* ── PROGRESS DOTS ── */
-        .pdots {
-          position: fixed;
-          bottom: 28px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 8px;
-          z-index: 100;
-        }
+//         /* ── PROGRESS DOTS ── */
+//         .pdots {
+//           position: fixed;
+//           bottom: 28px;
+//           left: 50%;
+//           transform: translateX(-50%);
+//           display: flex;
+//           gap: 8px;
+//           z-index: 100;
+//         }
 
-        .pdot {
-          height: 4px;
-          border-radius: 2px;
-          background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(0,180,255,0.2);
-          transition: width 0.5s cubic-bezier(.4,0,.2,1), background 0.4s, box-shadow 0.4s;
-          width: 4px;
-        }
+//         .pdot {
+//           height: 4px;
+//           border-radius: 2px;
+//           background: rgba(255,255,255,0.1);
+//           border: 1px solid rgba(0,180,255,0.2);
+//           transition: width 0.5s cubic-bezier(.4,0,.2,1), background 0.4s, box-shadow 0.4s;
+//           width: 4px;
+//         }
 
-        .pdot.active {
-          width: 24px;
-          background: #00b4ff;
-          box-shadow: 0 0 10px rgba(0,180,255,0.6);
-          border-color: #00b4ff;
-        }
+//         .pdot.active {
+//           width: 24px;
+//           background: #00b4ff;
+//           box-shadow: 0 0 10px rgba(0,180,255,0.6);
+//           border-color: #00b4ff;
+//         }
 
-        /* ── SCROLL INDICATOR ── */
-        .scroll-track {
-          position: fixed;
-          right: 24px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 2px;
-          height: 120px;
-          background: rgba(255,255,255,0.05);
-          border-radius: 1px;
-          z-index: 100;
-          overflow: hidden;
-        }
+//         /* ── SCROLL INDICATOR ── */
+//         .scroll-track {
+//           position: fixed;
+//           right: 24px;
+//           top: 50%;
+//           transform: translateY(-50%);
+//           width: 2px;
+//           height: 120px;
+//           background: rgba(255,255,255,0.05);
+//           border-radius: 1px;
+//           z-index: 100;
+//           overflow: hidden;
+//         }
 
-        .scroll-fill {
-          width: 100%;
-          background: linear-gradient(to bottom, #00b4ff, #0060ff);
-          border-radius: 1px;
-          box-shadow: 0 0 8px rgba(0,180,255,0.5);
-          transition: height 0.1s linear;
-        }
+//         .scroll-fill {
+//           width: 100%;
+//           background: linear-gradient(to bottom, #00b4ff, #0060ff);
+//           border-radius: 1px;
+//           box-shadow: 0 0 8px rgba(0,180,255,0.5);
+//           transition: height 0.1s linear;
+//         }
 
-        /* ── PANEL ANIMATION STATES ── */
-        /* Each panel content animates in based on its progress prop via inline styles */
+//         /* ── PANEL ANIMATION STATES ── */
+//         /* Each panel content animates in based on its progress prop via inline styles */
 
-      `}</style>
+//       `}</style>
 
-      {/* Ambient BG */}
-      {/* <div className="grid-bg" />
-      <div className="orb orb1" />
-      <div className="orb orb2" />
-      <div className="orb orb3" /> */}
+//       {/* Ambient BG */}
+//       {/* <div className="grid-bg" />
+//       <div className="orb orb1" />
+//       <div className="orb orb2" />
+//       <div className="orb orb3" /> */}
 
-      {/* Progress dots */}
-      {/* <div className="pdots">
-        {[0, 1, 2].map(i => (
-          <div key={i} className={`pdot ${activeStep === i ? "active" : ""}`} />
-        ))}
-      </div> */}
+//       {/* Progress dots */}
+//       {/* <div className="pdots">
+//         {[0, 1, 2].map(i => (
+//           <div key={i} className={`pdot ${activeStep === i ? "active" : ""}`} />
+//         ))}
+//       </div> */}
 
-      {/* Scroll track */}
-      {/* <div className="scroll-track">
-        <div
-          className="scroll-fill"
-          style={{ height: `${scrollPct * 100}%` }}
-        />
-      </div> */}
+//       {/* Scroll track */}
+//       {/* <div className="scroll-track">
+//         <div
+//           className="scroll-fill"
+//           style={{ height: `${scrollPct * 100}%` }}
+//         />
+//       </div> */}
 
-      {/* Main scroll container */}
-      <div className="scroll-outer" ref={containerRef}>
-        <div className="sticky-wrap">
-          {/* Header bar */}
-          {/* <div className="header-bar">
-            <div className="logo-text">ParkAI · System</div>
-            <div className="header-steps">
-              {[
-                { num: "01", label: "Upload",  prog: p1Progress },
-                { num: "02", label: "Process", prog: p2Progress },
-                { num: "03", label: "Output",  prog: p3Progress },
-              ].map((s, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center" }}>
-                  {i > 0 && <div className="h-sep" style={{ background: `rgba(0,180,255,${0.04 + s.prog * 0.14})` }} />}
-                  <div
-                    className="h-step"
-                    style={{
-                      color: `rgba(${i === activeStep ? "0,210,255" : "255,255,255"},${0.18 + s.prog * 0.82})`,
-                      transition: "color 0.6s ease",
-                    }}
-                  >
-                    <div
-                      className="h-step-num"
-                      style={{
-                        borderColor: `rgba(0,200,255,${0.08 + s.prog * 0.55})`,
-                        background: `rgba(0,200,255,${s.prog * 0.12})`,
-                        color: `rgba(0,${180 + Math.round(s.prog * 55)},255,${0.3 + s.prog * 0.7})`,
-                        boxShadow: s.prog > 0.5 ? `0 0 ${Math.round(s.prog * 14)}px rgba(0,200,255,${s.prog * 0.3})` : "none",
-                        transition: "all 0.4s ease",
-                      }}
-                    >
-                      {s.num}
-                    </div>
-                    {s.label}
+//       {/* Main scroll container */}
+//       <div className="scroll-outer" ref={containerRef}>
+//         <div className="sticky-wrap">
+//           {/* Header bar */}
+//           {/* <div className="header-bar">
+//             <div className="logo-text">ParkAI · System</div>
+//             <div className="header-steps">
+//               {[
+//                 { num: "01", label: "Upload",  prog: p1Progress },
+//                 { num: "02", label: "Process", prog: p2Progress },
+//                 { num: "03", label: "Output",  prog: p3Progress },
+//               ].map((s, i) => (
+//                 <div key={i} style={{ display: "flex", alignItems: "center" }}>
+//                   {i > 0 && <div className="h-sep" style={{ background: `rgba(0,180,255,${0.04 + s.prog * 0.14})` }} />}
+//                   <div
+//                     className="h-step"
+//                     style={{
+//                       color: `rgba(${i === activeStep ? "0,210,255" : "255,255,255"},${0.18 + s.prog * 0.82})`,
+//                       transition: "color 0.6s ease",
+//                     }}
+//                   >
+//                     <div
+//                       className="h-step-num"
+//                       style={{
+//                         borderColor: `rgba(0,200,255,${0.08 + s.prog * 0.55})`,
+//                         background: `rgba(0,200,255,${s.prog * 0.12})`,
+//                         color: `rgba(0,${180 + Math.round(s.prog * 55)},255,${0.3 + s.prog * 0.7})`,
+//                         boxShadow: s.prog > 0.5 ? `0 0 ${Math.round(s.prog * 14)}px rgba(0,200,255,${s.prog * 0.3})` : "none",
+//                         transition: "all 0.4s ease",
+//                       }}
+//                     >
+//                       {s.num}
+//                     </div>
+//                     {s.label}
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//             <div style={{
+//               fontFamily: "'JetBrains Mono', monospace",
+//               fontSize: "10px",
+//               color: "rgba(0,180,255,0.35)",
+//               letterSpacing: "2px"
+//             }}>
+//               {Math.round(scrollPct * 100)}% SCANNED
+//             </div>
+//           </div> */}
+
+//           {/* Panels row — all always equal 33.33vw */}
+//           <div className="panels-row">
+//             {/* ═══ PANEL 1: UPLOAD ═══ */}
+//             <div className="panel">
+//               <div
+//                 className="panel-inner"
+//                 style={{
+//                   opacity: p1Progress,
+//                   transform: `translateY(${(1 - p1Progress) * 28}px)`,
+//                   transition: "none",
+//                 }}
+//               >
+//                 <div className="step-label">01 — Input</div>
+//                 <h2 className="panel-title">Upload Your File</h2>
+//                 <p className="panel-sub">Drag & drop or click to begin</p>
+
+//                 <div className="media-frame">
+//                   <img src="/image/upload2.gif" alt="Upload" />
+//                 </div>
+
+//                 <div className="status-badge">
+//                   <div className="status-dot" />
+//                   Ready to Accept
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* ═══ PANEL 2: AI ENGINE ═══ */}
+//             <div className="panel">
+//               <div
+//                 className="panel-inner"
+//                 style={{
+//                   opacity: p2Progress,
+//                   transform: `translateY(${(1 - p2Progress) * 28}px)`,
+//                   transition: "none",
+//                 }}
+//               >
+//                 <div className="step-label">02 — Processing</div>
+//                 <h2 className="panel-title">AI Engine</h2>
+//                 <p className="panel-sub">Analysing spatial layout data</p>
+
+//                 <div className="media-frame">
+//                   <img src="/image/ai.gif" alt="AI Engine" />
+//                 </div>
+
+//                 <div className="tags-row">
+//                   <span className="tag">OBJECT DETECT</span>
+//                   <span className="tag">SPATIAL MAP</span>
+//                   <span className="tag">SLOT ANALYSIS</span>
+//                   <span className="tag">LAYOUT GEN</span>
+//                 </div>
+//               </div>
+//             </div>
+
+//             {/* ═══ PANEL 3: PARKING OUTPUT ═══ */}
+//             <div className="panel">
+//               <div
+//                 className="panel-inner"
+//                 style={{
+//                   opacity: p3Progress,
+//                   transform: `translateY(${(1 - p3Progress) * 28}px)`,
+//                   transition: "none",
+//                 }}
+//               >
+//                 <div className="step-label">03 — Output</div>
+//                 <h2 className="panel-title">Parking Layout</h2>
+//                 <p className="panel-sub">
+//                   Car parking & driveway design detected
+//                 </p>
+
+//                 <div className="media-frame">
+//                   <img src="/image/parking.gif" alt="Parking Layout" style={{width:'300px'}} />
+//                 </div>
+
+//                 <div
+//                   className="status-badge"
+//                   style={{
+//                     borderColor: "rgba(34,197,94,0.25)",
+//                     background: "rgba(34,197,94,0.07)",
+//                     color: "rgba(74,222,128,0.8)",
+//                   }}
+//                 >
+//                   <div
+//                     className="status-dot"
+//                     style={{
+//                       background: "#4ade80",
+//                       boxShadow: "0 0 8px #4ade80",
+//                     }}
+//                   />
+//                   Layout Generated
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+"use client";
+import { useState, useEffect, useRef } from "react";
+
+// ─── Helpers ────────────────────────────────────────────────────────────────
+const CAR_COLORS = [
+  { body: "#f5c518", window: "#555", shadow: "#c9a000" },
+  { body: "#e63946", window: "#2d2d4e", shadow: "#9b1b28" },
+  { body: "#a8dadc", window: "#457b9d", shadow: "#6bb3c0" },
+  { body: "#9b5de5", window: "#3a0ca3", shadow: "#6a0dad" },
+  { body: "#06d6a0", window: "#1b4332", shadow: "#048a68" },
+  { body: "#ff9f1c", window: "#5c3d00", shadow: "#c97400" },
+];
+
+function ParkingCar({ color, delay, parked }) {
+  return (
+    <div
+      style={{
+        transition: `transform 0.9s cubic-bezier(.22,1,.36,1) ${delay}ms, opacity 0.6s ease ${delay}ms`,
+        transform: parked ? "translateY(0)" : "translateY(-120px)",
+        opacity: parked ? 1 : 0,
+      }}
+    >
+      <svg width="52" height="90" viewBox="0 0 52 90">
+        {/* Shadow */}
+        <ellipse cx="26" cy="84" rx="20" ry="5" fill="rgba(0,0,0,.25)" />
+        {/* Body */}
+        <rect x="6" y="20" width="40" height="58" rx="10" fill={color.body} />
+        {/* Roof */}
+        <rect x="10" y="10" width="32" height="28" rx="8" fill={color.body} />
+        {/* Windshield */}
+        <rect x="13" y="13" width="26" height="16" rx="5" fill={color.window} opacity="0.85" />
+        {/* Rear glass */}
+        <rect x="13" y="52" width="26" height="12" rx="4" fill={color.window} opacity="0.7" />
+        {/* Wheels */}
+        <rect x="2" y="26" width="8" height="14" rx="4" fill="#222" />
+        <rect x="42" y="26" width="8" height="14" rx="4" fill="#222" />
+        <rect x="2" y="56" width="8" height="14" rx="4" fill="#222" />
+        <rect x="42" y="56" width="8" height="14" rx="4" fill="#222" />
+        {/* Headlights */}
+        <rect x="12" y="68" width="10" height="5" rx="2" fill="#fff" opacity="0.9" />
+        <rect x="30" y="68" width="10" height="5" rx="2" fill="#fff" opacity="0.9" />
+      </svg>
+    </div>
+  );
+}
+
+// ─── Scene 1: Upload ─────────────────────────────────────────────────────────
+function UploadScene({ active, onDone }) {
+  const [phase, setPhase] = useState(0); // 0=idle 1=dragging 2=uploading 3=done
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (!active) { setPhase(0); setProgress(0); return; }
+    const t1 = setTimeout(() => setPhase(1), 400);
+    const t2 = setTimeout(() => setPhase(2), 1200);
+    let p = 0;
+    const interval = setInterval(() => {
+      p += Math.random() * 18 + 4;
+      if (p >= 100) { p = 100; clearInterval(interval); }
+      setProgress(Math.min(p, 100));
+    }, 120);
+    const t3 = setTimeout(() => { setPhase(3); }, 2800);
+    const t4 = setTimeout(() => onDone?.(), 3600);
+    return () => [t1, t2, t3, t4].forEach(clearTimeout);
+  }, [active]);
+
+  const files = ["layout_v3.mp4", "parking_data.csv", "site_map.pdf"];
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24 }}>
+      {/* Drop zone */}
+      <div style={{
+        width: 340, height: 200,
+        border: `2px dashed ${phase >= 1 ? "#38bdf8" : "#334155"}`,
+        borderRadius: 20,
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12,
+        background: phase >= 1 ? "rgba(56,189,248,.07)" : "rgba(15,23,42,.6)",
+        transition: "all 0.4s ease",
+        position: "relative", overflow: "hidden",
+      }}>
+        {/* Glow */}
+        {phase >= 1 && (
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "radial-gradient(ellipse at 50% 0%, rgba(56,189,248,.18) 0%, transparent 70%)",
+          }} />
+        )}
+        {/* Icon */}
+        <div style={{
+          width: 56, height: 56, borderRadius: 14,
+          background: phase >= 1 ? "rgba(56,189,248,.2)" : "rgba(51,65,85,.6)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          transition: "all 0.4s",
+          transform: phase === 1 ? "scale(1.1)" : "scale(1)",
+        }}>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={phase >= 1 ? "#38bdf8" : "#64748b"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+          </svg>
+        </div>
+        <p style={{ color: phase >= 1 ? "#38bdf8" : "#64748b", fontSize: 14, margin: 0, fontFamily: "'DM Sans', sans-serif", transition: "color 0.4s" }}>
+          {phase === 0 ? "Drop files here or click to browse" : phase === 1 ? "Release to upload…" : phase === 2 ? "Uploading…" : "✓ Upload complete!"}
+        </p>
+        {phase === 3 && (
+          <p style={{ color: "#4ade80", fontSize: 12, margin: 0, fontFamily: "'DM Sans', sans-serif" }}>
+            Files ready for AI processing
+          </p>
+        )}
+      </div>
+
+      {/* File list */}
+      <div style={{ width: 340, display: "flex", flexDirection: "column", gap: 8 }}>
+        {files.map((f, i) => {
+          const fileActive = phase >= 2 && i === 0 ? true : phase === 3;
+          const done = phase === 3 || (phase === 2 && progress === 100 && i === 0);
+          return (
+            <div key={f} style={{
+              display: "flex", alignItems: "center", gap: 12,
+              background: "rgba(15,23,42,.7)", borderRadius: 12, padding: "10px 14px",
+              border: "1px solid rgba(51,65,85,.7)",
+              opacity: phase >= 1 ? 1 : 0.3,
+              transition: `opacity 0.5s ease ${i * 150}ms`,
+            }}>
+              <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(56,189,248,.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" />
+                </svg>
+              </div>
+              <div style={{ flex: 1 }}>
+                <p style={{ margin: 0, fontSize: 13, color: "#e2e8f0", fontFamily: "'DM Sans', sans-serif" }}>{f}</p>
+                {phase === 2 && i === 0 && (
+                  <div style={{ marginTop: 5, height: 3, borderRadius: 2, background: "#1e293b", overflow: "hidden" }}>
+                    <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg,#38bdf8,#818cf8)", borderRadius: 2, transition: "width 0.1s linear" }} />
                   </div>
-                </div>
+                )}
+              </div>
+              {(phase === 3 || (phase === 2 && i === 0 && progress === 100)) && (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ─── Scene 2: AI Generating ──────────────────────────────────────────────────
+function AIScene({ active, onDone }) {
+  const [orbitAngle, setOrbitAngle] = useState(0);
+  const [pulseScale, setPulseScale] = useState(1);
+  const [particles, setParticles] = useState([]);
+  const [phase, setPhase] = useState(0); // 0=dormant, 1=spinning, 2=done
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    if (!active) { setPhase(0); return; }
+    setPhase(1);
+    // Spawn particles
+    const pts = Array.from({ length: 20 }, (_, i) => ({
+      id: i, angle: Math.random() * 360, radius: 60 + Math.random() * 60,
+      speed: 0.4 + Math.random() * 0.6, size: 2 + Math.random() * 3,
+      opacity: 0.3 + Math.random() * 0.7,
+    }));
+    setParticles(pts);
+
+    let angle = 0;
+    let frame = 0;
+    const animate = () => {
+      angle += 1.2;
+      frame++;
+      setPulseScale(1 + Math.sin(frame * 0.05) * 0.04);
+      setOrbitAngle(angle);
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    const t = setTimeout(() => { setPhase(2); cancelAnimationFrame(rafRef.current); }, 3200);
+    const t2 = setTimeout(() => onDone?.(), 4000);
+    return () => { cancelAnimationFrame(rafRef.current); clearTimeout(t); clearTimeout(t2); };
+  }, [active]);
+
+  const orbits = [
+    { rx: 90, ry: 45, tilt: 0 },
+    { rx: 90, ry: 45, tilt: 60 },
+    { rx: 90, ry: 45, tilt: 120 },
+  ];
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 28 }}>
+      <div style={{ position: "relative", width: 220, height: 220 }}>
+        {/* Glow */}
+        <div style={{
+          position: "absolute", inset: -20,
+          borderRadius: "50%",
+          background: "radial-gradient(ellipse, rgba(56,189,248,.25) 0%, transparent 70%)",
+          transform: `scale(${pulseScale})`,
+          transition: "transform 0.1s",
+        }} />
+
+        <svg width="220" height="220" viewBox="-110 -110 220 220" style={{ position: "absolute", top: 0, left: 0 }}>
+          {/* Orbit rings */}
+          {orbits.map((o, i) => (
+            <ellipse key={i}
+              cx="0" cy="0" rx={o.rx} ry={o.ry}
+              fill="none" stroke="rgba(56,189,248,.35)" strokeWidth="1.5"
+              transform={`rotate(${o.tilt})`}
+            />
+          ))}
+          {/* Orbit dots */}
+          {orbits.map((o, i) => {
+            const a = ((orbitAngle + i * 120) * Math.PI) / 180;
+            const x = Math.cos(a) * o.rx;
+            const y = Math.sin(a) * o.ry;
+            return (
+              <g key={i} transform={`rotate(${o.tilt})`}>
+                <circle cx={x} cy={y} r="5" fill="#fff" />
+                <circle cx={x} cy={y} r="8" fill="rgba(255,255,255,.2)" />
+              </g>
+            );
+          })}
+          {/* Center */}
+          <circle cx="0" cy="0" r="42" fill="rgba(15,23,42,.9)" stroke="rgba(56,189,248,.5)" strokeWidth="1.5" />
+          <text x="0" y="8" textAnchor="middle" fill="#38bdf8" fontSize="26" fontWeight="700" fontFamily="'Space Grotesk', sans-serif">AI</text>
+        </svg>
+      </div>
+
+      {/* Status */}
+      <div style={{ textAlign: "center" }}>
+        {phase === 1 ? (
+          <>
+            <p style={{ margin: 0, color: "#38bdf8", fontSize: 15, fontFamily: "'DM Sans', sans-serif" }}>Analyzing parking layout…</p>
+            <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 10 }}>
+              {[0, 1, 2].map(i => (
+                <div key={i} style={{
+                  width: 8, height: 8, borderRadius: "50%", background: "#38bdf8",
+                  animation: `bounce 1s ease-in-out ${i * 0.2}s infinite`,
+                }} />
               ))}
             </div>
-            <div style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "10px",
-              color: "rgba(0,180,255,0.35)",
-              letterSpacing: "2px"
-            }}>
-              {Math.round(scrollPct * 100)}% SCANNED
-            </div>
-          </div> */}
+          </>
+        ) : phase === 2 ? (
+          <p style={{ margin: 0, color: "#4ade80", fontSize: 15, fontFamily: "'DM Sans', sans-serif" }}>
+            ✓ Layout generated successfully
+          </p>
+        ) : null}
+      </div>
 
-          {/* Panels row — all always equal 33.33vw */}
-          <div className="panels-row">
-            {/* ═══ PANEL 1: UPLOAD ═══ */}
-            <div className="panel">
-              <div
-                className="panel-inner"
-                style={{
-                  opacity: p1Progress,
-                  transform: `translateY(${(1 - p1Progress) * 28}px)`,
-                  transition: "none",
-                }}
-              >
-                <div className="step-label">01 — Input</div>
-                <h2 className="panel-title">Upload Your File</h2>
-                <p className="panel-sub">Drag & drop or click to begin</p>
-
-                <div className="media-frame">
-                  <img src="/image/upload2.gif" alt="Upload" />
-                </div>
-
-                <div className="status-badge">
-                  <div className="status-dot" />
-                  Ready to Accept
-                </div>
-              </div>
-            </div>
-
-            {/* ═══ PANEL 2: AI ENGINE ═══ */}
-            <div className="panel">
-              <div
-                className="panel-inner"
-                style={{
-                  opacity: p2Progress,
-                  transform: `translateY(${(1 - p2Progress) * 28}px)`,
-                  transition: "none",
-                }}
-              >
-                <div className="step-label">02 — Processing</div>
-                <h2 className="panel-title">AI Engine</h2>
-                <p className="panel-sub">Analysing spatial layout data</p>
-
-                <div className="media-frame">
-                  <img src="/image/ai.gif" alt="AI Engine" />
-                </div>
-
-                <div className="tags-row">
-                  <span className="tag">OBJECT DETECT</span>
-                  <span className="tag">SPATIAL MAP</span>
-                  <span className="tag">SLOT ANALYSIS</span>
-                  <span className="tag">LAYOUT GEN</span>
-                </div>
-              </div>
-            </div>
-
-            {/* ═══ PANEL 3: PARKING OUTPUT ═══ */}
-            <div className="panel">
-              <div
-                className="panel-inner"
-                style={{
-                  opacity: p3Progress,
-                  transform: `translateY(${(1 - p3Progress) * 28}px)`,
-                  transition: "none",
-                }}
-              >
-                <div className="step-label">03 — Output</div>
-                <h2 className="panel-title">Parking Layout</h2>
-                <p className="panel-sub">
-                  Car parking & driveway design detected
-                </p>
-
-                <div className="media-frame">
-                  <img src="/image/parking.gif" alt="Parking Layout" style={{width:'300px'}} />
-                </div>
-
-                <div
-                  className="status-badge"
-                  style={{
-                    borderColor: "rgba(34,197,94,0.25)",
-                    background: "rgba(34,197,94,0.07)",
-                    color: "rgba(74,222,128,0.8)",
-                  }}
-                >
-                  <div
-                    className="status-dot"
-                    style={{
-                      background: "#4ade80",
-                      boxShadow: "0 0 8px #4ade80",
-                    }}
-                  />
-                  Layout Generated
-                </div>
-              </div>
-            </div>
+      {/* Processing steps */}
+      {["Parsing vehicle data", "Optimizing slot allocation", "Generating layout grid"].map((step, i) => (
+        <div key={step} style={{
+          display: "flex", alignItems: "center", gap: 10,
+          opacity: phase >= 1 ? 1 : 0,
+          transition: `opacity 0.5s ease ${i * 300 + 200}ms`,
+          width: 280,
+        }}>
+          <div style={{
+            width: 20, height: 20, borderRadius: "50%",
+            background: phase === 2 ? "rgba(74,222,128,.2)" : "rgba(56,189,248,.2)",
+            border: `1.5px solid ${phase === 2 ? "#4ade80" : "#38bdf8"}`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            flexShrink: 0,
+          }}>
+            {phase === 2
+              ? <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
+              : <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#38bdf8" }} />
+            }
           </div>
+          <span style={{ fontSize: 13, color: phase === 2 ? "#94a3b8" : "#cbd5e1", fontFamily: "'DM Sans', sans-serif" }}>{step}</span>
+        </div>
+      ))}
+
+      <style>{`@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }`}</style>
+    </div>
+  );
+}
+
+// ─── Scene 3: Parking Layout ─────────────────────────────────────────────────
+function ParkingScene({ active }) {
+  const [parked, setParked] = useState(false);
+
+  useEffect(() => {
+    if (!active) { setParked(false); return; }
+    const t = setTimeout(() => setParked(true), 200);
+    return () => clearTimeout(t);
+  }, [active]);
+
+  const spots = [
+    { row: 0, col: 0, carIdx: null },
+    { row: 0, col: 1, carIdx: 0 },
+    { row: 0, col: 2, carIdx: null },
+    { row: 0, col: 3, carIdx: 1 },
+    { row: 0, col: 4, carIdx: null },
+    { row: 1, col: 0, carIdx: 2 },
+    { row: 1, col: 1, carIdx: null },
+    { row: 1, col: 2, carIdx: 3 },
+    { row: 1, col: 3, carIdx: null },
+    { row: 1, col: 4, carIdx: 4 },
+  ];
+
+  const COLS = 5;
+  const ROWS = 2;
+  const SPOT_W = 70;
+  const SPOT_H = 110;
+  const GAP = 8;
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+      {/* Header */}
+      <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#4ade80" }} />
+          <span style={{ fontSize: 12, color: "#94a3b8", fontFamily: "'DM Sans', sans-serif" }}>Available (5)</span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 12, height: 12, borderRadius: 3, background: "#f87171" }} />
+          <span style={{ fontSize: 12, color: "#94a3b8", fontFamily: "'DM Sans', sans-serif" }}>Occupied (5)</span>
         </div>
       </div>
-    </>
+
+      {/* Grid */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${COLS}, ${SPOT_W}px)`,
+        gridTemplateRows: `repeat(${ROWS}, ${SPOT_H}px)`,
+        gap: GAP,
+        padding: 16,
+        background: "#1e293b",
+        borderRadius: 20,
+        border: "1px solid rgba(51,65,85,.8)",
+      }}>
+        {spots.map((spot, i) => {
+          const occupied = spot.carIdx !== null;
+          return (
+            <div key={i} style={{
+              width: SPOT_W, height: SPOT_H,
+              background: occupied ? "rgba(248,113,113,.08)" : "rgba(74,222,128,.08)",
+              border: `1.5px solid ${occupied ? "rgba(248,113,113,.35)" : "rgba(74,222,128,.35)"}`,
+              borderRadius: 10,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              position: "relative", overflow: "hidden",
+            }}>
+              {/* Spot number */}
+              <span style={{
+                position: "absolute", top: 5, left: 8,
+                fontSize: 10, color: occupied ? "rgba(248,113,113,.7)" : "rgba(74,222,128,.7)",
+                fontFamily: "'DM Mono', monospace", fontWeight: 600,
+              }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              {occupied && (
+                <ParkingCar
+                  color={CAR_COLORS[spot.carIdx % CAR_COLORS.length]}
+                  delay={i * 80}
+                  parked={parked}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Stats bar */}
+      <div style={{
+        display: "flex", gap: 16, width: "100%", maxWidth: 400,
+        background: "rgba(15,23,42,.8)", borderRadius: 12, padding: "12px 16px",
+        border: "1px solid rgba(51,65,85,.5)",
+      }}>
+        {[["Total", "10"], ["Occupied", "5"], ["Available", "5"], ["Efficiency", "50%"]].map(([label, val]) => (
+          <div key={label} style={{ flex: 1, textAlign: "center" }}>
+            <p style={{ margin: 0, fontSize: 16, color: "#e2e8f0", fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif" }}>{val}</p>
+            <p style={{ margin: 0, fontSize: 10, color: "#64748b", fontFamily: "'DM Sans', sans-serif" }}>{label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Main Component ──────────────────────────────────────────────────────────
+export default function ProductAnimation() {
+  const [scene, setScene] = useState(0); // 0=upload 1=ai 2=parking
+  const [animKey, setAnimKey] = useState(0);
+
+  const handleSceneDone = () => {
+    setScene(s => Math.min(s + 1, 2));
+  };
+
+  const restart = () => {
+    setScene(0);
+    setAnimKey(k => k + 1);
+  };
+
+  const SCENES = ["Upload Files", "AI Processing", "Parking Layout"];
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #020817 0%, #0f172a 50%, #0a0f1e 100%)",
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      padding: 32,
+      fontFamily: "'DM Sans', sans-serif",
+    }}>
+      {/* Google Fonts */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=DM+Mono:wght@500&display=swap');
+        * { box-sizing: border-box; }
+      `}</style>
+
+      {/* Title */}
+      <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: 4, color: "#38bdf8", textTransform: "uppercase", fontFamily: "'DM Mono', monospace" }}>
+          Smart Parking System
+        </p>
+        <h1 style={{ margin: 0, fontSize: 32, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif", color: "#f1f5f9" }}>
+          AI-Powered Layout Generator
+        </h1>
+      </div>
+
+      {/* Step indicator */}
+      <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 40 }}>
+        {SCENES.map((s, i) => (
+          <div key={s} style={{ display: "flex", alignItems: "center" }}>
+            <div
+              onClick={() => setScene(i)}
+              style={{
+                display: "flex", alignItems: "center", gap: 8, cursor: "pointer",
+                padding: "8px 16px", borderRadius: 24,
+                background: scene === i ? "rgba(56,189,248,.15)" : "transparent",
+                border: `1px solid ${scene === i ? "#38bdf8" : "rgba(51,65,85,.5)"}`,
+                transition: "all 0.3s",
+              }}>
+              <div style={{
+                width: 24, height: 24, borderRadius: "50%",
+                background: scene > i ? "#4ade80" : scene === i ? "#38bdf8" : "rgba(51,65,85,.8)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 11, fontWeight: 700, color: scene >= i ? "#0f172a" : "#64748b",
+                transition: "all 0.3s",
+              }}>
+                {scene > i ? "✓" : i + 1}
+              </div>
+              <span style={{ fontSize: 13, color: scene === i ? "#e2e8f0" : "#64748b", fontWeight: scene === i ? 600 : 400 }}>{s}</span>
+            </div>
+            {i < SCENES.length - 1 && (
+              <div style={{ width: 32, height: 1, background: scene > i ? "#4ade80" : "rgba(51,65,85,.5)", transition: "background 0.5s", margin: "0 4px" }} />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Scene Card */}
+      <div style={{
+        width: "100%", maxWidth: 480,
+        background: "rgba(15,23,42,.8)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(56,189,248,.2)",
+        borderRadius: 28,
+        padding: "40px 32px",
+        display: "flex", flexDirection: "column", alignItems: "center",
+        minHeight: 460,
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        {/* Corner glow */}
+        <div style={{ position: "absolute", top: -60, right: -60, width: 200, height: 200, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(56,189,248,.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: -60, left: -60, width: 200, height: 200, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(129,140,248,.1) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+        <div key={`${animKey}-${scene}`} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          {scene === 0 && <UploadScene active={true} onDone={handleSceneDone} />}
+          {scene === 1 && <AIScene active={true} onDone={handleSceneDone} />}
+          {scene === 2 && <ParkingScene active={true} />}
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div style={{ display: "flex", gap: 12, marginTop: 28 }}>
+        {scene < 2 && (
+          <button onClick={handleSceneDone} style={{
+            padding: "10px 24px", borderRadius: 12, border: "1px solid rgba(51,65,85,.7)",
+            background: "rgba(15,23,42,.8)", color: "#94a3b8", cursor: "pointer", fontSize: 13,
+            fontFamily: "'DM Sans', sans-serif",
+          }}>
+            Skip →
+          </button>
+        )}
+        <button onClick={restart} style={{
+          padding: "10px 24px", borderRadius: 12, border: "none",
+          background: "linear-gradient(135deg, #0ea5e9, #6366f1)", color: "#fff", cursor: "pointer", fontSize: 13,
+          fontFamily: "'DM Sans', sans-serif", fontWeight: 600,
+        }}>
+          ↺ Restart Demo
+        </button>
+      </div>
+    </div>
   );
 }
