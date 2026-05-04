@@ -22,6 +22,7 @@ import Outputanimation from "@/components/Outputanimation";
 import PricingSection from "@/components/PricingSection";
 import ProblemSection from "@/components/ProblemSection";
 import ProductAnimations from "@/components/Productanimation";
+import RotatingNodes from "@/components/RotatingNodes";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SeamlessGallery from "@/components/SeamlessGallery";
 import SidebySideAnimation from "@/components/SidebySideAnimation";
@@ -73,6 +74,7 @@ export default function Home() {
       {/* <Outputanimation/> */}
       {/* <ProductAnimations/> */}
       {/* <NewAnimation/> */}
+      {/* <RotatingNodes/> */}
       <SidebySideAnimation/>
       {/* <Videofiles/> */}
       <WhyChoose />
@@ -87,9 +89,9 @@ export default function Home() {
         <ComparisonSection />
       </section>
       <ImpactSection />
-      <section id="pricing" className="scroll-mt-20">
+      {/* <section id="pricing" className="scroll-mt-20">
         <PricingSection />
-      </section>
+      </section> */}
       <section id="contactus" className="scroll-mt-20">
         <DemoBookingSection />
       </section>

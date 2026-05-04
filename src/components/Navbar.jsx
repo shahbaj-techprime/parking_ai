@@ -217,7 +217,7 @@ export default function Navbar() {
   const navLinks = [
     { label: t.features, id: "features" },
     { label: t.why, id: "why" },
-    { label: t.pricing, id: "pricing" },
+    // { label: t.pricing, id: "pricing" },
     { label: t.faq, id: "faq" },
   ];
 

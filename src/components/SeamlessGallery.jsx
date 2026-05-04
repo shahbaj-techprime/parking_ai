@@ -333,10 +333,10 @@ export default function SeamlessGallery() {
             >
               <div className="relative group w-[450px] lg:w-[500px] xl:w-[550px] min-h-[50px] rounded-2xl overflow-hidden border-2 border-[#05df72]">
                 {/* 1️⃣ Background Image (Inside Card Only) */}
-                <div
+                {/* <div
                   className="absolute inset-0 bg-cover bg-center  scale-105"
                   style={{ backgroundImage: `url(${advantage.imageUrl})` }}
-                ></div>
+                ></div> */}
 
                 {/* 2️⃣ Dark Overlay */}
                 <div className="absolute inset-0 bg-black/60"></div>
