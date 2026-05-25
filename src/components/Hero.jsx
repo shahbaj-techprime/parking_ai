@@ -188,7 +188,15 @@ export default function Hero() {
 
     return () => ctx.revert();
   }, []);
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
+    const yOffset = -80;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
   return (
     <section
       ref={heroRef}
@@ -243,7 +251,7 @@ export default function Hero() {
             <button
               onClick={() =>
                 window.open(
-                  "https://nexelvr.com/try-parking/",
+                  "https://pioneverse.com/phoenix/parkingai/beta/",
                   "_blank",
 
                   // (target = "_blank"),
