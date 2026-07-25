@@ -230,7 +230,7 @@ export default function Hero() {
             <button
               onClick={() =>
                 window.open(
-                  "https://nexelvr.com/tryparking/",
+                  "https://nexelvr.com/tryparking/beta",
                   "_blank",
 
                   // (target = "_blank"),
