@@ -136,27 +136,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -200,7 +179,7 @@ export default function Hero() {
   return (
     <section
       ref={heroRef}
-    
+
       className="bg-black relative min-h-screen flex items-center pt-28 md:pt-32 overflow-hidden"
     >
 
@@ -228,7 +207,7 @@ export default function Hero() {
 
           </div> */}
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-             <button
+            <button
               onClick={() => scrollToSection("contactus")}
               className="group flex items-center gap-2 bg-[#05df72] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-[#04c465] transition text-black"
             >
@@ -251,7 +230,7 @@ export default function Hero() {
             <button
               onClick={() =>
                 window.open(
-                  "https://pioneverse.com/phoenix/parkingai/beta/",
+                  "https://nexelvr.com/tryparking/",
                   "_blank",
 
                   // (target = "_blank"),
@@ -259,7 +238,7 @@ export default function Hero() {
               }
               className="group flex items-center gap-2 border-2 border-[#05df72] text-[#05df72] px-6 py-3 md:px-8 md:py-4 rounded-lg font-semibold hover:bg-[#05df72]/10 transition"
             >
-               {t.trial}
+              {t.trial}
               <svg
                 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -276,7 +255,7 @@ export default function Hero() {
             </button>
           </div>
           <p className="text-xs md:text-sm text-gray-400 mt-6 mb-8">
-             {/* ✓ */}
+            {/* ✓ */}
             {t.trustedBy}
           </p>
 

@@ -1,12 +1,6 @@
 "use client";
-
-import BackgroundCanvas from "@/components/BackgroundCanvas";
-import CallToActionSection from "@/components/CallToActionSection";
 import ComparisonSection from "@/components/Comparisonsection";
-import ComplianceAndOutputSection from "@/components/ComplianceAndOutputSection";
-import CoreAISection from "@/components/CoreAISection";
 import CTASectionBold from "@/components/Ctasectionbold";
-import CTASection from "@/components/Ctasectionbold";
 import DemoBookingSection from "@/components/Demobookingsection";
 import FAQSectionMinimal from "@/components/Faqsection";
 import FeaturesSection from "@/components/Featuressection";
@@ -15,20 +9,10 @@ import Hero from "@/components/Hero";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ImpactSection from "@/components/Impactsection";
 import Navbar from "@/components/Navbar";
-import NewAnimation from "@/components/NewAnimation";
-import ParkingFeatures from "@/components/Node";
-import ProductAnimation from "@/components/Outputanimation";
-import Outputanimation from "@/components/Outputanimation";
-import PricingSection from "@/components/PricingSection";
-import ProblemSection from "@/components/ProblemSection";
-import ProductAnimations from "@/components/Productanimation";
-import RotatingNodes from "@/components/RotatingNodes";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SeamlessGallery from "@/components/SeamlessGallery";
 import SidebySideAnimation from "@/components/SidebySideAnimation";
-import SolutionSection from "@/components/SolutionSection";
 import TopBanner from "@/components/TopBanner";
-import Videofiles from "@/components/Videofiles";
 import WhyChoose from "@/components/Whychoose";
 
 import { gsap } from "gsap";
@@ -75,13 +59,13 @@ export default function Home() {
       {/* <ProductAnimations/> */}
       {/* <NewAnimation/> */}
       {/* <RotatingNodes/> */}
-      <SidebySideAnimation/>
+      <SidebySideAnimation />
       {/* <Videofiles/> */}
       <WhyChoose />
       {/* <SolutionSection /> */}
       <SeamlessGallery />
       <HowItWorksSection />
-      <section id="features" className="scroll-mt-20" >
+      <section id="features" className="scroll-mt-20">
         <FeaturesSection />
         {/* Problem */}
       </section>
